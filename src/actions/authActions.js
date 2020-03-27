@@ -16,7 +16,6 @@ function logout(){
 
 export function getInsult(data){
     const env = runtimeEnv();
-    console.log(JSON.stringify(data));
     //return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/insults`, {
             method: 'GET',
@@ -27,7 +26,6 @@ export function getInsult(data){
             //body: JSON.stringify(data),   //This was causing issues, apperently you cannot send a body for a GET request
             mode: 'cors'})
             .then( (response) => {
-                console.log("Inside the first then in insult");
                 if (!response.ok) {
                     // we failed to retrieve an insult
                     throw Error(response.statusText);
@@ -36,7 +34,6 @@ export function getInsult(data){
             })
             .then( (res) => {
                 // The promise above returns to us the response in json format, now we want to send back an insult
-                console.log("Inside the second then for insults");
                 return res.insults; //TODO make this more specific once we can specify the category in the headers instead of body
             })
             .catch( (e) => console.log(e) );
@@ -46,7 +43,6 @@ export function getInsult(data){
 
 export function submitLogin(data){
     const env = runtimeEnv();
-    console.log(JSON.stringify(data));
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/signin`, {
             method: 'POST',
