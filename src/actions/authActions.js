@@ -51,7 +51,7 @@ export function submitLogin(data){
             })
             .then( (res) => {
                 // The promise above returns to us the response in json format, now we want to check if we've logged in or not
-                if(res.success === "true") {
+                if(res.success === true) {
                     localStorage.setItem('username', data.username);
                     localStorage.setItem('token', res.token);
 
@@ -64,7 +64,13 @@ export function submitLogin(data){
             })
             .then( (insult) => {
                 //Here we are inside another god damn .then JAVASCRIPT YOU ARE FUCKING SOMETHING ALRIGHT
-                alert(insult.insult.insult);    // the insult is kind of burried haha
+                if(insult == null){
+                    //this is checking for if insult is undefined, if it is undefined it means that we never generated an insult therefore they logged in successfully
+                    alert("Congrats on logging in :)");
+                }
+                else{
+                    alert(insult.insult.insult);    // the insult is kind of burried haha
+                }
             })
             .catch( (e) => console.log(e) );
     }
