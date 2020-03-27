@@ -16,8 +16,7 @@ function logout(){
 
 export function getInsult(data){
     const env = runtimeEnv();
-    //return dispatch => {
-        return fetch(`${env.REACT_APP_API_URL}/insults`, {
+        return fetch(`${env.REACT_APP_API_URL}/insults/` + data, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -32,12 +31,7 @@ export function getInsult(data){
                 }
                 return response.json();
             })
-            .then( (res) => {
-                // The promise above returns to us the response in json format, now we want to send back an insult
-                return res.insults; //TODO make this more specific once we can specify the category in the headers instead of body
-            })
             .catch( (e) => console.log(e) );
-    //}
 }
 
 
@@ -65,15 +59,12 @@ export function submitLogin(data){
                 }
                 else{
                     // we didn't log in, display an insult
-                    var data_to_send = {"category": "incorrect password"};  //TODO fix this to not be hardcoded once this is fixed in the backend
-                    return getInsult(data_to_send);
+                    return getInsult(res.message);  //res.message is the last part of the path/route that we want to use a GET request on
                 }
             })
             .then( (insult) => {
                 //Here we are inside another god damn .then JAVASCRIPT YOU ARE FUCKING SOMETHING ALRIGHT
-                var i = Math.floor(Math.random() * 4);
-                var random = insult[i].insult;  //TODO fix this to not be from random and be specific once I can send the category through headers instead of body (backend)
-                alert(random);
+                alert(insult.insult.insult);    // the insult is kind of burried haha
             })
             .catch( (e) => console.log(e) );
     }
