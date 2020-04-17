@@ -22,7 +22,7 @@ export function getInsult(data){
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            //body: JSON.stringify(data),   //This was causing issues, apperently you cannot send a body for a GET request
+            //body: JSON.stringify(data),   //This was causing issues, apparently you cannot send a body for a GET request
             mode: 'cors'})
             .then( (response) => {
                 if (!response.ok) {
