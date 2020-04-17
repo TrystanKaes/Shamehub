@@ -16,9 +16,11 @@ class AppHeader extends Component {
             <div>
                 <Navbar>
                     <Navbar.Header>
-                        <Navbar.Brand>
-                            ShameHub
-                        </Navbar.Brand>
+                        <LinkContainer to="/">
+                            <Navbar.Brand>
+                                ShameHub
+                            </Navbar.Brand>
+                        </LinkContainer>
                     </Navbar.Header>
                     <Nav>
                         <LinkContainer to="/profile">
@@ -32,9 +34,6 @@ class AppHeader extends Component {
                         </LinkContainer>
                     </Nav>
                 </Navbar>
-                {/*<header className="App-header">*/}
-                {/*    <h1 className="App-title">{(this.props.selectedMovie ? this.props.selectedMovie.title : '')}</h1>*/}
-                {/*</header>*/}
             </div>
 
         );
