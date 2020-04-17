@@ -37,7 +37,7 @@ class Authentication extends Component {
     render(){
 
         const userNotLoggedIn = (
-            <div>
+            <div id="picker">
                 <button onClick={this.showLogin.bind(this)}>Login</button><button onClick={this.showReg.bind(this)}>Register</button>
                 { this.state.toggleReg ? <Register /> : <Login /> }
             </div>
