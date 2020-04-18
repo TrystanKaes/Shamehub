@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import { submitRegister } from '../actions/authActions';
 import { connect } from 'react-redux';
-import { Col, Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Col, Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
 import {SketchPicker } from 'react-color'
 
 class Register extends Component {
@@ -62,7 +62,7 @@ class Register extends Component {
         return (
             <Form horizontal>
                 <FormGroup controlId="name">
-                    <Col componentClass={ControlLabel} sm={2}>
+                    <Col as={FormLabel} sm={2}>
                         Name
                     </Col>
                     <Col sm={9}>
@@ -71,7 +71,7 @@ class Register extends Component {
                 </FormGroup>
 
                 <FormGroup controlId="username">
-                    <Col componentClass={ControlLabel} sm={2}>
+                    <Col as={FormLabel} sm={2}>
                         username
                     </Col>
                     <Col sm={9}>
@@ -80,7 +80,7 @@ class Register extends Component {
                 </FormGroup>
 
                 <FormGroup controlId="password">
-                    <Col componentClass={ControlLabel} sm={2}>
+                    <Col as={FormLabel} sm={2}>
                         Password
                     </Col>
                     <Col sm={9}>
