@@ -22,7 +22,7 @@ class AppHeader extends Component {
     render() {
         return (
             <header>
-                <Navbar expand="lg" variant="light" bg="light">
+                <Navbar expand="lg" variant="light" bg="light" fluid>
                     <Navbar.Brand href="/welcome">
                         <img
                             src={logo}
@@ -40,7 +40,7 @@ class AppHeader extends Component {
                                     <NavItem eventKey={1} >Home </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
-                            <Nav.Link disabled={!this.props.loggedIn}>
+                            <Nav.Link disabled={this.props.loggedIn}>
                                 <LinkContainer to="/profile">
                                     <NavItem eventKey={2}>Profile </NavItem>
                                 </LinkContainer>
