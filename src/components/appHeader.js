@@ -5,8 +5,7 @@ import {Navbar,
         NavDropdown,
         Form,
         FormControl,
-        Button,
-        Container
+        Button
         } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import {connect} from "react-redux";

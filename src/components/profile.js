@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Box, Flex } from 'rebass'
 import { Card } from 'react-bootstrap'
+import PostCard from './postcard'
 import { connect } from 'react-redux';
 
 class Profile extends Component {
@@ -20,7 +21,7 @@ class Profile extends Component {
     render() {
         const Repository = ({repo}) => {
             return(
-                <Card style={{ width: '10rem' }}>
+                <Card style={{ minWidth: '11rem' }}>
                     <Card.Body>
                         <Card.Title>Repositories</Card.Title>
                         <Card.Text>
@@ -33,13 +34,14 @@ class Profile extends Component {
         }
         const Profile = ({Profile}) => {
             return(
-                <Card style={{ width: '10rem' }}>
+                <Card style={{ minWidth: '12rem' }}>
                     <Card.Body>
-                        <Card.Title>Repositories</Card.Title>
+                        <Card.Img variant="top" src="https://sites.nicholas.duke.edu/clarklab/files/2011/01/default_profile-d80441a6f25a9a0aac354978c65c8fa9.jpg" />
+                        <Card.Title>Username</Card.Title>
+                        <Card.Subtitle>Real Name</Card.Subtitle>
                         <Card.Text>
-                            These are my repositories
+                            Bio
                         </Card.Text>
-                        <Card.Link href="#">Github Link</Card.Link>
                     </Card.Body>
                 </Card>
             )
@@ -56,11 +58,12 @@ class Profile extends Component {
                     {/* THIS IS THE MAIN POST COLUMN */}
                     <Box
                         sx={{
-                            flex: 1,
+                            flex: 1/2 + 1/4 + 1/8,
                             minWidth: 0,
-                            maxWidth: window.innerWidth/4 + window.innerWidth/2
+                            align: 'center'
+                            // maxWidth: window.innerWidth/4 + window.innerWidth/2
                         }}>
-                        Main Content
+                        main content here
                     </Box>
                     {/* THIS IS THE LEFT PROFILE COLUMN */}
                     <Box
@@ -70,9 +73,8 @@ class Profile extends Component {
                                 64
                             ],
                             order: -1,
-                            maxWidth: window.innerWidth/2
-                        }}
-                        width={1/4}>
+                            padding: 3
+                        }}>
                         <Profile Profile={null}/>
                     </Box>
                     {/* THIS IS THE RIGHT REPOSITORY COLUMN */}
@@ -82,9 +84,7 @@ class Profile extends Component {
                                 64
                             ],
                             minWidth: 18,
-                            maxWidth: window.innerWidth/2
-                        }}
-                         width={1/4}>
+                        }}>
                         <Repository repo={null}/>
                     </Box>
             </Flex>
