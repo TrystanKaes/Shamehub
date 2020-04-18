@@ -1,0 +1,19 @@
+.profilePicture{
+    width: 200px;
+    height: 200px;
+}
+
+.profileName{
+    font-size: 25px;
+}
+
+.profileLink{
+    font-size: 20px;
+}
+
+.profileBio{
+    font-size: 12px;
+    border-style: outset;
+    border-width: 2px;
+    border-color: cadetblue;
+}
