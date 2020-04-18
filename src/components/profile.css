@@ -1,19 +1,56 @@
-.profilePicture{
-    width: 200px;
-    height: 200px;
+.profilePage{
+    /*background-color: #bfb5af;*/
+    /*background-color: indigo;*/
+    background-color: rgba(56, 0, 94, 1);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile{
+    float: left;
+    /*width: 350px;*/
+    width: 20%;
+    height: 45%;
+    border-style: inset;
+    border-width: 3px;
+    border-color: #c03221;
+    background-color: #55828b;
 }
 
 .profileName{
-    font-size: 25px;
-}
-
-.profileLink{
     font-size: 20px;
 }
 
+.profileLink{
+    font-size: 15px;
+    color: indigo;
+}
+
 .profileBio{
+    width: 100%;
     font-size: 12px;
     border-style: outset;
     border-width: 2px;
-    border-color: cadetblue;
+    border-color: #c03221;
+    background-color: #87bba2;
+}
+
+.profileCommitFeed{
+    border-style: ridge;
+    border-width: 2px;
+    border-color: #c03221;
+    /*flex: 1;*/
+}
+
+.profileRepoNames{
+    float: right;
+    border-style: ridge;
+    border-width: 2px;
+    border-color: #c03221;
+    min-width: 30%;
+    /*width: 30%;*/
+    max-width: 30%;
+    height: 80%;
 }

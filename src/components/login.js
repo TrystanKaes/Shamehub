@@ -45,22 +45,10 @@ class Login extends Component {
 
     bypassLogin(){
         //username and password stored in plane text aaaahhh!!!, use env file instead :)
-<<<<<<< HEAD
-        this.setState({
-            details: {
-                username: "Anthony",
-                password: "food"
-            }
-
-        });
-        //this.state.details.username = "Anthony";
-        //this.state.details.password = "food";
-=======
         let bypassDetails = this.state.details
         bypassDetails['username'] = "Anthony";
         bypassDetails['password'] = "food";
         this.setState({details: bypassDetails})
->>>>>>> origin
         this.login();
     }
 
