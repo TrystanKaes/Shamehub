@@ -22,7 +22,7 @@ class AppHeader extends Component {
     render() {
         return (
             <header>
-                <Navbar expand="lg" variant="light" bg="light">
+                <Navbar expand="lg" variant="light" bg="light" fluid>
                     <Navbar.Brand href="/welcome">
                         <img
                             src={logo}
@@ -37,30 +37,33 @@ class AppHeader extends Component {
                         <Nav className="mr-auto">
                             <Nav.Link>
                                 <LinkContainer to="/welcome">
-                                    <NavItem eventKey={1} disabled={!this.props.loggedIn}>Home </NavItem>
+                                    <NavItem eventKey={1} >Home </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
-                            <Nav.Link>
+                            <Nav.Link disabled={!this.props.loggedIn}>
                                 <LinkContainer to="/profile">
-                                    <NavItem eventKey={2} disabled={!this.props.loggedIn}>Profile </NavItem>
+                                    <NavItem eventKey={2}>Profile </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
                             <NavDropdown title="Feeds" id="basic-nav-dropdown">
                                 <NavDropdown.Item>
-                                    <LinkContainer to="/userfeed">
-                                        <NavItem eventKey={3} disabled={!this.props.loggedIn}>Home Feed </NavItem>
-                                    </LinkContainer>
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item>
                                     <LinkContainer to="/discover">
                                         <NavItem eventKey={4} disabled={!this.props.loggedIn}>Discover </NavItem>
                                     </LinkContainer>
-                                    </NavDropdown.Item>
+                                </NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item disabled={!this.props.loggedIn}>
+                                    <LinkContainer to="/userfeed">
+                                        <NavItem eventKey={3} >Home Feed </NavItem>
+                                    </LinkContainer>
+                                </NavDropdown.Item>
+
                             </NavDropdown>
                             <Nav.Link>
                                 <LinkContainer to="/signin">
-                                    <NavItem eventKey={3}>{this.props.loggedIn ? <button onClick={this.logout.bind(this)}>Logout</button> : 'Login'}</NavItem>
+                                    <NavItem eventKey={3}>
+                                        {this.props.loggedIn ? <button onClick={this.logout.bind(this)}>Logout</button>  : 'Login'}
+                                    </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
                         </Nav>
