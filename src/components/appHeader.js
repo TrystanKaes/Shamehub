@@ -16,7 +16,7 @@ class AppHeader extends Component {
             <div>
                 <Navbar>
                     <Navbar.Header>
-                        <LinkContainer to="/">
+                        <LinkContainer to="/welcome">
                             <Navbar.Brand>
                                 ShameHub
                             </Navbar.Brand>
