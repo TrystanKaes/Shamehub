@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class Feed extends Component {
+class DiscoverFeed extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -17,9 +17,9 @@ class Feed extends Component {
     render() {
 
         return(
-                <div>
-                   THIS IS A FUPPING Feed!
-                </div>
+            <div>
+                THIS IS A GLOBAL FUPPING Feed!
+            </div>
         );
     }
 
@@ -31,4 +31,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Feed);
+export default connect(mapStateToProps)(DiscoverFeed);
