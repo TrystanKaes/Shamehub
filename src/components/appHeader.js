@@ -62,12 +62,7 @@ class AppHeader extends Component {
                             <Nav.Link>
                                 <LinkContainer to="/signin">
                                     <NavItem eventKey={3}>
-                                        {this.props.loggedIn ?
-                                                <Navbar.Text>
-                                                    Signed in as : {this.props.username}
-                                                    <button onClick={this.logout.bind(this)}>Logout</button>
-                                                </Navbar.Text>
-                                             : 'Login'}
+                                        {this.props.loggedIn ? <button onClick={this.logout.bind(this)}>Logout</button>  : 'Login'}
                                     </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
