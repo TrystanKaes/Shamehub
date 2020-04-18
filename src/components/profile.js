@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Box, Flex } from 'rebass'
+import { Card } from 'react-bootstrap'
 import { connect } from 'react-redux';
 
 class Profile extends Component {
@@ -9,6 +10,7 @@ class Profile extends Component {
             error : null,
             isLoaded : true,
         };
+
     }
 
     componentDidMount() {
@@ -16,13 +18,33 @@ class Profile extends Component {
     }
 
     render() {
-
+        const Repository = ({repo}) => {
+            return(
+                <Card style={{ width: '10rem' }}>
+                    <Card.Body>
+                        <Card.Title>Repositories</Card.Title>
+                        <Card.Text>
+                            These are my repositories
+                        </Card.Text>
+                        <Card.Link href="#">Github Link</Card.Link>
+                    </Card.Body>
+                </Card>
+            )
+        }
+        const Profile = ({Profile}) => {
+            return(
+                <Card style={{ width: '10rem' }}>
+                    <Card.Body>
+                        <Card.Title>Repositories</Card.Title>
+                        <Card.Text>
+                            These are my repositories
+                        </Card.Text>
+                        <Card.Link href="#">Github Link</Card.Link>
+                    </Card.Body>
+                </Card>
+            )
+        }
         return(
-            <Flex
-                sx={{
-                    flexDirection: 'column',
-                    minHeight: '100vh'
-                }}>
                 <Flex
                     sx={{
                         flex: 1,
@@ -31,34 +53,40 @@ class Profile extends Component {
                             'row'
                         ]
                     }}>
+                    {/* THIS IS THE MAIN POST COLUMN */}
                     <Box
                         sx={{
                             flex: 1,
-                            minWidth: 0
+                            minWidth: 0,
+                            maxWidth: window.innerWidth/4 + window.innerWidth/2
                         }}>
                         Main Content
                     </Box>
+                    {/* THIS IS THE LEFT PROFILE COLUMN */}
                     <Box
                         sx={{
                             flexBasis: [
                                 'auto',
                                 64
                             ],
-                            order: -1
-                        }}>
-                        Nav
+                            order: -1,
+                            maxWidth: window.innerWidth/2
+                        }}
+                        width={1/4}>
+                        <Profile Profile={null}/>
                     </Box>
-                    <Box
-                        sx={{
+                    {/* THIS IS THE RIGHT REPOSITORY COLUMN */}
+                    <Box sx={{
                             flexBasis: [
                                 'auto',
                                 64
-                            ]
-                        }}>
-                        Ads
+                            ],
+                            minWidth: 18,
+                            maxWidth: window.innerWidth/2
+                        }}
+                         width={1/4}>
+                        <Repository repo={null}/>
                     </Box>
-                </Flex>
-                <Box>Footer</Box>
             </Flex>
         );
     }

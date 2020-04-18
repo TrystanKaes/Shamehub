@@ -5,7 +5,8 @@ import {Navbar,
         NavDropdown,
         Form,
         FormControl,
-        Button
+        Button,
+        Container
         } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import {connect} from "react-redux";
@@ -22,7 +23,7 @@ class AppHeader extends Component {
     render() {
         return (
             <header>
-                <Navbar expand="lg" variant="light" bg="light">
+                <Navbar expand="lg" variant="light" bg="light" fluid>
                     <Navbar.Brand href="/welcome">
                         <img
                             src={logo}
