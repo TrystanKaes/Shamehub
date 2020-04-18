@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { submitLogin } from '../actions/authActions';
 import { connect } from 'react-redux';
-import { Col, Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Col, Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
 import {SketchPicker } from 'react-color'   //THIS IS THE NEW WHEEL THAT WILL FUCKING WORK
 //import iro from '@jaames/iro';  //SHIT WHEEL, BAD, NIGHTMARE, BAD, LOSER WHEEL, BAD(I like it better but I can't get it to work :[ )
 
@@ -70,7 +70,7 @@ class Login extends Component {
         return (
             <Form horizontal>
                 <FormGroup controlId="username">
-                    <Col componentClass={ControlLabel} sm={2}>
+                    <Col as={FormLabel} sm={2}>
                         username
                     </Col>
                     <Col sm={9}>
@@ -79,7 +79,7 @@ class Login extends Component {
                 </FormGroup>
 
                 <FormGroup controlId="password">
-                    <Col componentClass={ControlLabel} sm={2}>
+                    <Col as={FormLabel} sm={2}>
                         Password
                     </Col>
                     <Col sm={9}>

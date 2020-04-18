@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from './../assets/logo.svg';
 
-class Welcomebanner extends Component {
+class Home extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -19,8 +18,7 @@ class Welcomebanner extends Component {
 
         return(
             <div>
-                <img src={logo} className="App-logo" alt="logo" />
-                {/*<h1>Welcome to Shamehub</h1>*/}
+                <h4>Welcome to Shamehub</h4>
             </div>
         );
     }
@@ -33,4 +31,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Welcomebanner);
+export default connect(mapStateToProps)(Home);

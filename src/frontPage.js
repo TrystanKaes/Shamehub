@@ -1,11 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import MovieHeader from './components/appHeader';
+import AppHeader from './components/appHeader';
 import Authentication from './components/authentication';
 import {HashRouter,Route} from 'react-router-dom';
-import Feed from './components/feed';
+import { connect } from 'react-redux'
 import Profile from './components/profile'
 import WelcomeBanner from './components/welcomebanner'
+import UserFeed from './components/userfeed'
+import DiscoverFeed from './components/discoverfeed'
+import Home from './components/home'
 
 class FrontPage extends Component {
     constructor(props) {
@@ -16,25 +19,25 @@ class FrontPage extends Component {
         this.handleTimer = this.handleTimer.bind(this)
     }
     handleTimer(){
-        this.setState({enter: true})
+        this.setState({enter:true});
     }
     render() {
         return (
             <div>
-                <script>
-                    {setTimeout(this.handleTimer, 1000)}
-                </script>
-
+                <script>{setTimeout(this.handleTimer, 1000)}</script>
                 <HashRouter>
                         <div>
                             {this.state.enter ?
-                                <MovieHeader /> :
+                                <AppHeader /> :
                                 <WelcomeBanner />}
                             <Route exact path="/" render={() => <div/>}/>
                             <Route path="/welcome" render={() => <WelcomeBanner/>}/>
-                            <Route path="/signin" render={() => <Authentication/>}/>
+                            <Route path="/home" render={() => <Home/>}/>
                             <Route path="/profile" render={() => <Profile/>}/>
-                            <Route path="/feed" render={() => <Feed/>}/>
+                            <Route path="/userfeed" render={() => <UserFeed/>}/>
+                            <Route path="/discover" render={() => <DiscoverFeed/>}/>
+                            <Route path="/signin" render={() => <Authentication/>}/>
+
                         </div>
                 </HashRouter>
             </div>
@@ -42,4 +45,10 @@ class FrontPage extends Component {
     }
 }
 
-export default FrontPage;
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps)(FrontPage);
