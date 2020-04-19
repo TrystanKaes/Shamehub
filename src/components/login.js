@@ -22,7 +22,7 @@ class Login extends Component {
             },
             background: '#fff',
             show: false,
-            bypass: false
+            bypass: false,
         };
     }
 
@@ -101,7 +101,11 @@ class Login extends Component {
             <FormGroup>
                 <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
                     {this.state.bypass ?
-                        <Button variant="info" onClick={this.bypassLogin}> Color Login</Button>
+                        <Button style={{backgroundColor: '#55828b',
+                                        color: '#87bba2',
+                                        borderColor: '#c03221',
+                                        }}
+                                onClick={this.bypassLogin}> Color Login</Button>
                         :
                         <Button variant="light" onClick={this.bypassLogin}> Standard Login</Button>
                     }
