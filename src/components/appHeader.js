@@ -57,7 +57,6 @@ class AppHeader extends Component {
                                         <NavItem eventKey={3} >Home Feed </NavItem>
                                     </LinkContainer>
                                 </NavDropdown.Item>
-
                             </NavDropdown>
                             <Nav.Link>
                                 <LinkContainer to="/signin">

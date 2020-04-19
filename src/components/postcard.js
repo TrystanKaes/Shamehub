@@ -8,6 +8,7 @@ class PostCard extends Component {
         this.state = {
             error : null,
             isLoaded : true,
+            commits: props.commits,
         };
     }
 
@@ -16,18 +17,25 @@ class PostCard extends Component {
     }
 
     render() {
+        const CommitPosts = ({commits}) => {
+            if(commits){
+                return this.state.commits.map((commit) =>
+                        <div style={{display: 'flex', justifyContent: 'center', padding: 10}}>
+                            <Card style={{width: window.innerWidth}}>
+                                <Card.Body>
+                                    <Card.Title>Username</Card.Title>
+                                    <Card.Text>
+                                        This is my commit information and this is a post.
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    )
+                }
+        }
 
         return(
-            <div>
-                <Card style={{ maxWidth: window.innerWidth/3 }}>
-                    <Card.Body>
-                        <Card.Title>Username</Card.Title>
-                        <Card.Text>
-                            This is my commit information and this is a post.
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </div>
+            <CommitPosts commits={this.state.commits}/>
         );
     }
 

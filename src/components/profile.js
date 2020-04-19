@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Box, Flex } from 'rebass'
-import { Card } from 'react-bootstrap'
+import { Card , Row, Col, Container} from 'react-bootstrap'
 import PostCard from './postcard'
 import { connect } from 'react-redux';
 
@@ -47,47 +46,25 @@ class Profile extends Component {
             )
         }
         return(
-                <Flex
-                    sx={{
-                        flex: 1,
-                        flexDirection: [
-                            'column',
-                            'row'
-                        ]
-                    }}>
-                    {/* THIS IS THE MAIN POST COLUMN */}
-                    <Box
-                        sx={{
-                            flex: 1/2 + 1/4 + 1/8,
-                            minWidth: 0,
-                            align: 'center'
-                            // maxWidth: window.innerWidth/4 + window.innerWidth/2
-                        }}>
-                        main content here
-                    </Box>
-                    {/* THIS IS THE LEFT PROFILE COLUMN */}
-                    <Box
-                        sx={{
-                            flexBasis: [
-                                'auto',
-                                64
-                            ],
-                            order: -1,
-                            padding: 3
-                        }}>
+            <Container>
+                <Row>
+                    <Col>
+                        {/* THIS IS THE LEFT PROFILE COLUMN */}
                         <Profile Profile={null}/>
-                    </Box>
-                    {/* THIS IS THE RIGHT REPOSITORY COLUMN */}
-                    <Box sx={{
-                            flexBasis: [
-                                'auto',
-                                64
-                            ],
-                            minWidth: 18,
-                        }}>
+                    </Col>
+                    <Col xs={6}>
+                        {/* THIS IS THE MAIN POST COLUMN */}
+                        
+                        {/*<PostCard/>*/}
+                        {/*<PostCard/>*/}
+                        {/*<PostCard/>*/}
+                    </Col>
+                    <Col>
+                        {/* THIS IS THE RIGHT REPOSITORY COLUMN */}
                         <Repository repo={null}/>
-                    </Box>
-            </Flex>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 
