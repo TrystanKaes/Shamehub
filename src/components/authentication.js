@@ -1,8 +1,10 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux'
+import { ButtonGroup, Button } from 'react-bootstrap'
 import Login from './login';
 import Register from './register';
 import { logoutUser } from '../actions/authActions';
+import Welcomebanner from "./welcomebanner";
 
 class Authentication extends Component {
 
@@ -37,15 +39,22 @@ class Authentication extends Component {
     render(){
 
         const userNotLoggedIn = (
-            <div id="picker">
-                <button onClick={this.showLogin.bind(this)}>Login</button><button onClick={this.showReg.bind(this)}>Register</button>
+            <div style={{justifyContent: 'center'}}>
+                <ButtonGroup style={{padding: 15}}>
+                    <Button variant="secondary" onClick={this.showLogin.bind(this)}>Login</Button>
+                    <Button variant="secondary" onClick={this.showReg.bind(this)}>Register</Button>
+                </ButtonGroup>
                 { this.state.toggleReg ? <Register /> : <Login /> }
             </div>
+
         );
+
         const userLoggedIn = (<div>Logged in as: {this.props.username} <button onClick={this.logout.bind(this)}>Logout</button></div>);
 
         return (
             <div>
+                <Welcomebanner/>
+                <div style={{padding: 10}} />
                 {this.props.loggedIn ? userLoggedIn : userNotLoggedIn}
             </div>
         )
