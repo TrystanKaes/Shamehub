@@ -22,7 +22,7 @@ class AppHeader extends Component {
     render() {
         return (
             <header>
-                <Navbar expand="lg" variant="light" bg="light" fluid>
+                <Navbar expand="lg" variant="light" bg="light" fluid fixed="top">
                     <Navbar.Brand href="/welcome">
                         <img
                             src={logo}
@@ -72,6 +72,7 @@ class AppHeader extends Component {
                         </Form>
                     </Navbar.Collapse>
                 </Navbar>
+                <div class="Top-buffer"/>
             </header>
         );
     }

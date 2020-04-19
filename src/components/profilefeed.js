@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-class PostCard extends Component {
+class ProfileFeed extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -20,12 +20,12 @@ class PostCard extends Component {
         const CommitPosts = ({commits}) => {
             if(commits){
                 return this.state.commits.map((commit) =>
-                        <div style={{display: 'flex', justifyContent: 'center', padding: 10}}>
+                        <div style={{display: 'flex', justifyContent: 'center', padding: 10}} class="Scrolling-Feed">
                             <Card style={{width: window.innerWidth}}>
                                 <Card.Body>
-                                    <Card.Title>Username</Card.Title>
+                                    <Card.Title style={{justifyContent: 'left'}}>@{commit.username}</Card.Title>
                                     <Card.Text>
-                                        This is my commit information and this is a post.
+                                        {commit.message}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -47,4 +47,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(PostCard);
+export default connect(mapStateToProps)(ProfileFeed);

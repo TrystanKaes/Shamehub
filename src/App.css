@@ -1,3 +1,24 @@
+/* OVERALL PAGE ALIGNMENT */
+.Top-buffer{
+  padding-top: 65px;
+}
+
+.Floating-Card{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 65px;
+}
+
+
+
+
+
+
+
+
+
+/* THESE ARE THE ANIMATION THINGS */
+
 .App {
   text-align: center;
 }
@@ -11,25 +32,6 @@
   .App-logo {
     animation: App-logo-float infinite 3s ease-in-out;
   }
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-float {
