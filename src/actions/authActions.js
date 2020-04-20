@@ -53,6 +53,7 @@ export function submitLogin(data){
                 // The promise above returns to us the response in json format, now we want to check if we've logged in or not
                 if(res.success === true) {
                     localStorage.setItem('username', data.username);
+                    localStorage.setItem('name', data.name);
                     localStorage.setItem('token', res.token);
 
                     dispatch(userLoggedIn(data.username));
