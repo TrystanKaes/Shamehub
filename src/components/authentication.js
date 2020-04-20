@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux'
-import { ButtonGroup, Button } from 'react-bootstrap'
+import {ButtonGroup, Button} from 'react-bootstrap'
 import Login from './login';
 import Register from './register';
 import { logoutUser } from '../actions/authActions';
@@ -62,7 +62,11 @@ class Authentication extends Component {
             <div>
                 <Welcomebanner/>
                 <div style={{padding: 10}} />
-                {this.props.loggedIn ? userLoggedIn : userNotLoggedIn}
+                {this.props.loggedIn ?
+                    userLoggedIn
+                    :
+                    userNotLoggedIn
+                }
             </div>
         )
     }

@@ -14,7 +14,7 @@ class FrontPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            enter: false
+            enter: true
         };
         this.handleTimer = this.handleTimer.bind(this)
     }
@@ -30,13 +30,13 @@ class FrontPage extends Component {
                             {this.state.enter ?
                                 <AppHeader /> :
                                 <WelcomeBanner />}
-                            <Route exact path="/" render={() => <div/>}/>
+                            <Route exact path="/" render={() => <Home/>}/>
                             <Route path="/welcome" render={() => <WelcomeBanner/>}/>
                             <Route path="/home" render={() => <Home/>}/>
-                            <Route path="/profile" render={() => <Profile/>}/>
-                            <Route path="/userfeed" render={() => <UserFeed/>}/>
-                            <Route path="/discover" render={() => <DiscoverFeed/>}/>
-                            <Route path="/signin" render={() => <Authentication/>}/>
+                            <Route path="/profile" render={() => <div className="Fade-In"><Profile/></div>}/>
+                            <Route path="/userfeed" render={() => <div className="Fade-In"><UserFeed/></div>}/>
+                            <Route path="/discover" render={() => <div className="Fade-In"><DiscoverFeed/></div>}/>
+                            <Route path="/signin" render={() => <div className="Fade-In"><Authentication/></div>}/>
 
                         </div>
                 </HashRouter>

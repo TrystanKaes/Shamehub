@@ -66,7 +66,6 @@ class Login extends Component {
     render(){
 
         return (
-
             <Form horizontal>
               <FormGroup controlId="username">
                   <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>

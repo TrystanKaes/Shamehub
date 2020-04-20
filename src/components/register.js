@@ -126,8 +126,6 @@ class Register extends Component {
                         <Button variant="secondary" onClick={this.register}>Register</Button>
                     </div>
                 </FormGroup>
-
-
             </Form>
         )
     }

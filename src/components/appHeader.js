@@ -36,11 +36,11 @@ class AppHeader extends Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <Nav.Link>
-                                <LinkContainer to="/welcome">
+                                <LinkContainer to="/home">
                                     <NavItem eventKey={1} >Home </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
-                            <Nav.Link disabled={this.props.loggedIn}>
+                            <Nav.Link disabled={!this.props.loggedIn}>
                                 <LinkContainer to="/profile">
                                     <NavItem eventKey={2}>Profile </NavItem>
                                 </LinkContainer>

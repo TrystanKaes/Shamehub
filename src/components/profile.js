@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card , Row, Col, Container, ListGroup, Image} from 'react-bootstrap'
-import ProfileFeed from './rawfeed'
+import { Card , Row, Col, Container, ListGroup } from 'react-bootstrap'
+import RawFeed from './rawfeed'
 import { connect } from 'react-redux';
 
 
@@ -132,22 +132,22 @@ class Profile extends Component {
             )
         }
         return(
-            <Container>
-                <Row>
-                    <Col>
-                        {/* THIS IS THE LEFT PROFILE COLUMN */}
-                        <Profile Profile={profileState} link={this.state.githubLink}/>
-                    </Col>
-                    <Col xs={6}>
-                        {/* THIS IS THE MAIN POST COLUMN */}
-                            <ProfileFeed commits={profileState.commits}/>
-                    </Col>
-                    <Col>
-                        {/* THIS IS THE RIGHT REPOSITORY COLUMN */}
-                        <Repository repositories={profileState.repos} link={this.state.githubLink}/>
-                    </Col>
-                </Row>
-            </Container>
+                <Container>
+                    <Row>
+                        <Col>
+                            {/* THIS IS THE LEFT PROFILE COLUMN */}
+                            <Profile Profile={profileState} link={this.state.githubLink}/>
+                        </Col>
+                        <Col xs={6}>
+                            {/* THIS IS THE MAIN POST COLUMN */}
+                                <RawFeed commits={profileState.commits}/>
+                        </Col>
+                        <Col>
+                            {/* THIS IS THE RIGHT REPOSITORY COLUMN */}
+                            <Repository repositories={profileState.repos} link={this.state.githubLink}/>
+                        </Col>
+                    </Row>
+                </Container>
         );
     }
 

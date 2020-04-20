@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Card, Row} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-class Rawfeed extends Component {
+class RawFeed extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -56,4 +56,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Rawfeed);
+export default connect(mapStateToProps)(RawFeed);

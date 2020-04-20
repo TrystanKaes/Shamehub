@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Welcomebanner from "./welcomebanner";
 import { connect } from 'react-redux';
 
 class Home extends Component {
@@ -18,7 +19,9 @@ class Home extends Component {
 
         return(
             <div>
-                <h4>Welcome to Shamehub</h4>
+                <Welcomebanner/>
+                <h1>Welcome to Shamehub</h1>
+                <h6>the github based social media</h6>
             </div>
         );
     }
