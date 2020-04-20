@@ -40,10 +40,17 @@ class Authentication extends Component {
 
         const userNotLoggedIn = (
             <div style={{justifyContent: 'center'}}>
-                <ButtonGroup style={{padding: 15}}>
-                    <Button variant="secondary" onClick={this.showLogin.bind(this)}>Login</Button>
-                    <Button variant="secondary" onClick={this.showReg.bind(this)}>Register</Button>
-                </ButtonGroup>
+                    {this.state.toggleReg?
+                        <ButtonGroup style={{padding: 15}}>
+                            <Button variant="secondary" onClick={this.showLogin.bind(this)}>Login</Button>
+                            <Button variant="dark" onClick={this.showReg.bind(this)}>Register</Button>
+                        </ButtonGroup>
+                        :
+                        <ButtonGroup style={{padding: 15}}>
+                            <Button variant="dark" onClick={this.showLogin.bind(this)}>Login</Button>
+                            <Button variant="secondary" onClick={this.showReg.bind(this)}>Register</Button>
+                        </ButtonGroup>
+                    }
                 { this.state.toggleReg ? <Register /> : <Login /> }
             </div>
 

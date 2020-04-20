@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card , Row, Col, Container} from 'react-bootstrap'
-import ProfileFeed from './profilefeed'
+import { Card , Row, Col, Container, ListGroup, Image} from 'react-bootstrap'
+import ProfileFeed from './rawfeed'
 import { connect } from 'react-redux';
 
 
@@ -51,14 +51,27 @@ const commits = [
     },
 
 ]
+const reposi = ["Repository 1", "Repository 2", "Repository 3", "Repository 4"]
+const profileState = {
+    profile_username: "Username",
+    profile_img: "https://support.plymouth.edu/kb_images/Yammer/default.jpeg",
+    profile_name: "Jane Doe",
+    profile_bio: "This right here is a pretty dope bio and so I shall put it here.",
+    commits: commits,
+    repos: reposi,
+}
+
+
+
+
 class Profile extends Component {
     constructor(props){
         super(props);
         this.state = {
             error : null,
             isLoaded : true,
+            githubLink : "https://github.com/" + profileState.profile_username
         };
-
     }
 
     componentDidMount() {
@@ -66,31 +79,52 @@ class Profile extends Component {
     }
 
     render() {
-        const Repository = ({repo}) => {
+
+        const Repository = ({repositories, link}) => {
             return(
                 <div class="Floating-Card">
                     <Card style={{ minWidth: '11rem' }}>
                         <Card.Body>
                             <Card.Title>Repositories</Card.Title>
                             <Card.Text>
-                                These are my repositories
+                                <ListGroup>
+                                    { repositories ?
+                                        repositories.map((repo) =>
+                                            <ListGroup.Item>
+                                                <a href={link + "/" + repo}
+                                                   target="_blank"
+                                                   rel="noopener noreferrer"
+                                                   style={{color:'#c03221'}}>
+                                                    {repo}
+                                                </a>
+                                            </ListGroup.Item>)
+                                        :
+                                        "No Repos found"
+                                    }
+                                </ListGroup>
                             </Card.Text>
-                            <Card.Link href="#">Github Link</Card.Link>
                         </Card.Body>
                     </Card>
                 </div>
             )
         }
-        const Profile = ({Profile}) => {
+        const Profile = ({Profile, link}) => {
             return(
                 <div class="Floating-Card">
-                    <Card style={{ minWidth: '12rem', padding:10}}>
+                    <Card style={{ minWidth: '12rem', padding:10, borderRadius:30}}>
                         <Card.Body>
-                            <Card.Img variant="top" src="https://sites.nicholas.duke.edu/clarklab/files/2011/01/default_profile-d80441a6f25a9a0aac354978c65c8fa9.jpg" />
-                            <Card.Title>Username</Card.Title>
-                            <Card.Subtitle>Real Name</Card.Subtitle>
+                            <Card.Title>
+                                <a href={link}
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   style={{color:'#55828b'}}>
+                                    <h1>{Profile.profile_username}</h1>
+                                </a>
+                            </Card.Title>
+                            <Card.Img style={{padding:10, borderRadius: "50%"}} variant="top" src={Profile.profile_img}  />
+                            <Card.Subtitle>{Profile.profile_name}</Card.Subtitle>
                             <Card.Text>
-                                Bio
+                                {Profile.profile_bio}
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -102,15 +136,15 @@ class Profile extends Component {
                 <Row>
                     <Col>
                         {/* THIS IS THE LEFT PROFILE COLUMN */}
-                        <Profile Profile={null}/>
+                        <Profile Profile={profileState} link={this.state.githubLink}/>
                     </Col>
                     <Col xs={6}>
                         {/* THIS IS THE MAIN POST COLUMN */}
-                            <ProfileFeed commits={commits}/>
+                            <ProfileFeed commits={profileState.commits}/>
                     </Col>
                     <Col>
                         {/* THIS IS THE RIGHT REPOSITORY COLUMN */}
-                        <Repository repo={null}/>
+                        <Repository repositories={profileState.repos} link={this.state.githubLink}/>
                     </Col>
                 </Row>
             </Container>

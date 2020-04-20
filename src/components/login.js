@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { submitLogin } from '../actions/authActions';
 import { connect } from 'react-redux';
-import { Col, Row, Container, Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
-import {SketchPicker } from 'react-color'   //THIS IS THE NEW WHEEL THAT WILL FUCKING WORK
-//import iro from '@jaames/iro';  //SHIT WHEEL, BAD, NIGHTMARE, BAD, LOSER WHEEL, BAD(I like it better but I can't get it to work :[ )
+import { Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
+import { SketchPicker } from 'react-color';
+
 
 class Login extends Component {
 
@@ -45,7 +45,6 @@ class Login extends Component {
     }
 
     bypassLogin(){
-        //username and password stored in plane text aaaahhh!!!, use env file instead :)
         let bypassColor = this.state.bypass
         this.setState({bypass: !bypassColor})
     }
@@ -69,53 +68,51 @@ class Login extends Component {
         return (
 
             <Form horizontal>
-            <FormGroup controlId="username">
-                <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
-                    <h3>Username</h3>
-                </div>
-                <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
-                    <FormControl style={{width: window.innerWidth/4}}
-                                 onChange={this.updateDetails}
-                                 value={this.state.details.username}
-                                 type="username"
-                                 placeholder="Username" />
-                </div>
-            </FormGroup>
-            <FormGroup controlId="password">
-                <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
-                    <h3>Password</h3>
-                </div>
-                <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
-                    {this.state.bypass ?
-                        <FormControl style={{width: window.innerWidth / 4}}
-                                     onChange={this.updateDetails}
-                                     value={this.state.details.password}
-                                     type="password"
-                                     placeholder="Password"/>
-                        :
-                        <SketchPicker color={ this.state.background }
-                                      onChangeComplete={ this.handleChangeComplete }/>
-                    }
-                </div>
-            </FormGroup>
-            <FormGroup>
-                <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
-                    {this.state.bypass ?
-                        <Button style={{backgroundColor: '#55828b',
-                                        color: '#87bba2',
-                                        borderColor: '#c03221',
-                                        }}
-                                onClick={this.bypassLogin}> Color Login</Button>
-                        :
-                        <Button variant="light" onClick={this.bypassLogin}> Standard Login</Button>
-                    }
-                </div>
-                <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
-                    <Button variant="secondary" onClick={this.login}>Sign in</Button>
-                </div>
-            </FormGroup>
-
-
+              <FormGroup controlId="username">
+                  <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
+                      <h3>Username</h3>
+                  </div>
+                  <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
+                      <FormControl style={{width: window.innerWidth/4}}
+                                   onChange={this.updateDetails}
+                                   value={this.state.details.username}
+                                   type="username"
+                                   placeholder="Username" />
+                  </div>
+              </FormGroup>
+              <FormGroup controlId="password">
+                  <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
+                      <h3>Password</h3>
+                  </div>
+                  <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
+                      {this.state.bypass ?
+                          <FormControl style={{width: window.innerWidth / 4}}
+                                       onChange={this.updateDetails}
+                                       value={this.state.details.password}
+                                       type="password"
+                                       placeholder="Password"/>
+                          :
+                          <SketchPicker color={ this.state.background }
+                                        onChangeComplete={ this.handleChangeComplete }/>
+                      }
+                  </div>
+              </FormGroup>
+              <FormGroup>
+                  <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
+                      {this.state.bypass ?
+                          <Button style={{backgroundColor: '#55828b',
+                                          color: '#87bba2',
+                                          borderColor: '#c03221',
+                                          }}
+                                  onClick={this.bypassLogin}> Color Login</Button>
+                          :
+                          <Button variant="light" onClick={this.bypassLogin}> Standard Login</Button>
+                      }
+                  </div>
+                  <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
+                      <Button variant="secondary" onClick={this.login}>Sign in</Button>
+                  </div>
+              </FormGroup>
             </Form>
         )
     }

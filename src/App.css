@@ -9,7 +9,9 @@
   top: 65px;
 }
 
-
+.Rounded-Image{
+  border-radius: 50%;
+}
 
 /* THESE ARE THE ANIMATION THINGS */
 

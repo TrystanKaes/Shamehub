@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import {Card, Row} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-class ProfileFeed extends Component {
+class Rawfeed extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -23,7 +23,16 @@ class ProfileFeed extends Component {
                         <div style={{display: 'flex', justifyContent: 'center', padding: 10}} class="Scrolling-Feed">
                             <Card style={{width: window.innerWidth}}>
                                 <Card.Body>
-                                    <Card.Title style={{justifyContent: 'left'}}>@{commit.username}</Card.Title>
+                                    <Row style={{justifyContent: 'left', padding: 10, align:'top'}}>
+                                        <Card.Title>
+                                                <a href={"https://github.com/" + commit.username}
+                                                   target="_blank"
+                                                   rel="noopener noreferrer"
+                                                   style={{color:'#87bba2'}}>
+                                                    @{commit.username}
+                                                </a>
+                                        </Card.Title>
+                                    </Row>
                                     <Card.Text>
                                         {commit.message}
                                     </Card.Text>
@@ -47,4 +56,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(ProfileFeed);
+export default connect(mapStateToProps)(Rawfeed);

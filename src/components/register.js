@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import { submitRegister } from '../actions/authActions';
 import { connect } from 'react-redux';
-import { Col, Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
+import { Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
 import {SketchPicker } from 'react-color'
 
 class Register extends Component {
@@ -11,6 +11,7 @@ class Register extends Component {
 
         //We are required to bind this to use these functions, if you add a function, bind it
         this.updateDetails = this.updateDetails.bind(this);
+        this.bypassSignup = this.bypassSignup.bind(this);
         this.register = this.register.bind(this);
         this.toggleWheel = this.toggleWheel.bind(this);
         this.state = {
@@ -20,7 +21,8 @@ class Register extends Component {
                 password: ''
             },
             background: '#fff',
-            show: false
+            show: false,
+            bypass: false
         };
     }
 
@@ -44,6 +46,12 @@ class Register extends Component {
         console.log(this.state);
     }
 
+    bypassSignup(){
+        //username and password stored in plane text aaaahhh!!!, use env file instead :)
+        let bypassColor = this.state.bypass
+        this.setState({bypass: !bypassColor})
+    }
+
     updateDetails(event){
         let updateDetails = Object.assign({}, this.state.details);
 
@@ -62,36 +70,64 @@ class Register extends Component {
         return (
             <Form horizontal>
                 <FormGroup controlId="name">
-                    <Col as={FormLabel} sm={2}>
-                        Name
-                    </Col>
-                    <Col sm={9}>
-                        <FormControl onChange={this.updateDetails} value={this.state.details.name} type="text" placeholder="Name" />
-                    </Col>
+                    <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
+                        <h3>Name</h3>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
+                        <FormControl style={{width: window.innerWidth/4}}
+                                     onChange={this.updateDetails}
+                                     value={this.state.details.name}
+                                     type="name"
+                                     placeholder="Name" />
+                    </div>
                 </FormGroup>
-
                 <FormGroup controlId="username">
-                    <Col as={FormLabel} sm={2}>
-                        username
-                    </Col>
-                    <Col sm={9}>
-                        <FormControl onChange={this.updateDetails} value={this.state.details.username} type="email" placeholder="Username" />
-                    </Col>
+                    <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
+                        <h3>Username</h3>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
+                        <FormControl style={{width: window.innerWidth/4}}
+                                     onChange={this.updateDetails}
+                                     value={this.state.details.username}
+                                     type="username"
+                                     placeholder="Username" />
+                    </div>
+                </FormGroup>
+                <FormGroup controlId="password">
+                    <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
+                        <h3>Password</h3>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
+                        {this.state.bypass ?
+                            <FormControl style={{width: window.innerWidth / 4}}
+                                         onChange={this.updateDetails}
+                                         value={this.state.details.password}
+                                         type="password"
+                                         placeholder="Password"/>
+                            :
+                            <SketchPicker color={ this.state.background }
+                                          onChangeComplete={ this.handleChangeComplete }/>
+                        }
+                    </div>
+                </FormGroup>
+                <FormGroup>
+                    <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
+                        {this.state.bypass ?
+                            <Button style={{backgroundColor: '#55828b',
+                                color: '#87bba2',
+                                borderColor: '#c03221',
+                            }}
+                                    onClick={this.bypassSignup}> Color Signup</Button>
+                            :
+                            <Button variant="light" onClick={this.bypassSignup}> Standard Signup</Button>
+                        }
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
+                        <Button variant="secondary" onClick={this.register}>Register</Button>
+                    </div>
                 </FormGroup>
 
-                <FormGroup controlId="password">
-                    <Col as={FormLabel} sm={2}>
-                        Password
-                    </Col>
-                    <Col sm={9}>
-                        <Button onClick={this.toggleWheel}> Click To Enter Password </Button>
-                        <Button onClick={this.register}>Register</Button>
-                        {this.state.show ? <SketchPicker color={ this.state.background }
-                                                         onChangeComplete={ this.handleChangeComplete }/> : ''}
-                        {/*^^^ goes back and forth between rendering the colorwheel or nothing, show variable in
-                        state toggles from a button*/}
-                    </Col>
-                </FormGroup>
+
             </Form>
         )
     }
