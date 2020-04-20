@@ -21,7 +21,7 @@ class RawFeed extends Component {
             if(commits){
                 return this.state.commits.map((commit) =>
                         <div style={{display: 'flex', justifyContent: 'center', padding: 10}} class="Scrolling-Feed">
-                            <Card style={{width: window.innerWidth}}>
+                            <Card style={{width: window.innerWidth, borderRadius: 10, borderColor:'#0f110c'}}>
                                 <Card.Body>
                                     <Row style={{justifyContent: 'left', padding: 10, align:'top'}}>
                                         <Card.Title>
@@ -33,9 +33,10 @@ class RawFeed extends Component {
                                                 </a>
                                         </Card.Title>
                                     </Row>
-                                    <Card.Text>
-                                        {commit.message}
-                                    </Card.Text>
+
+                                            <Card.Text>
+                                                {commit.message}
+                                            </Card.Text>
                                 </Card.Body>
                             </Card>
                         </div>

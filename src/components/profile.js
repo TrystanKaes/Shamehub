@@ -82,11 +82,12 @@ class Profile extends Component {
 
         const Repository = ({repositories, link}) => {
             return(
-                <div class="Floating-Card">
-                    <Card style={{ minWidth: '11rem' }}>
+                <div class="Hidden-Card" style={{padding: 10 }}>
+                    <Card style={{ minWidth: '11rem', borderRadius:30}}>
                         <Card.Body>
-                            <Card.Title>Repositories</Card.Title>
+                            <Card.Title><h3>Repositories</h3></Card.Title>
                             <Card.Text>
+                                <div>
                                 <ListGroup>
                                     { repositories ?
                                         repositories.map((repo) =>
@@ -95,13 +96,14 @@ class Profile extends Component {
                                                    target="_blank"
                                                    rel="noopener noreferrer"
                                                    style={{color:'#c03221'}}>
-                                                    {repo}
+                                                    <h5>{repo}</h5>
                                                 </a>
                                             </ListGroup.Item>)
                                         :
                                         "No Repos found"
                                     }
                                 </ListGroup>
+                                </div>
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -110,8 +112,8 @@ class Profile extends Component {
         }
         const Profile = ({Profile, link}) => {
             return(
-                <div class="Floating-Card">
-                    <Card style={{ minWidth: '12rem', padding:10, borderRadius:30}}>
+                <div class="Floating-Card Drop-Shadow">
+                    <Card style={{ minWidth: '12rem', padding:10, borderRadius:30, borderColor: '#c03221'}}>
                         <Card.Body>
                             <Card.Title>
                                 <a href={link}
@@ -122,7 +124,7 @@ class Profile extends Component {
                                 </a>
                             </Card.Title>
                             <Card.Img style={{padding:10, borderRadius: "50%"}} variant="top" src={Profile.profile_img}  />
-                            <Card.Subtitle>{Profile.profile_name}</Card.Subtitle>
+                            <Card.Subtitle style={{color: "#87bba2"}}>{Profile.profile_name}</Card.Subtitle>
                             <Card.Text>
                                 {Profile.profile_bio}
                             </Card.Text>
@@ -137,6 +139,7 @@ class Profile extends Component {
                         <Col>
                             {/* THIS IS THE LEFT PROFILE COLUMN */}
                             <Profile Profile={profileState} link={this.state.githubLink}/>
+                            <Repository repositories={profileState.repos} link={this.state.githubLink}/>
                         </Col>
                         <Col xs={6}>
                             {/* THIS IS THE MAIN POST COLUMN */}
@@ -144,7 +147,7 @@ class Profile extends Component {
                         </Col>
                         <Col>
                             {/* THIS IS THE RIGHT REPOSITORY COLUMN */}
-                            <Repository repositories={profileState.repos} link={this.state.githubLink}/>
+                            {/*<Repository repositories={profileState.repos} link={this.state.githubLink}/>*/}
                         </Col>
                     </Row>
                 </Container>
