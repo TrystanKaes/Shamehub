@@ -16,26 +16,29 @@
   top: 65px;
 }
 
-.Fade-In{
-  position: center;
+/* THIS IS POST CSS */
+.Post{
+
 }
+
+
+
+/* THESE ARE THE TRAITS */
 
 .Drop-Shadow{
   border-radius:20%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.Inner-Shadow{
-  border-radius:20%;
-  box-shadow: 0 -4px -8px 0 rgba(0, 0, 0, 0.2), 0 -6px -20px 0 rgba(0, 0, 0, 0.19);
-}
-
-
 .Rounded-Image{
   border-radius: 50%;
 }
 
 /* THESE ARE THE ANIMATION THINGS */
+
+.Fade-In{
+  position: center;
+}
 
 .App {
   text-align: center;

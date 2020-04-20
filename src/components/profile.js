@@ -53,16 +53,15 @@ const commits = [
 ]
 const reposi = ["Repository 1", "Repository 2", "Repository 3", "Repository 4"]
 const profileState = {
-    profile_username: localStorage.getItem("username"),
+    // profile_username: localStorage.getItem("username"),
+    profile_username: "TrystanKaes",
     profile_img: "https://support.plymouth.edu/kb_images/Yammer/default.jpeg",
-    profile_name: localStorage.getItem("name"),
+    // profile_name: localStorage.getItem("name"),
+    profile_name: "Trystan Kaes",
     profile_bio: "This right here is a pretty dope bio and so I shall put it here.",
     commits: commits,
     repos: reposi,
 }
-
-
-
 
 class Profile extends Component {
     constructor(props){
