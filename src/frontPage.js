@@ -30,14 +30,14 @@ class FrontPage extends Component {
                             {this.state.enter ?
                                 <AppHeader /> :
                                 <WelcomeBanner />}
-                            <Route exact path="/" render={() => <Home/>}/>
-                            <Route path="/welcome" render={() => <WelcomeBanner/>}/>
                             <Route path="/home" render={() => <Home/>}/>
+                            <Route exact path="/" render={() => <Home/>}/>
+                            <Route path="user/:username" Component={<Profile/>}/>
+                            <Route path="/welcome" render={() => <WelcomeBanner/>}/>
                             <Route path="/profile" render={() => <div className="Fade-In"><Profile/></div>}/>
                             <Route path="/userfeed" render={() => <div className="Fade-In"><UserFeed/></div>}/>
                             <Route path="/discover" render={() => <div className="Fade-In"><DiscoverFeed/></div>}/>
                             <Route path="/signin" render={() => <div className="Fade-In"><Authentication/></div>}/>
-
                         </div>
                 </HashRouter>
             </div>

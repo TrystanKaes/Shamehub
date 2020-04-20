@@ -66,6 +66,9 @@ const profileState = {
 
 class Profile extends Component {
     constructor(props){
+        // if(props.match.params.username){
+        //     profileState.profile_username = props.match.params.username;
+        // }
         super(props);
         this.state = {
             error : null,
@@ -137,7 +140,7 @@ class Profile extends Component {
                 <Container>
                     <Row>
                         <Col>
-                            {/* THIS IS THE LEFT PROFILE COLUMN */}
+                            {/* THIS IS THE LEFT PROFILE AND REPOSITORY COLUMN */}
                             <Profile Profile={profileState} link={this.state.githubLink}/>
                             <Repository repositories={profileState.repos} link={this.state.githubLink}/>
                         </Col>
@@ -146,7 +149,7 @@ class Profile extends Component {
                                 <RawFeed commits={profileState.commits}/>
                         </Col>
                         <Col>
-                            {/* THIS IS THE RIGHT REPOSITORY COLUMN */}
+                            {/* I Don't know what this is for anymore. Ads? */}
                             {/*<Repository repositories={profileState.repos} link={this.state.githubLink}/>*/}
                         </Col>
                     </Row>

@@ -5,7 +5,8 @@ import {Navbar,
         NavDropdown,
         Form,
         FormControl,
-        Button
+        Button,
+        Container
         } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import {connect} from "react-redux";
@@ -14,13 +15,26 @@ import {logoutUser} from "../actions/authActions";
 import logo from "../assets/logo.svg";
 
 class AppHeader extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            error : null,
+            isLoaded : true,
+            search: ""
+        };
+    }
 
     logout(){
         this.props.dispatch(logoutUser());
     }
 
+    updateDetails(event){
+        this.setState({search: event.target.value})
+    }
+
     render() {
         return (
+            <Container>
             <header>
                 <Navbar expand="lg" variant="light" bg="light" fluid fixed="top" style={{padding:0}} class="Drop-Shadow">
                     <Navbar.Brand href="/welcome">
@@ -67,13 +81,14 @@ class AppHeader extends Component {
                             </Nav.Link>
                         </Nav>
                         <Form inline>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button variant="outline-success">Search</Button>
+                            <FormControl onChange={this.updateDetails.bind(this)} type="text" placeholder="Search" className="mr-sm-2" />
+                            <Button onClick={()=>{alert(this.state.search)}} variant="outline-success">Search</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Navbar>
                 <div class="Top-buffer"/>
             </header>
+            </Container>
         );
     }
 }

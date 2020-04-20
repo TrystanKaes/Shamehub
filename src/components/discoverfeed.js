@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RawFeed from "./rawfeed";
+import {Col, Container, Row} from "react-bootstrap";
 const commits = [
     {
         username: "CHARLIE",
@@ -65,8 +66,20 @@ class DiscoverFeed extends Component {
 
         return(
             <div>
-                THIS IS A Discovery FUPPING Feed!
-                <RawFeed commits={commits}/>
+                <Container>
+                    <Row>
+                        <Col>
+                        </Col>
+                        <Col xs={6}>
+                            This Is A Discovery Feed!
+                            {/* THIS IS THE MAIN POST COLUMN */}
+                            <RawFeed commits={commits}/>
+                        </Col>
+                        <Col>
+                        </Col>
+                    </Row>
+                </Container>
+
             </div>
         );
     }
