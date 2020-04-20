@@ -83,7 +83,7 @@ class Profile extends Component {
         const Repository = ({repositories, link}) => {
             return(
                 <div class="Hidden-Card" style={{padding: 10 }}>
-                    <Card style={{ minWidth: '11rem', borderRadius:30}}>
+                    <Card style={{ minWidth: '11rem', borderRadius:30, borderColor: '#55828b'}}>
                         <Card.Body>
                             <Card.Title><h3>Repositories</h3></Card.Title>
                             <Card.Text>
