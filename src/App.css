@@ -3,6 +3,13 @@
   padding-top: 65px;
 }
 
+.Hidden-Card{
+  position: -webkit-sticky;
+  position: sticky;
+  z-index:-1;
+  top: 65px;
+}
+
 .Floating-Card{
   position: -webkit-sticky;
   position: sticky;
@@ -12,6 +19,17 @@
 .Fade-In{
   position: center;
 }
+
+.Drop-Shadow{
+  border-radius:20%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Inner-Shadow{
+  border-radius:20%;
+  box-shadow: 0 -4px -8px 0 rgba(0, 0, 0, 0.2), 0 -6px -20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 .Rounded-Image{
   border-radius: 50%;
