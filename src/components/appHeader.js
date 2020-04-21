@@ -33,12 +33,6 @@ class AppHeader extends Component {
         this.setState({search: event.target.value})
     }
 
-    handleThemeChange(){
-        alert(this.glob.theme)
-        alert("HELLO")
-        this.props.dispatch(changeTheme());
-    }
-
     render() {
         return (
             <Container>
@@ -87,7 +81,7 @@ class AppHeader extends Component {
                                 </LinkContainer>
                             </Nav.Link>
                         </Nav>
-                        <Button onClick={()=>{this.handleThemeChange.bind(this)}}
+                        <Button onClick={()=>{this.props.dispatch(changeTheme())}}
                                 variant="outline-success">Search</Button>
                         <Form inline>
                             <FormControl onChange={this.updateDetails.bind(this)} type="text" placeholder="Search" className="mr-sm-2" />
