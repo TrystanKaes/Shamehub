@@ -18,6 +18,26 @@
 
 /* THIS IS POST CSS */
 .Post{
+  border: 1px solid #0f110c;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 6px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.Username-Text{
+  text-decoration: underline;
+  /*font-family: "Lucida Console", Courier, monospace;*/
+  color: #0f110c;
+  padding: 3px;
+}
+
+.Repository-Text{
+  /*font-family: "Lucida Console", Courier, monospace;*/
+  color: #0f110c;
+  font-size: 8px;
+  padding: 10px;
+}
+.Post-Text{
 
 }
 

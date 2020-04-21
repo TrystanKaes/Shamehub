@@ -12,6 +12,7 @@ import {LinkContainer} from 'react-router-bootstrap';
 import {connect} from "react-redux";
 import { withRouter } from "react-router-dom";
 import {logoutUser} from "../actions/authActions";
+import {changeTheme} from "../actions/globalActions"
 import logo from "../assets/logo.svg";
 
 class AppHeader extends Component {
@@ -30,6 +31,12 @@ class AppHeader extends Component {
 
     updateDetails(event){
         this.setState({search: event.target.value})
+    }
+
+    handleThemeChange(){
+        alert(this.glob.theme)
+        alert("HELLO")
+        this.props.dispatch(changeTheme());
     }
 
     render() {
@@ -80,9 +87,13 @@ class AppHeader extends Component {
                                 </LinkContainer>
                             </Nav.Link>
                         </Nav>
+                        <Button onClick={()=>{this.handleThemeChange.bind(this)}}
+                                variant="outline-success">Search</Button>
                         <Form inline>
                             <FormControl onChange={this.updateDetails.bind(this)} type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button onClick={()=>{alert(this.state.search)}} variant="outline-success">Search</Button>
+                            <Button onClick={()=>{alert(this.state.search)}}
+                                    variant="outline-success"
+                                    style={{borderColor:"#55828b"}}>Search</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Navbar>
@@ -97,6 +108,7 @@ const mapStateToProps = state => {
     return {
         loggedIn: state.auth.loggedIn,
         username: state.auth.username,
+        theme: state.glob.theme,
     }
 }
 

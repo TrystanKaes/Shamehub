@@ -7,50 +7,200 @@ import { connect } from 'react-redux';
 const commits = [
     {
         username: "CHARLIE",
-        message: "OMg this is not working well."
+        message: "OMg this is not working well.",
+        repo: "FailedStudent",
+        time: "1 hour ago"
     },
     {
         username: "Tony",
-        message: "Finally!!!!!"
+        message: "Finally!!!!!",
+        repo: "ASDASD",
+        time: "2 hours ago"
     },
     {
         username: "Jessica",
-        message: "I think this is finally looking up."
+        message: "I think this is finally looking up.",
+        repo: "oolala",
+        time: "13 minutes ago"
     },
     {
         username: "Trystan",
-        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG"
+        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
+        repo: "WadaWada",
+        time: "now"
     },
     {
-        username: "Ben",
-        message: "commit 17"
+        username: "CHARLIE",
+        message: "OMg this is not working well.",
+        repo: "FailedStudent",
+        time: "1 hour ago"
     },
     {
-        username: "Ben",
-        message: "commit 17"
+        username: "Tony",
+        message: "Finally!!!!!",
+        repo: "ASDASD",
+        time: "2 hours ago"
     },
     {
-        username: "Ben",
-        message: "commit 17"
+        username: "Jessica",
+        message: "I think this is finally looking up.",
+        repo: "oolala",
+        time: "13 minutes ago"
     },
     {
-        username: "Ben",
-        message: "commit 17"
+        username: "Trystan",
+        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
+        repo: "WadaWada",
+        time: "now"
     },
     {
-        username: "Ben",
-        message: "commit 17"
+        username: "CHARLIE",
+        message: "OMg this is not working well.",
+        repo: "FailedStudent",
+        time: "1 hour ago"
     },
     {
-        username: "Ben",
-        message: "commit 17"
+        username: "Tony",
+        message: "Finally!!!!!",
+        repo: "ASDASD",
+        time: "2 hours ago"
     },
     {
-        username: "Ben",
-        message: "commit 17"
+        username: "Jessica",
+        message: "I think this is finally looking up.",
+        repo: "oolala",
+        time: "13 minutes ago"
+    },
+    {
+        username: "Trystan",
+        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
+        repo: "WadaWada",
+        time: "now"
+    },
+    {
+        username: "CHARLIE",
+        message: "OMg this is not working well.",
+        repo: "FailedStudent",
+        time: "1 hour ago"
+    },
+    {
+        username: "Tony",
+        message: "Finally!!!!!",
+        repo: "ASDASD",
+        time: "2 hours ago"
+    },
+    {
+        username: "Jessica",
+        message: "I think this is finally looking up.",
+        repo: "oolala",
+        time: "13 minutes ago"
+    },
+    {
+        username: "Trystan",
+        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
+        repo: "WadaWada",
+        time: "now"
+    },
+    {
+        username: "CHARLIE",
+        message: "OMg this is not working well.",
+        repo: "FailedStudent",
+        time: "1 hour ago"
+    },
+    {
+        username: "Tony",
+        message: "Finally!!!!!",
+        repo: "ASDASD",
+        time: "2 hours ago"
+    },
+    {
+        username: "Jessica",
+        message: "I think this is finally looking up.",
+        repo: "oolala",
+        time: "13 minutes ago"
+    },
+    {
+        username: "Trystan",
+        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
+        repo: "WadaWada",
+        time: "now"
+    },
+    {
+        username: "CHARLIE",
+        message: "OMg this is not working well.",
+        repo: "FailedStudent",
+        time: "1 hour ago"
+    },
+    {
+        username: "Tony",
+        message: "Finally!!!!!",
+        repo: "ASDASD",
+        time: "2 hours ago"
+    },
+    {
+        username: "Jessica",
+        message: "I think this is finally looking up.",
+        repo: "oolala",
+        time: "13 minutes ago"
+    },
+    {
+        username: "Trystan",
+        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
+        repo: "WadaWada",
+        time: "now"
+    },
+    {
+        username: "CHARLIE",
+        message: "OMg this is not working well.",
+        repo: "FailedStudent",
+        time: "1 hour ago"
+    },
+    {
+        username: "Tony",
+        message: "Finally!!!!!",
+        repo: "ASDASD",
+        time: "2 hours ago"
+    },
+    {
+        username: "Jessica",
+        message: "I think this is finally looking up.",
+        repo: "oolala",
+        time: "13 minutes ago"
+    },
+    {
+        username: "Trystan",
+        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
+        repo: "WadaWada",
+        time: "now"
+    },
+    {
+        username: "CHARLIE",
+        message: "OMg this is not working well.",
+        repo: "FailedStudent",
+        time: "1 hour ago"
+    },
+    {
+        username: "Tony",
+        message: "Finally!!!!!",
+        repo: "ASDASD",
+        time: "2 hours ago"
+    },
+    {
+        username: "Jessica",
+        message: "I think this is finally looking up.",
+        repo: "oolala",
+        time: "13 minutes ago"
+    },
+    {
+        username: "Trystan",
+        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
+        repo: "WadaWada",
+        time: "now"
     },
 
+
 ]
+
 const reposi = ["Repository 1", "Repository 2", "Repository 3", "Repository 4"]
 const profileState = {
     // profile_username: localStorage.getItem("username"),

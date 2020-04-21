@@ -23,6 +23,7 @@ class FrontPage extends Component {
     }
     render() {
         return (
+
             <div>
                 <script>{setTimeout(this.handleTimer, 1000)}</script>
                 <HashRouter>
