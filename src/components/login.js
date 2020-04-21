@@ -69,7 +69,9 @@ class Login extends Component {
             <Form horizontal>
               <FormGroup controlId="username">
                   <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
-                      <h3>Username</h3>
+                      <div class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
+                        <h3>Username</h3>
+                      </div>
                   </div>
                   <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
                       <FormControl style={{width: window.innerWidth/4}}
@@ -81,7 +83,9 @@ class Login extends Component {
               </FormGroup>
               <FormGroup controlId="password">
                   <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
-                      <h3>Password</h3>
+                      <div className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
+                          <h3>Password</h3>
+                      </div>
                   </div>
                   <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
                       {this.state.bypass ?
@@ -112,6 +116,7 @@ class Login extends Component {
                       <Button variant="secondary" onClick={this.login}>Sign in</Button>
                   </div>
               </FormGroup>
+                <div style={{height:40}}></div>
             </Form>
         )
     }
@@ -119,7 +124,7 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        theme: state.glob.theme,
     }
 }
 

@@ -6,7 +6,7 @@
 .Hidden-Card{
   position: -webkit-sticky;
   position: sticky;
-  z-index:-1;
+  z-index:1;
   top: 65px;
 }
 
@@ -14,40 +14,107 @@
   position: -webkit-sticky;
   position: sticky;
   top: 65px;
+  z-index: 2;
+}
+
+.Toggle-Button{
+  position: -webkit-sticky;
+  position: sticky;
+  float: left;
+  bottom: 6px;
+  left: 6px;
+}
+
+.Post-Buttons{
+  float: right;
+  bottom: 6px;
+  right: 6px;
+}
+
+.Dark-Background{
+  background-color: #0f110c;
+}
+
+.Light-Background{
+  background-color: white;
+}
+
+.Dark-Text{
+  color: white;
+}
+
+.Light-Text{
+  color: #0f110c;
 }
 
 /* THIS IS POST CSS */
-.Post{
+.Post-Card-Light{
   border: 1px solid #0f110c;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 6px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   font-size: 13px;
 }
 
-.Username-Text{
+.Post-Card-Dark{
+  border: 1px solid #bfb5af;
+  /*box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 6px 0 rgba(0, 0, 0, 0.19);*/
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.Username-Text-Light{
   text-decoration: underline;
   /*font-family: "Lucida Console", Courier, monospace;*/
   color: #0f110c;
   padding: 3px;
 }
 
-.Repository-Text{
+.Username-Text-Dark{
+  text-decoration: underline;
+  /*font-family: "Lucida Console", Courier, monospace;*/
+  color: ghostwhite;
+  padding: 3px;
+}
+
+
+.Repository-Text-Light{
   /*font-family: "Lucida Console", Courier, monospace;*/
   color: #0f110c;
   font-size: 8px;
   padding: 10px;
 }
-.Post-Text{
 
+.Repository-Text-Dark{
+  /*font-family: "Lucida Console", Courier, monospace;*/
+  color: ghostwhite;
+  font-size: 8px;
+  padding: 10px;
 }
 
+.Post-Text-Light{
+  font-family: "Lucida Console", Courier, monospace;
+  color: #0f110c;
+  font-size: 13px;
+  padding: 10px;
+}
 
+.Post-Text-Dark{
+  font-family: "Lucida Console", Courier, monospace;
+  color: ghostwhite;
+  font-size: 13px;
+  padding: 10px;
+}
 
 /* THESE ARE THE TRAITS */
 
-.Drop-Shadow{
+.Drop-Shadow-Dark{
   border-radius:20%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Drop-Shadow-Light{
+  border-radius:20%;
+  box-shadow: 0 4px 8px 0 #bfb5af, 0 6px 20px 0 black;
 }
 
 .Rounded-Image{
@@ -96,4 +163,21 @@
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+/* THESE ARE COLOR BACKGROUND OVERRIDES FOR BOOTSTRAP */
+.success {
+  background-color: #87bba2 !important;
+}
+
+.info {
+  background-color: #55828b !important;
+}
+
+.danger {
+  background-color: #c03221 !important;
+}
+
+.text {
+  font-size: 20;
 }

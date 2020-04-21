@@ -6,14 +6,14 @@ import {Navbar,
         Form,
         FormControl,
         Button,
-        Container
+        Container,
         } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import {connect} from "react-redux";
 import { withRouter } from "react-router-dom";
 import {logoutUser} from "../actions/authActions";
-import {changeTheme} from "../actions/globalActions"
-import logo from "../assets/logo.svg";
+import lightLogo from "../assets/light-logo.svg";
+import darkLogo from "../assets/dark-logo.svg";
 
 class AppHeader extends Component {
     constructor(props){
@@ -37,15 +37,25 @@ class AppHeader extends Component {
         return (
             <Container>
             <header>
-                <Navbar expand="lg" variant="light" bg="light" fluid fixed="top" style={{padding:0}} class="Drop-Shadow">
+                <Navbar expand="lg" variant={this.props.theme} bg={this.props.theme} fluid fixed="top" style={{borderRadius:0, backgroundOpacity: 1}} class="Drop-Shadow-Dark">
                     <Navbar.Brand href="/welcome">
+                        {(this.props.theme === 'dark') ?
                         <img
-                            src={logo}
+                            src={darkLogo}
                             width="80"
                             height="40"
                             className="d-inline-block align-top"
                             alt="React Bootstrap logo"
                         />
+                        :
+                        <img
+                            src={lightLogo}
+                            width="80"
+                            height="40"
+                            className="d-inline-block align-top"
+                            alt="React Bootstrap logo"
+                        />}
+
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -81,8 +91,6 @@ class AppHeader extends Component {
                                 </LinkContainer>
                             </Nav.Link>
                         </Nav>
-                        <Button onClick={()=>{this.props.dispatch(changeTheme())}}
-                                variant="outline-success">Search</Button>
                         <Form inline>
                             <FormControl onChange={this.updateDetails.bind(this)} type="text" placeholder="Search" className="mr-sm-2" />
                             <Button onClick={()=>{alert(this.state.search)}}

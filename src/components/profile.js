@@ -235,27 +235,28 @@ class Profile extends Component {
         const Repository = ({repositories, link}) => {
             return(
                 <div class="Hidden-Card" style={{padding: 10 }}>
-                    <Card style={{ minWidth: '11rem', borderRadius:30, borderColor: '#55828b'}}>
+                    <Card bg={this.props.theme} style={{
+                        minWidth: '11rem',
+                        borderRadius: 30,
+                        borderColor: (this.props.theme === 'dark') ? '#c03221' : '#55828b'}}>
                         <Card.Body>
-                            <Card.Title><h3>Repositories</h3></Card.Title>
+                            <Card.Title class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}><h3>Repositories</h3></Card.Title>
                             <Card.Text>
-                                <div>
-                                <ListGroup>
                                     { repositories ?
                                         repositories.map((repo) =>
-                                            <ListGroup.Item>
+                                            <ListGroup.Item as={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
                                                 <a href={link + "/" + repo}
                                                    target="_blank"
                                                    rel="noopener noreferrer"
                                                    style={{color:'#c03221'}}>
-                                                    <h5>{repo}</h5>
+                                                    <h5 style={{color:(this.props.theme === 'dark') ? '#87bba2' : '#55828b'}}>
+                                                        {repo}
+                                                    </h5>
                                                 </a>
                                             </ListGroup.Item>)
                                         :
                                         "No Repos found"
                                     }
-                                </ListGroup>
-                                </div>
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -264,8 +265,15 @@ class Profile extends Component {
         }
         const Profile = ({Profile, link}) => {
             return(
-                <div class="Floating-Card Drop-Shadow">
-                    <Card style={{ minWidth: '12rem', padding:10, borderRadius:30, borderColor: '#c03221'}}>
+                <div class={(this.props.theme === 'dark') ? 'Floating-Card' : 'Floating-Card Drop-Shadow-Dark'}>
+                    <Card  bg={this.props.theme}
+                           style={{
+                        minWidth: '12rem',
+                        padding:10,
+                        borderRadius:30,
+                        backgroundColor: (this.props.theme === 'dark') ? '#0f110c' : '#ffffff',
+                        borderColor: (this.props.theme === 'dark') ? '#55828b' : '#c03221',
+                           }}>
                         <Card.Body>
                             <Card.Title>
                                 <a href={link}
@@ -277,7 +285,7 @@ class Profile extends Component {
                             </Card.Title>
                             <Card.Img style={{padding:10, borderRadius: "50%"}} variant="top" src={Profile.profile_img}  />
                             <Card.Subtitle style={{color: "#87bba2"}}>{Profile.profile_name}</Card.Subtitle>
-                            <Card.Text>
+                            <Card.Text class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
                                 {Profile.profile_bio}
                             </Card.Text>
                         </Card.Body>
@@ -310,8 +318,9 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        theme: state.glob.theme,
     }
 }
+
 
 export default connect(mapStateToProps)(Profile);

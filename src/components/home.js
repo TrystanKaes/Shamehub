@@ -16,12 +16,14 @@ class Home extends Component {
     }
 
     render() {
-
         return(
-            <div>
+            <div class={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
                 <Welcomebanner/>
-                <h1>Welcome to Shamehub</h1>
-                <h6>the github based social media</h6>
+                <div style={{padding:20}}>
+                    <h1 class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>Welcome to Shamehub</h1>
+                    <h6 class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>the github based social media</h6>
+                </div>
+                <div style={{height:window.innerHeight}}></div>
             </div>
         );
     }
@@ -30,7 +32,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        theme: state.glob.theme
     }
 }
 

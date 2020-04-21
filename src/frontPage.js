@@ -9,6 +9,8 @@ import WelcomeBanner from './components/welcomebanner'
 import UserFeed from './components/userfeed'
 import DiscoverFeed from './components/discoverfeed'
 import Home from './components/home'
+import {Button} from "react-bootstrap";
+import {changeTheme} from "./actions/globalActions";
 
 class FrontPage extends Component {
     constructor(props) {
@@ -23,11 +25,11 @@ class FrontPage extends Component {
     }
     render() {
         return (
-
-            <div>
+        <div class={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
+            <div className="App">
                 <script>{setTimeout(this.handleTimer, 1000)}</script>
                 <HashRouter>
-                        <div>
+                        <div class={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
                             {this.state.enter ?
                                 <AppHeader /> :
                                 <WelcomeBanner />}
@@ -42,13 +44,21 @@ class FrontPage extends Component {
                         </div>
                 </HashRouter>
             </div>
+            <div class="Toggle-Button">
+                <Button onClick={()=>{this.props.dispatch(changeTheme())}}
+                    variant={(this.props.theme === 'dark') ? 'light' : 'dark'}
+                    style={{width:30, height:30, borderRadius:50}}
+                    class={(this.props.theme === 'dark') ? 'Drop-Shadow-Light' : 'Drop-Shadow-Light'}>
+                </Button>
+            </div>
+        </div>
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
-
+        theme: state.glob.theme,
     }
 }
 

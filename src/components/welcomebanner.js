@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from './../assets/logo.svg';
+import lightLogo from '../assets/light-logo.svg';
+import darkLogo from '../assets/dark-logo.svg';
 
 class Welcomebanner extends Component {
     constructor(props){
@@ -18,8 +19,10 @@ class Welcomebanner extends Component {
     render() {
 
         return(
-            <div>
-                <img src={logo} className="App-logo" alt="logo" />
+            <div>{(this.props.theme === 'dark') ?
+                <img src={darkLogo} className="App-logo" alt="logo" />
+                :
+                <img src={lightLogo} className="App-logo" alt="logo" />}
                 {/*<h1>Welcome to Shamehub</h1>*/}
             </div>
         );
@@ -29,7 +32,7 @@ class Welcomebanner extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        theme: state.glob.theme
     }
 }
 

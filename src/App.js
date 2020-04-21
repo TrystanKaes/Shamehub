@@ -6,12 +6,13 @@ import store from './stores/store'
 
 function App() {
   return (
-      <div className="App">
+      <div>
         <Provider store={store}>
             <FrontPage />
         </Provider>
       </div>
   );
 }
+
 
 export default App;
