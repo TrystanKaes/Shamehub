@@ -29,6 +29,7 @@
   float: right;
   bottom: 6px;
   right: 6px;
+  padding-right: 20px;
 }
 
 .Dark-Background{
@@ -78,16 +79,32 @@
 
 
 .Repository-Text-Light{
-  /*font-family: "Lucida Console", Courier, monospace;*/
-  color: #0f110c;
-  font-size: 8px;
-  padding: 10px;
-}
+   /*font-family: "Lucida Console", Courier, monospace;*/
+   color: #0f110c;
+   font-size: 8px;
+   padding: 10px;
+ }
 
 .Repository-Text-Dark{
   /*font-family: "Lucida Console", Courier, monospace;*/
   color: ghostwhite;
   font-size: 8px;
+  padding: 10px;
+}
+
+.Date-Text-Light{
+  /*font-family: "Lucida Console", Courier, monospace;*/
+  color: dimgrey;
+  justify-content: right;
+  font-size: 9px;
+  padding: 10px;
+}
+
+.Date-Text-Dark{
+  /*font-family: "Lucida Console", Courier, monospace;*/
+  color: grey;
+  justify-content: right;
+  font-size: 9px;
   padding: 10px;
 }
 
@@ -179,5 +196,18 @@
 }
 
 .text {
-  font-size: 20;
+  font-size: 20px;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
 }

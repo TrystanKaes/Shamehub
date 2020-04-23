@@ -280,13 +280,13 @@ class Profile extends Component {
                                    target="_blank"
                                    rel="noopener noreferrer"
                                    style={{color:'#55828b'}}>
-                                    <h1>{Profile.profile_username}</h1>
+                                    <h1>{Profile.github_username}</h1>
                                 </a>
                             </Card.Title>
                             <Card.Img style={{padding:10, borderRadius: "50%"}} variant="top" src={Profile.profile_img}  />
-                            <Card.Subtitle style={{color: "#87bba2"}}>{Profile.profile_name}</Card.Subtitle>
+                            <Card.Subtitle style={{color: "#87bba2"}}><h5>{Profile.name}</h5></Card.Subtitle>
                             <Card.Text class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
-                                {Profile.profile_bio}
+                                {Profile.bio}
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -298,12 +298,14 @@ class Profile extends Component {
                     <Row>
                         <Col>
                             {/* THIS IS THE LEFT PROFILE AND REPOSITORY COLUMN */}
-                            <Profile Profile={profileState} link={this.state.githubLink}/>
-                            <Repository repositories={profileState.repos} link={this.state.githubLink}/>
+                            <Profile Profile={this.props.user} link={this.state.githubLink}/>
+                            <Repository repositories={this.props.details.repo_names} link={this.state.githubLink}/>
                         </Col>
                         <Col xs={6}>
                             {/* THIS IS THE MAIN POST COLUMN */}
-                                <RawFeed commits={profileState.commits}/>
+                                <RawFeed commits={this.props.details.posts.sort((a,b)=>{
+                                    return new Date(b.commit_date) - new Date(a.commit_date)
+                                })}/>
                         </Col>
                         <Col>
                             {/* I Don't know what this is for anymore. Ads? */}
@@ -319,6 +321,8 @@ class Profile extends Component {
 const mapStateToProps = state => {
     return {
         theme: state.glob.theme,
+        user: state.user,
+        details: state.user.fe_repo_info
     }
 }
 

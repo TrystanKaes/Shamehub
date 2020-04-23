@@ -11,7 +11,7 @@ import {Navbar,
 import {LinkContainer} from 'react-router-bootstrap';
 import {connect} from "react-redux";
 import { withRouter } from "react-router-dom";
-import {logoutUser} from "../actions/authActions";
+import {logoutUser} from "../actions/userActions";
 import lightLogo from "../assets/light-logo.svg";
 import darkLogo from "../assets/dark-logo.svg";
 
@@ -21,7 +21,8 @@ class AppHeader extends Component {
         this.state = {
             error : null,
             isLoaded : true,
-            search: ""
+            search: "",
+            invertTheme: (this.props.theme === 'dark') ?  'dark' : 'light',
         };
     }
 
@@ -37,7 +38,13 @@ class AppHeader extends Component {
         return (
             <Container>
             <header>
-                <Navbar expand="lg" variant={this.props.theme} bg={this.props.theme} fluid fixed="top" style={{borderRadius:0, backgroundOpacity: 1}} class="Drop-Shadow-Dark">
+                <Navbar expand="lg"
+                        variant={this.props.theme}
+                        bg={this.props.theme}
+                        fluid
+                        fixed="top"
+                        style={{borderRadius:0, backgroundOpacity: 1}}
+                        class="Drop-Shadow-Dark">
                     <Navbar.Brand href="/welcome">
                         {(this.props.theme === 'dark') ?
                         <img
@@ -57,9 +64,21 @@ class AppHeader extends Component {
                         />}
 
                     </Navbar.Brand>
+
+                    <Form inline>
+                        <FormControl onChange={this.updateDetails.bind(this)}
+                                     type="text"
+                                     placeholder="Search"
+                                     style={{flex:1}}
+                                     className="mr-sm-2" />
+                        <Button onClick={()=>{alert(this.state.search)}}
+                                variant="outline-success"
+                                style={{borderColor:"#55828b"}}>Search</Button>
+                    </Form>
+
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
+                        <Nav className="ml-auto">
                             <Nav.Link>
                                 <LinkContainer to="/home">
                                     <NavItem eventKey={1} >Home </NavItem>
@@ -86,17 +105,12 @@ class AppHeader extends Component {
                             <Nav.Link>
                                 <LinkContainer to="/signin">
                                     <NavItem eventKey={3}>
-                                        {this.props.loggedIn ? <button onClick={this.logout.bind(this)}>Logout</button>  : 'Login'}
+                                        {/*{this.props.loggedIn ? <Button style={{height:20, justifyContent: 'center'}} variant={'outline-' + this.state.invertTheme} onClick={this.logout.bind(this)}>Logout</Button>  : 'Login'}*/}
+                                        {this.props.loggedIn ? <div style={{textDecoration:'underline overline'}}>Logout</div>  : 'Login'}
                                     </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
                         </Nav>
-                        <Form inline>
-                            <FormControl onChange={this.updateDetails.bind(this)} type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button onClick={()=>{alert(this.state.search)}}
-                                    variant="outline-success"
-                                    style={{borderColor:"#55828b"}}>Search</Button>
-                        </Form>
                     </Navbar.Collapse>
                 </Navbar>
                 <div class="Top-buffer"/>
@@ -108,8 +122,8 @@ class AppHeader extends Component {
 
 const mapStateToProps = state => {
     return {
-        loggedIn: state.auth.loggedIn,
-        username: state.auth.username,
+        loggedIn: state.user.loggedIn,
+        username: state.user.username,
         theme: state.glob.theme,
     }
 }

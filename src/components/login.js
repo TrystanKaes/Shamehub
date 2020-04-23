@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { submitLogin } from '../actions/authActions';
+import { submitLogin } from '../actions/userActions';
 import { connect } from 'react-redux';
 import { Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
 import { SketchPicker } from 'react-color';
@@ -116,7 +116,6 @@ class Login extends Component {
                       <Button variant="secondary" onClick={this.login}>Sign in</Button>
                   </div>
               </FormGroup>
-                <div style={{height:40}}></div>
             </Form>
         )
     }

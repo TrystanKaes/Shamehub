@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import {Container, Row, Col, Button, ButtonGroup} from 'react-bootstrap';
+import {Container, Row, Col, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+TimeAgo.addLocale(en)
+const timeAgo = new TimeAgo('en-US')
 
 /* display username, commit message, repo, and timestamp. */
 
@@ -20,20 +24,28 @@ class RawFeed extends Component {
     }
 
     render() {
+        const theme = {
+            PostText: (this.props.theme === 'dark') ? 'Post-Text-Dark' : 'Post-Text-Light',
+            DateText: (this.props.theme === 'dark') ? 'Date-Text-Dark' : 'Date-Text-Light',
+            UsernameText: (this.props.theme === 'dark') ? 'Username-Text-Dark' : 'Username-Text-Light',
+            PostCardType: (this.props.theme === 'dark') ? 'Post-Card-Dark' : 'Post-Card-Light',
+            RepositoryText: (this.props.theme === 'dark') ? 'Repository-Text-Dark' : 'Repository-Text-Light',
+        }
+
         const CommitPosts = ({commits}) => {
             if(commits){
                 return this.state.commits.map((commit) =>
                     <div style={{padding: 10}}>
                         <div style={{display: 'flex', justifyContent: 'center', shadow:1}}
-                             class={(this.props.theme === 'dark') ? 'Post-Card-Dark' : 'Post-Card-Light'}>
+                             class={theme.PostCardType}>
                         <Container>
                             <Row>
                                 <Col>
-                                    <a href={"https://github.com/" + commit.username}
+                                    <a href={"https://github.com/" + commit.author_name}
                                        target="_blank"
                                        rel="noopener noreferrer"
-                                       class={(this.props.theme === 'dark') ? 'Username-Text-Dark' : 'Username-Text-Light'}>
-                                        <h5>@{commit.username}</h5>
+                                       class={theme.UsernameText}>
+                                        <h5>@{commit.author_name}</h5>
                                     </a>
 
                                 </Col>
@@ -41,27 +53,23 @@ class RawFeed extends Component {
 
                                 </Col>
                                 <Col>
-
                                 </Col>
-
+                                <div className={theme.DateText}>{timeAgo.format(new Date(commit.commit_date))}</div>
                             </Row>
                             <Row style={{justifyContent: 'center'}}>
-                                <div class={(this.props.theme === 'dark') ? 'Post-Text-Dark' : 'Post-Text-Light'}>{commit.message}</div>
+                                <div class={theme.PostText}>{commit.commit_msg}</div>
                             </Row>
                             <Row>
                                 <Col>
-                                    <div class={(this.props.theme === 'dark') ? 'Repository-Text-Dark' : 'Repository-Text-Light'}>
-                                        Committed to: {commit.repo}
+                                    <div class={theme.RepositoryText}>
+                                        Committed to: {commit.repo_name}
                                     </div>
                                 </Col>
                                 <Col>
                                 </Col>
                                 <Col>
-                                    <Col>
-                                    </Col>
                                 </Col>
-                                <div className="Post-Buttons">
-                                    <ButtonGroup sm={1} style={{padding: 15, alignItems: "#0f110c"}}>
+                                <div className="Post-Buttons flex-wrap">
                                         <Button style={{backgroundColor: "#87bba2", borderColor: "#0f110c"}}
                                                 onClick={() => {
                                                     alert("Like!")
@@ -74,7 +82,6 @@ class RawFeed extends Component {
                                                 onClick={() => {
                                                     alert("Comment!")
                                                 }}>comment</Button>
-                                    </ButtonGroup>
                                 </div>
                             </Row>
                         </Container>

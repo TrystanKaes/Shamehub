@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { submitRegister } from '../actions/authActions';
+import { submitRegister } from '../actions/userActions';
 import { connect } from 'react-redux';
 import { Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
 import {SketchPicker } from 'react-color'

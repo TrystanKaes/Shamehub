@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {ButtonGroup, Button} from 'react-bootstrap'
 import Login from './login';
 import Register from './register';
-import { logoutUser } from '../actions/authActions';
+import { logoutUser } from '../actions/userActions';
 import Welcomebanner from "./welcomebanner";
 
 class Authentication extends Component {
@@ -12,7 +12,7 @@ class Authentication extends Component {
         super();
 
         this.state = {
-            toggleReg: false
+            toggleReg: false,
         };
     }
 
@@ -37,7 +37,10 @@ class Authentication extends Component {
     }
 
     render(){
-
+        const theme = {
+            invertTheme: (this.props.theme === 'dark') ?  'light' : 'dark',
+            text: (this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text',
+        }
         const userNotLoggedIn = (
             <div style={{justifyContent: 'center'}}>
                     {this.state.toggleReg?
@@ -56,7 +59,10 @@ class Authentication extends Component {
 
         );
 
-        const userLoggedIn = (<div>Logged in as: {this.props.username} <button onClick={this.logout.bind(this)}>Logout</button></div>);
+        const userLoggedIn = (<div class={theme.text}>Logged in as: {this.props.username}<div style={{width:2, height:4}}/>
+        <Button style={{justifyContent: 'center'}}
+                variant={'outline-' + theme.invertTheme}
+                onClick={this.logout.bind(this)}>Logout</Button></div>);
 
         return (
             <div>
@@ -67,15 +73,18 @@ class Authentication extends Component {
                     :
                     userNotLoggedIn
                 }
+                <div style={{height:window.innerHeight}}></div>
             </div>
+
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
-        loggedIn: state.auth.loggedIn,
-        username: state.auth.username
+        loggedIn: state.user.loggedIn,
+        username: state.user.username,
+        theme: state.glob.theme
     }
 }
 
