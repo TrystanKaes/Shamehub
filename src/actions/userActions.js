@@ -114,7 +114,7 @@ export function submitLogin(data){
 }
 
 export function submitRegister(data){
-    alert(JSON.stringify(data))
+    // alert(JSON.stringify(data))
     const env = runtimeEnv();
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/signup`, {
@@ -132,7 +132,7 @@ export function submitRegister(data){
                 return response.json();
             })
             .then( (res) => {
-
+                alert(JSON.stringify(res))
                 dispatch(submitLogin(data));
             })
             .catch( (e) => console.log(e) );

@@ -22,7 +22,7 @@ class Login extends Component {
             },
             background: '#fff',
             show: false,
-            bypass: false,
+            bypass: true,
         };
     }
 

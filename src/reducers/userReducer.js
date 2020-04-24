@@ -6,8 +6,8 @@ var initialState = {
     profile_img: '',
     github_link: '',
     bio: '',
-    new_repo_info: null,
-    fe_repo_info: null,
+    new_commits: null,
+    repo_info: null,
     loggedIn: localStorage.getItem('token') ? true : false,
     username: localStorage.getItem('username') ? localStorage.getItem('username') : '',
 }
@@ -28,8 +28,8 @@ export default (state = initialState, action) => {
             updated['profile_img'] = action.user.profile_img;
             updated['github_link'] = action.user.github_link;
             updated['bio'] = action.user.bio;
-            updated['new_repo_info'] = action.user.new_repo_info;
-            updated['fe_repo_info'] = action.user.fe_repo_info;
+            updated['new_commits'] = action.user.new_commits;
+            updated['repo_info'] = action.user.repo_info;
             return updated;
 
         case constants.USER_LOGOUT:

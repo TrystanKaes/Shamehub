@@ -322,7 +322,7 @@ const mapStateToProps = state => {
     return {
         theme: state.glob.theme,
         user: state.user,
-        details: state.user.fe_repo_info
+        details: state.user.repo_info
     }
 }
 

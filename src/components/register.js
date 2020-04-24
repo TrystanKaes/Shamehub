@@ -16,13 +16,13 @@ class Register extends Component {
         this.toggleWheel = this.toggleWheel.bind(this);
         this.state = {
             details:{
-                name: '',
+                github_username: '',
                 username: '',
                 password: ''
             },
             background: '#fff',
             show: false,
-            bypass: false
+            bypass: true
         };
     }
 
@@ -30,7 +30,6 @@ class Register extends Component {
         //every color change, we update the background and password
         this.setState({
             details:{
-                name: this.state.details.name,
                 username: this.state.details.username,
                 password: color.hex
             },
@@ -56,6 +55,7 @@ class Register extends Component {
         let updateDetails = Object.assign({}, this.state.details);
 
         updateDetails[event.target.id] = event.target.value;
+        updateDetails['github_username'] =  updateDetails['username'];
         this.setState({
             details: updateDetails
         });
@@ -69,24 +69,10 @@ class Register extends Component {
     render(){
         return (
             <Form horizontal>
-                <FormGroup controlId="name">
-                    <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
-                        <div className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
-                            <h3>Name</h3>
-                        </div>
-                    </div>
-                    <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
-                        <FormControl style={{width: window.innerWidth/4}}
-                                     onChange={this.updateDetails}
-                                     value={this.state.details.name}
-                                     type="name"
-                                     placeholder="Name" />
-                    </div>
-                </FormGroup>
                 <FormGroup controlId="username">
                     <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
                         <div className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
-                            <h3>Username</h3>
+                            <h3>Github Username</h3>
                         </div>
                     </div>
                     <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
