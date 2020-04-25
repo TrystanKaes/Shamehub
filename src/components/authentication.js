@@ -2,7 +2,8 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import {ButtonGroup, Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import loadingIcon from '../assets/loading-cylon.svg';
+import loadingIconLight from '../assets/loading-cylon-light.svg';
+import loadingIconDark from '../assets/loading-cylon-dark.svg';
 import Login from './login';
 import Register from './register';
 import { logoutUser } from '../actions/userActions';
@@ -45,7 +46,7 @@ class Authentication extends Component {
         const theme = {
             invertTheme: (this.props.theme === 'dark') ?  'light' : 'dark',
             text: (this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text',
-            loader: (this.props.theme === 'dark') ? '#fff' : '#0f110c',
+            loader: (this.props.theme === 'dark') ? loadingIconLight : loadingIconDark,
 
         }
         const userNotLoggedIn = (
@@ -92,7 +93,7 @@ class Authentication extends Component {
                         userNotLoggedIn
                     :
                     <div>
-                        <h4 className={theme.text}> {this.props.loadingState + "  "} <img src={loadingIcon} alt="Loading icon" /></h4>
+                        <h4 className={theme.text}> {this.props.loadingState + "  "} <img src={theme.loader} alt="Loading icon" /></h4>
                     </div>
                 }
 

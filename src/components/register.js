@@ -34,7 +34,7 @@ class Register extends Component {
 
     register(){
         const {dispatch} = this.props;
-        dispatch(LoadState('Creating your profile...'))
+        dispatch(LoadState('Creating your profile'))
         dispatch(submitRegister(this.state.details));
     }
 
