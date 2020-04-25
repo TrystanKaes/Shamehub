@@ -146,7 +146,6 @@ export function submitProfileUpdate(data){
                 return response.json();
             })
             .then( (res) => {
-                alert(JSON.stringify(res));
                 dispatch(LoadState(''));
                 dispatch(updateProfile(res));
                 return res;

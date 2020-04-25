@@ -8,6 +8,7 @@ class UserFeed extends Component {
             error : null,
             isLoaded : true,
         };
+        this.pageDidScroll = this.pageDidScroll.bind(this);
     }
 
     componentDidMount() {

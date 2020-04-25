@@ -39,9 +39,9 @@ export default (state = initialState, action) => {
             return updated;
 
         case constants.UPDATE_USER:
-            updated['name'] = action.name;
-            updated['bio'] = action.bio;
-            updated['profile_img'] = action.img;
+            updated['name'] = action.name ? action.name : updated['name'];
+            updated['bio'] = action.bio ? action.bio : updated['bio'];
+            updated['profile_img'] = action.img ? action.img : updated['profile_img'];
             return updated;
 
         default:
