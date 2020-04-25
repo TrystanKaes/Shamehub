@@ -102,11 +102,16 @@ class AppHeader extends Component {
                                     </LinkContainer>
                                 </NavDropdown.Item>
                             </NavDropdown>
+                            <Nav.Link >
+                                <LinkContainer to="/ColorWheelGame">
+                                    <NavItem eventKey={2}>C.W.G. </NavItem>
+                                </LinkContainer>
+                            </Nav.Link>
                             <Nav.Link>
                                 <LinkContainer to="/signin">
                                     <NavItem eventKey={3}>
                                         {/*{this.props.loggedIn ? <Button style={{height:20, justifyContent: 'center'}} variant={'outline-' + this.state.invertTheme} onClick={this.logout.bind(this)}>Logout</Button>  : 'Login'}*/}
-                                        {this.props.loggedIn ? <div style={{textDecoration:'underline overline'}}>Logout</div>  : 'Login'}
+                                        {this.props.loggedIn ? <div style={{textDecoration:'line-through'}}>Logout</div>  : 'Login'}
                                     </NavItem>
                                 </LinkContainer>
                             </Nav.Link>

@@ -8,6 +8,7 @@ import Profile from './components/profile'
 import WelcomeBanner from './components/welcomebanner'
 import UserFeed from './components/userfeed'
 import DiscoverFeed from './components/discoverfeed'
+import ColorWheelGame from './components/ColorWheelGame'
 import Home from './components/home'
 import {Button} from "react-bootstrap";
 import {changeTheme} from "./actions/globalActions";
@@ -41,6 +42,7 @@ class FrontPage extends Component {
                             <Route path="/userfeed" render={() => <div className="Fade-In"><UserFeed/></div>}/>
                             <Route path="/discover" render={() => <div className="Fade-In"><DiscoverFeed/></div>}/>
                             <Route path="/signin" render={() => <div className="Fade-In"><Authentication/></div>}/>
+                            <Route path="/ColorWheelGame" render={() => <div className="Fade-In"><ColorWheelGame/></div>}/>
                         </div>
                 </HashRouter>
             </div>

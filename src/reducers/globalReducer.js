@@ -14,7 +14,6 @@ export default (state = initialState, action) => {
             return updated;
 
         case constants.LOADING_CHANGE:
-            alert(action.load)
             updated['loadingState'] = action.load;
             return updated;
 

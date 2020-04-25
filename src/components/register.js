@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { submitRegister } from '../actions/userActions';
 import { connect } from 'react-redux';
 import { Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
-import {SketchPicker } from 'react-color'
+import {LoadState} from "../actions/globalActions";
 
 class Register extends Component {
 
@@ -11,9 +11,7 @@ class Register extends Component {
 
         //We are required to bind this to use these functions, if you add a function, bind it
         this.updateDetails = this.updateDetails.bind(this);
-        this.bypassSignup = this.bypassSignup.bind(this);
         this.register = this.register.bind(this);
-        this.toggleWheel = this.toggleWheel.bind(this);
         this.state = {
             details:{
                 github_username: '',
@@ -21,34 +19,7 @@ class Register extends Component {
                 password: ''
             },
             background: '#fff',
-            show: false,
-            bypass: true
         };
-    }
-
-    handleChangeComplete = (color) => {
-        //every color change, we update the background and password
-        this.setState({
-            details:{
-                username: this.state.details.username,
-                password: color.hex
-            },
-            background: color.hex,
-        });
-    };
-
-    toggleWheel(){
-        //everytime this function executes(executes from a button click) it toggles the show variable to the opposite
-        this.setState({
-            show: !this.state.show
-        });
-        console.log(this.state);
-    }
-
-    bypassSignup(){
-        //username and password stored in plane text aaaahhh!!!, use env file instead :)
-        let bypassColor = this.state.bypass
-        this.setState({bypass: !bypassColor})
     }
 
     updateDetails(event){
@@ -63,6 +34,7 @@ class Register extends Component {
 
     register(){
         const {dispatch} = this.props;
+        dispatch(LoadState('Creating your profile...'))
         dispatch(submitRegister(this.state.details));
     }
 
@@ -90,30 +62,14 @@ class Register extends Component {
                         </div>
                     </div>
                     <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
-                        {this.state.bypass ?
                             <FormControl style={{width: window.innerWidth / 4}}
                                          onChange={this.updateDetails}
                                          value={this.state.details.password}
                                          type="password"
                                          placeholder="Password"/>
-                            :
-                            <SketchPicker color={ this.state.background }
-                                          onChangeComplete={ this.handleChangeComplete }/>
-                        }
                     </div>
                 </FormGroup>
                 <FormGroup>
-                    <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
-                        {this.state.bypass ?
-                            <Button style={{backgroundColor: '#55828b',
-                                color: '#87bba2',
-                                borderColor: '#c03221',
-                            }}
-                                    onClick={this.bypassSignup}> Color Signup</Button>
-                            :
-                            <Button variant="light" onClick={this.bypassSignup}> Standard Signup</Button>
-                        }
-                    </div>
                     <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
                         <Button variant="secondary" onClick={this.register}>Register</Button>
                     </div>

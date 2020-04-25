@@ -79,6 +79,7 @@ export function submitLogin(data){
                 return response.json();
             })
             .then( (res) => {
+                dispatch(LoadState('Logging you in'))
                 // The promise above returns to us the response in json format, now we want to check if we've logged in or not
                 if(res.success === true) {
                     localStorage.setItem('username', data.username);
@@ -90,6 +91,7 @@ export function submitLogin(data){
                     return res;  //res.message is the last part of the path/route that we want to use a GET request on
                 }
                 else{
+                    dispatch(LoadState(''))
                     // we didn't log in, display an insult
                     var insult = getInsult(res.message)
                     alert("The insults are broken. The API returns an empty json.")
@@ -97,7 +99,7 @@ export function submitLogin(data){
                 }
             })
             .then( (res) => {
-                dispatch(LoadState('fetchUser'))
+                dispatch(LoadState('Fetching your information'))
                 // The promise above returns to us the response in json format, now we want to check if we've logged in or not
                 if(res) {
                     getUser(localStorage.getItem('username'))
@@ -132,8 +134,8 @@ export function submitRegister(data){
                 return response.json();
             })
             .then( (res) => {
-                alert(JSON.stringify(res))
                 dispatch(submitLogin(data));
+                return res;
             })
             .catch( (e) => console.log(e) );
     }
