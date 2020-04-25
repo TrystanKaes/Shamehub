@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ChromePicker } from 'react-color';
+import { getInsult } from '../actions/globalActions'
 
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -44,8 +45,8 @@ class Login extends Component {
 
         const distance = Math.abs(magnitude1-magnitude2)
         this.setState({ thisGuess: distance })
-
-
+        const { dispatch } = this.props;
+        dispatch(getInsult())
     };
 
 
@@ -76,7 +77,8 @@ class Login extends Component {
                                                   onChangeComplete={this.handleChangeComplete}/>
                             </div>
                                 <h3 class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
-                                    You're getting {(this.state.lastGuess > this.state.thisGuess) ? " warmer..." : " colder..."}
+                                    {this.props.insult}
+                                    <br/>You're getting {(this.state.lastGuess > this.state.thisGuess) ? " warmer. . ." : " colder. . ."}
                                 </h3>
                         </div>
                     </div>
@@ -90,6 +92,7 @@ class Login extends Component {
 const mapStateToProps = state => {
     return {
         theme: state.glob.theme,
+        insult: state.glob.insult,
     }
 }
 

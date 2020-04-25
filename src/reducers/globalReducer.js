@@ -3,6 +3,8 @@ import constants from '../constants/actionTypes'
 var initialState = {
     theme: 'light',
     loadingState: '',
+    insult: 'You got this!',
+
 }
 
 export default (state = initialState, action) => {
@@ -15,6 +17,9 @@ export default (state = initialState, action) => {
 
         case constants.LOADING_CHANGE:
             updated['loadingState'] = action.load;
+            return updated;
+        case constants.INSULT_FETCHED:
+            updated['insult'] = action.insult;
             return updated;
 
         default:

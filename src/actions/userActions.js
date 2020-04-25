@@ -43,27 +43,6 @@ export function getUser(username){
         .catch( (e) => console.log(e) );
 }
 
-export function getInsult(data){
-    const env = runtimeEnv();
-        return fetch(`${env.REACT_APP_API_URL}/insults/` + data, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            //body: JSON.stringify(data),   //This was causing issues, apparently you cannot send a body for a GET request
-            mode: 'cors'})
-            .then( (response) => {
-                if (!response.ok) {
-                    // we failed to retrieve an insult
-                    throw Error(response.statusText);
-                }
-                return response.json();
-            })
-            .catch( (e) => console.log(e) );
-}
-
-
 export function submitLogin(data){
     const env = runtimeEnv();
     return dispatch => {
@@ -91,17 +70,14 @@ export function submitLogin(data){
                     return res;  //res.message is the last part of the path/route that we want to use a GET request on
                 }
                 else{
+                    alert(res.message)
                     dispatch(LoadState(''))
-                    // we didn't log in, display an insult
-                    var insult = getInsult(res.message)
-                    alert("The insults are broken. The API returns an empty json.")
-                    alert(insult.insult.insult);    // the insult is kind of burried haha
                 }
             })
             .then( (res) => {
-                dispatch(LoadState('Fetching your information'))
                 // The promise above returns to us the response in json format, now we want to check if we've logged in or not
                 if(res) {
+                    dispatch(LoadState('Fetching your information'))
                     getUser(localStorage.getItem('username'))
                         .then(userInfo => {
                             dispatch(fetchUser(userInfo))
