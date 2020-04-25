@@ -121,7 +121,7 @@ class Profile extends Component {
                             <FormGroup controlId="bio">
                                 <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
                                     <div class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
-                                        <h3>Username</h3>
+                                        <h3>Bio</h3>
                                     </div>
                                 </div>
                                 <div style={{display: 'flex', justifyContent: 'center', padding: 4}} componentClass={FormLabel} sm={2}>
