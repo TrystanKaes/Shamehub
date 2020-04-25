@@ -1,233 +1,29 @@
 import React, { Component } from 'react';
 import { Card , Row, Col, Container, ListGroup } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import RawFeed from './rawfeed'
 import { connect } from 'react-redux';
-
-
-const commits = [
-    {
-        username: "CHARLIE",
-        message: "OMg this is not working well.",
-        repo: "FailedStudent",
-        time: "1 hour ago"
-    },
-    {
-        username: "Tony",
-        message: "Finally!!!!!",
-        repo: "ASDASD",
-        time: "2 hours ago"
-    },
-    {
-        username: "Jessica",
-        message: "I think this is finally looking up.",
-        repo: "oolala",
-        time: "13 minutes ago"
-    },
-    {
-        username: "Trystan",
-        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
-        repo: "WadaWada",
-        time: "now"
-    },
-    {
-        username: "CHARLIE",
-        message: "OMg this is not working well.",
-        repo: "FailedStudent",
-        time: "1 hour ago"
-    },
-    {
-        username: "Tony",
-        message: "Finally!!!!!",
-        repo: "ASDASD",
-        time: "2 hours ago"
-    },
-    {
-        username: "Jessica",
-        message: "I think this is finally looking up.",
-        repo: "oolala",
-        time: "13 minutes ago"
-    },
-    {
-        username: "Trystan",
-        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
-        repo: "WadaWada",
-        time: "now"
-    },
-    {
-        username: "CHARLIE",
-        message: "OMg this is not working well.",
-        repo: "FailedStudent",
-        time: "1 hour ago"
-    },
-    {
-        username: "Tony",
-        message: "Finally!!!!!",
-        repo: "ASDASD",
-        time: "2 hours ago"
-    },
-    {
-        username: "Jessica",
-        message: "I think this is finally looking up.",
-        repo: "oolala",
-        time: "13 minutes ago"
-    },
-    {
-        username: "Trystan",
-        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
-        repo: "WadaWada",
-        time: "now"
-    },
-    {
-        username: "CHARLIE",
-        message: "OMg this is not working well.",
-        repo: "FailedStudent",
-        time: "1 hour ago"
-    },
-    {
-        username: "Tony",
-        message: "Finally!!!!!",
-        repo: "ASDASD",
-        time: "2 hours ago"
-    },
-    {
-        username: "Jessica",
-        message: "I think this is finally looking up.",
-        repo: "oolala",
-        time: "13 minutes ago"
-    },
-    {
-        username: "Trystan",
-        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
-        repo: "WadaWada",
-        time: "now"
-    },
-    {
-        username: "CHARLIE",
-        message: "OMg this is not working well.",
-        repo: "FailedStudent",
-        time: "1 hour ago"
-    },
-    {
-        username: "Tony",
-        message: "Finally!!!!!",
-        repo: "ASDASD",
-        time: "2 hours ago"
-    },
-    {
-        username: "Jessica",
-        message: "I think this is finally looking up.",
-        repo: "oolala",
-        time: "13 minutes ago"
-    },
-    {
-        username: "Trystan",
-        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
-        repo: "WadaWada",
-        time: "now"
-    },
-    {
-        username: "CHARLIE",
-        message: "OMg this is not working well.",
-        repo: "FailedStudent",
-        time: "1 hour ago"
-    },
-    {
-        username: "Tony",
-        message: "Finally!!!!!",
-        repo: "ASDASD",
-        time: "2 hours ago"
-    },
-    {
-        username: "Jessica",
-        message: "I think this is finally looking up.",
-        repo: "oolala",
-        time: "13 minutes ago"
-    },
-    {
-        username: "Trystan",
-        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
-        repo: "WadaWada",
-        time: "now"
-    },
-    {
-        username: "CHARLIE",
-        message: "OMg this is not working well.",
-        repo: "FailedStudent",
-        time: "1 hour ago"
-    },
-    {
-        username: "Tony",
-        message: "Finally!!!!!",
-        repo: "ASDASD",
-        time: "2 hours ago"
-    },
-    {
-        username: "Jessica",
-        message: "I think this is finally looking up.",
-        repo: "oolala",
-        time: "13 minutes ago"
-    },
-    {
-        username: "Trystan",
-        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
-        repo: "WadaWada",
-        time: "now"
-    },
-    {
-        username: "CHARLIE",
-        message: "OMg this is not working well.",
-        repo: "FailedStudent",
-        time: "1 hour ago"
-    },
-    {
-        username: "Tony",
-        message: "Finally!!!!!",
-        repo: "ASDASD",
-        time: "2 hours ago"
-    },
-    {
-        username: "Jessica",
-        message: "I think this is finally looking up.",
-        repo: "oolala",
-        time: "13 minutes ago"
-    },
-    {
-        username: "Trystan",
-        message: "ASDFKHJSDAFUYFKHAADUFHKYFUALDFKGHJLADHFKG",
-        repo: "WadaWada",
-        time: "now"
-    },
-
-
-]
-
-const reposi = ["Repository 1", "Repository 2", "Repository 3", "Repository 4"]
-const profileState = {
-    // profile_username: localStorage.getItem("username"),
-    profile_username: localStorage.getItem("username"),
-    profile_img: "https://support.plymouth.edu/kb_images/Yammer/default.jpeg",
-    // profile_name: localStorage.getItem("name"),
-    profile_name: localStorage.getItem("name"),
-    profile_bio: "This right here is a pretty dope bio and so I shall put it here.",
-    commits: commits,
-    repos: reposi,
-}
+import darkSettings from "../assets/dark-settings.svg";
+import lightSettings from "../assets/light-settings.svg";
 
 class Profile extends Component {
     constructor(props){
-        // if(props.match.params.username){
-        //     profileState.profile_username = props.match.params.username;
-        // }
         super(props);
         this.state = {
             error : null,
             isLoaded : true,
-            githubLink : "https://github.com/" + profileState.profile_username
+            githubLink : "https://github.com/" + this.props.user.username,
+            rotate: true,
         };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
+        this.setState({rotate:false})
+    }
 
+    handleClick(){
+        this.setState({rotate:!this.state.rotate})
     }
 
     render() {
@@ -289,6 +85,12 @@ class Profile extends Component {
                                 {Profile.bio}
                             </Card.Text>
                         </Card.Body>
+                        <Link to="profilesettings">
+                            <img className={(this.state.rotate) ? 'Settings Rotate' : 'Settings'}
+                             src={(this.props.theme === 'dark') ? darkSettings : lightSettings}
+                             alt="Loading icon"
+                             onClick={this.handleClick} />
+                        </Link>
                     </Card>
                 </div>
             )

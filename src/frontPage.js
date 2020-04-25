@@ -9,6 +9,7 @@ import WelcomeBanner from './components/welcomebanner'
 import UserFeed from './components/userfeed'
 import DiscoverFeed from './components/discoverfeed'
 import ColorWheelGame from './components/ColorWheelGame'
+import ProfileSettings from './components/profilesettings'
 import Home from './components/home'
 import {Button} from "react-bootstrap";
 import {changeTheme} from "./actions/globalActions";
@@ -39,6 +40,7 @@ class FrontPage extends Component {
                             <Route path="user/:username" Component={<Profile/>}/>
                             <Route path="/welcome" render={() => <WelcomeBanner/>}/>
                             <Route path="/profile" render={() => <div className="Fade-In"><Profile/></div>}/>
+                            <Route path="/profilesettings" render={() => <div className="Fade-In"><ProfileSettings/></div>}/>
                             <Route path="/userfeed" render={() => <div className="Fade-In"><UserFeed/></div>}/>
                             <Route path="/discover" render={() => <div className="Fade-In"><DiscoverFeed/></div>}/>
                             <Route path="/signin" render={() => <div className="Fade-In"><Authentication/></div>}/>

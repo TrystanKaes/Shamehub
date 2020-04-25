@@ -36,7 +36,13 @@ export default (state = initialState, action) => {
             updated = initialState
             updated['loggedIn'] = false;
             updated['username'] = '';
-            return initialState;
+            return updated;
+
+        case constants.UPDATE_USER:
+            updated['name'] = action.name;
+            updated['bio'] = action.bio;
+            updated['profile_img'] = action.img;
+            return updated;
 
         default:
             return state;

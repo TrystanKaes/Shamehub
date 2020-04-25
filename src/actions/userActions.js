@@ -22,6 +22,15 @@ function fetchUser(userInfo){
     }
 }
 
+function updateProfile(userInfo){
+    return {
+        type: actionTypes.UPDATE_USER,
+        name: userInfo.name,
+        bio: userInfo.bio,
+        img: userInfo.profile_img,
+    }
+}
+
 export function getUser(username){
     const env = runtimeEnv();
     return fetch(`${env.REACT_APP_API_URL}/users/` + username, {
@@ -111,6 +120,61 @@ export function submitRegister(data){
             })
             .then( (res) => {
                 dispatch(submitLogin(data));
+                return res;
+            })
+            .catch( (e) => console.log(e) );
+    }
+}
+
+export function submitProfileUpdate(data){
+
+    const env = runtimeEnv();
+    return dispatch => {
+        return fetch(`${env.REACT_APP_API_URL}/update/` + localStorage.getItem("username") + "/profile", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token'),
+            },
+            body: JSON.stringify(data),
+            mode: 'cors'})
+            .then( (response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then( (res) => {
+                alert(JSON.stringify(res));
+                dispatch(LoadState(''));
+                dispatch(updateProfile(res));
+                return res;
+            })
+            .catch( (e) => console.log(e) );
+    }
+}
+
+export function syncProfile(){
+    const env = runtimeEnv();
+    return dispatch => {
+        return fetch(`${env.REACT_APP_API_URL}/update/` + localStorage.getItem("username") + "/profile", {
+            method: 'GET',
+            headers: {
+                'Authorization': localStorage.getItem('token'),
+            },
+            mode: 'cors'})
+            .then( (response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then( (res) => {
+                if(res){
+                    dispatch(LoadState(''))
+                    dispatch(updateProfile(res));
+                }
                 return res;
             })
             .catch( (e) => console.log(e) );
