@@ -18,6 +18,7 @@ export default (state = initialState, action) => {
         case constants.LOADING_CHANGE:
             updated['loadingState'] = action.load;
             return updated;
+
         case constants.INSULT_FETCHED:
             updated['insult'] = action.insult;
             return updated;

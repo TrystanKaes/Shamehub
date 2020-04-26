@@ -31,6 +31,27 @@ function updateProfile(userInfo){
     }
 }
 
+function appendFeed(nextFeedChunk){
+    return {
+        type: actionTypes.USERFEED_FETCHED,
+        feed: nextFeedChunk.user_feed,
+    }
+}
+
+function updateNewCommits(newCommits){
+    return {
+        type: actionTypes.FETCH_NEW_COMMITS,
+        commits: newCommits.new_commits,
+    }
+}
+
+function madeNewPost(userfeed){
+    return {
+        type: actionTypes.POSTED_TO_USERFEED,
+        feed: userfeed,
+    }
+}
+
 export function getUser(username){
     const env = runtimeEnv();
     return fetch(`${env.REACT_APP_API_URL}/users/` + username, {
@@ -173,6 +194,90 @@ export function syncProfile(){
                 if(res){
                     dispatch(LoadState(''))
                     dispatch(updateProfile(res));
+                }
+                return res;
+            })
+            .catch( (e) => console.log(e) );
+    }
+}
+
+export function fetchNewCommits(){
+    const env = runtimeEnv();
+    return dispatch => {
+        return fetch(`${env.REACT_APP_API_URL}/update/` + localStorage.getItem("username") + "/commits", {
+            method: 'GET',
+            headers: {
+                'Authorization': localStorage.getItem('token'),
+            },
+            mode: 'cors'})
+            .then( (response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then( (res) => {
+                if(res){
+                    dispatch(LoadState(''))
+                    dispatch(updateNewCommits(res));
+                }
+                return res;
+            })
+            .catch( (e) => console.log(e) );
+    }
+}
+
+export function PostNewCommits(data){
+    const env = runtimeEnv();
+    alert(JSON.stringify({body: {
+        "commits": data
+    }}))
+    return dispatch => {
+        return fetch(`${env.REACT_APP_API_URL}/userfeed/` + localStorage.getItem("username"), {
+            method: 'POST',
+            headers: {
+                'Authorization': localStorage.getItem('token'),
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+            body: JSON.stringify({"commits":data}),
+            mode: 'cors'})
+            .then( (response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then( (res) => {
+                if(res){
+                    dispatch(LoadState(''))
+                    dispatch(madeNewPost(data));
+                }
+                return res;
+            })
+            .catch( (e) => console.log(e) );
+    }
+}
+
+export function fetchUserFeed(skip){
+    const env = runtimeEnv();
+    return dispatch => {
+        return fetch(`${env.REACT_APP_API_URL}/userfeed/${localStorage.getItem('username')}/${skip}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': localStorage.getItem('token'),
+            },
+            mode: 'cors'})
+            .then( (response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then( (res) => {
+                if(res){
+                    dispatch(LoadState(''))
+                    dispatch(appendFeed(res));
                 }
                 return res;
             })

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Card , Row, Col, Container, ListGroup } from 'react-bootstrap'
+import { Card , Row, Col, Container, ListGroup, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import RawFeed from './rawfeed'
 import { connect } from 'react-redux';
+import UserFeed from './userfeed';
+import NewPost from './newpost';
 import darkSettings from "../assets/dark-settings.svg";
 import lightSettings from "../assets/light-settings.svg";
+import {fetchNewCommits, fetchUserFeed} from "../actions/userActions";
 
 class Profile extends Component {
     constructor(props){
@@ -14,16 +16,20 @@ class Profile extends Component {
             isLoaded : true,
             githubLink : "https://github.com/" + this.props.user.username,
             rotate: true,
+            makePosts: false,
         };
-        this.handleClick = this.handleClick.bind(this);
+        this.showMakePost = this.showMakePost.bind(this);
+    }
+
+    showMakePost(){
+        this.setState({makePosts:!this.state.makePosts})
+        const { dispatch } = this.props;
+        dispatch(fetchNewCommits());
+        dispatch(fetchUserFeed(0))
     }
 
     componentDidMount() {
         this.setState({rotate:false})
-    }
-
-    handleClick(){
-        this.setState({rotate:!this.state.rotate})
     }
 
     render() {
@@ -101,19 +107,29 @@ class Profile extends Component {
                         <Col>
                             {/* THIS IS THE LEFT PROFILE AND REPOSITORY COLUMN */}
                             <Profile Profile={this.props.user} link={this.state.githubLink}/>
-                            <Repository repositories={this.props.details.repo_names} link={this.state.githubLink}/>
+                            {/*<Repository repositories={this.props.user.repo_info.repo_names} link={this.state.githubLink}/>*/}
                         </Col>
                         <Col xs={6}>
                             {/* THIS IS THE MAIN POST COLUMN */}
-                                <RawFeed commits={this.props.details.posts.sort((a,b)=>{
-                                    return new Date(b.commit_date) - new Date(a.commit_date)
-                                })}/>
+                            <Button variant={this.props.theme}
+                                    style={{flex:1, border:2}}
+                                    onClick={this.showMakePost}>
+                                <h3>{(this.state.makePosts)? "Go back":"Update your friends on your new work!"}</h3>
+                            </Button>
+                            {(this.state.makePosts) ?
+                                <NewPost/> :
+                                <UserFeed/>
+                            }
+                            {/*    <RawFeed commits={this.props.details.posts.sort((a,b)=>{*/}
+                            {/*        return new Date(b.commit_date) - new Date(a.commit_date)*/}
+                            {/*    })}/>*/}
                         </Col>
                         <Col>
                             {/* I Don't know what this is for anymore. Ads? */}
                             {/*<Repository repositories={profileState.repos} link={this.state.githubLink}/>*/}
                         </Col>
                     </Row>
+                    <div style={{height:window.innerHeight}}></div>
                 </Container>
         );
     }
@@ -124,7 +140,6 @@ const mapStateToProps = state => {
     return {
         theme: state.glob.theme,
         user: state.user,
-        details: state.user.repo_info
     }
 }
 
