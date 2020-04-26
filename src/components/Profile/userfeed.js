@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchUserFeed} from '../actions/userActions'
-import RawFeed from "./rawfeed";
-import Post from "./post";
-
-//
-// function getScrollPercent() {
-//     let h = document.documentElement,
-//         b = document.body,
-//         st = 'scrollTop',
-//         sh = 'scrollHeight';
-//     return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
-// }
-
+import Post from "../Utilities/post";
 
 class UserFeed extends Component {
     constructor(props){
@@ -22,12 +10,6 @@ class UserFeed extends Component {
             isLoaded : true,
         };
     }
-
-    // fetchFeed(){
-    //     alert("Fetching...")
-    //     const {dispatch} = this.props;
-    //     dispatch(fetchUserFeed(0))
-    // }
 
     componentDidMount() {
 

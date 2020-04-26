@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import RawFeed from "./rawfeed";
 import {Col, Container, Row} from "react-bootstrap";
 
 class DiscoverFeed extends Component {
@@ -27,7 +26,6 @@ class DiscoverFeed extends Component {
                         <Col xs={6}>
                             This Is A Discovery Feed!
                             {/* THIS IS THE MAIN POST COLUMN */}
-                            {/*<RawFeed commits={commits}/>*/}
                         </Col>
                         <Col>
                         </Col>

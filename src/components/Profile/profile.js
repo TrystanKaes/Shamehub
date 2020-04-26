@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import UserFeed from './userfeed';
 import NewPost from './newpost';
-import darkSettings from "../assets/dark-settings.svg";
-import lightSettings from "../assets/light-settings.svg";
-import {fetchNewCommits, fetchUserFeed} from "../actions/userActions";
+import darkSettings from "../../assets/dark-settings.svg";
+import lightSettings from "../../assets/light-settings.svg";
+import {fetchNewCommits, fetchUserFeed} from "../../actions/userActions";
 
 class Profile extends Component {
     constructor(props){

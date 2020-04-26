@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ChromePicker } from 'react-color';
-import { getInsult } from '../actions/globalActions'
+import { getInsult } from '../../actions/globalActions'
 
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);

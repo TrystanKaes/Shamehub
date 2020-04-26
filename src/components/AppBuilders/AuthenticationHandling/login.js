@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { submitLogin } from '../actions/userActions';
+import { submitLogin } from '../../../actions/userActions';
 import { connect } from 'react-redux';
 import { Form, FormGroup, FormControl, FormLabel, Button } from 'react-bootstrap';
-import {LoadState} from "../actions/globalActions";
+import {LoadState} from "../../../actions/globalActions";
 
 
 class Login extends Component {

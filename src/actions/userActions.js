@@ -240,6 +240,7 @@ export function PostNewCommits(data){
             body: JSON.stringify({"commits":data}),
             mode: 'cors'})
             .then( (response) => {
+                dispatch(LoadState('Posting'))
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }

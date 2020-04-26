@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import lightLogo from '../assets/light-logo.svg';
-import darkLogo from '../assets/dark-logo.svg';
+import lightLogo from '../../assets/light-logo.svg';
+import darkLogo from '../../assets/dark-logo.svg';
 
 class Welcomebanner extends Component {
     constructor(props){

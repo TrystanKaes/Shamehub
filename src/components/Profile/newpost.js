@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Row, Container, FormLabel, Button} from 'react-bootstrap'
-import {fetchNewCommits, PostNewCommits} from '../actions/userActions'
-import Post from './post'
+import {fetchNewCommits, PostNewCommits} from '../../actions/userActions'
+import Post from '../Utilities/post'
 import { connect } from 'react-redux';
 
 function DoesPostExist(arraytosearch, post){

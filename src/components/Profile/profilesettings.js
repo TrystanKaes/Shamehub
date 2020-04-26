@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {Card, Row, Col, Container, FormGroup, FormLabel, FormControl, Button, Form} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import darkSettings from "../assets/dark-settings.svg";
-import lightSettings from "../assets/light-settings.svg";
-import {LoadState} from "../actions/globalActions";
-import { submitProfileUpdate, syncProfile } from "../actions/userActions";
+import darkSettings from "../../assets/dark-settings.svg";
+import lightSettings from "../../assets/light-settings.svg";
+import {LoadState} from "../../actions/globalActions";
+import { submitProfileUpdate, syncProfile } from "../../actions/userActions";
 
 class Profile extends Component {
     constructor(props){

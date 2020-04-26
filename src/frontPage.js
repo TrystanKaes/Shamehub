@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import AppHeader from './components/appHeader';
-import Authentication from './components/authentication';
+import AppHeader from './components/AppBuilders/appHeader';
+import Authentication from './components/AppBuilders/AuthenticationHandling/authentication';
 import {HashRouter,Route} from 'react-router-dom';
 import { connect } from 'react-redux'
-import Profile from './components/profile'
-import WelcomeBanner from './components/welcomebanner'
-import UserFeed from './components/userfeed'
+import Profile from './components/Profile/profile'
+import WelcomeBanner from './components/AppBuilders/welcomebanner'
+import UserFeed from './components/Profile/userfeed'
 import DiscoverFeed from './components/discoverfeed'
-import ColorWheelGame from './components/ColorWheelGame'
-import ProfileSettings from './components/profilesettings'
-import Home from './components/home'
+import ColorWheelGame from './components/AppBuilders/ColorWheelGame'
+import ProfileSettings from './components/Profile/profilesettings'
+import Home from './components/AppBuilders/home'
 import {Button} from "react-bootstrap";
 import {changeTheme} from "./actions/globalActions";
 

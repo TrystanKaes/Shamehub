@@ -11,9 +11,9 @@ import {Navbar,
 import {LinkContainer} from 'react-router-bootstrap';
 import {connect} from "react-redux";
 import { withRouter } from "react-router-dom";
-import {logoutUser} from "../actions/userActions";
-import lightLogo from "../assets/light-logo.svg";
-import darkLogo from "../assets/dark-logo.svg";
+import {logoutUser} from "../../actions/userActions";
+import lightLogo from "../../assets/light-logo.svg";
+import darkLogo from "../../assets/dark-logo.svg";
 
 class AppHeader extends Component {
     constructor(props){
