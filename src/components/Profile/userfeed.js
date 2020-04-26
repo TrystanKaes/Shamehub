@@ -36,7 +36,14 @@ class UserFeed extends Component {
                         )}
                     </div>
                     :
-                    <Loading/>
+                    <div>
+                        {this.props.userfeed.sort((a, b) => {
+                            return new Date(b.commit_date) - new Date(a.commit_date)
+                        }).map((post) =>
+                            <Post commit={post}/>
+                        )}
+                        <Loading/>
+                    </div>
                 }
             </div>
         );

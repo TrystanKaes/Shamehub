@@ -30,6 +30,8 @@ class Profile extends Component {
 
     componentDidMount() {
         this.setState({rotate:false})
+        const { dispatch } = this.props;
+        dispatch(fetchUserFeed(0))
     }
 
     render() {
@@ -107,7 +109,11 @@ class Profile extends Component {
                         <Col>
                             {/* THIS IS THE LEFT PROFILE AND REPOSITORY COLUMN */}
                             <Profile Profile={this.props.user} link={this.state.githubLink}/>
-                            {/*<Repository repositories={this.props.user.repo_info.repo_names} link={this.state.githubLink}/>*/}
+                            {(this.props.repo_names)?
+                                < Repository repositories={this.props.user.repo_names} link={this.props.user.githubLink}/>
+                                :
+                                ""
+                            }
                         </Col>
                         <Col xs={6}>
                             {/* THIS IS THE MAIN POST COLUMN */}
@@ -140,6 +146,7 @@ const mapStateToProps = state => {
     return {
         theme: state.glob.theme,
         user: state.user,
+        repo_names: state.user.repo_names,
     }
 }
 

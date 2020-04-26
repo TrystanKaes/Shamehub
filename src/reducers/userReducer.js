@@ -8,6 +8,7 @@ var initialState = {
     bio: '',
     new_commits: null,
     repo_info: null,
+    repo_names: null,
     userfeed: [],
     loggedIn: localStorage.getItem('token') ? true : false,
     username: localStorage.getItem('username') ? localStorage.getItem('username') : '',
@@ -31,6 +32,7 @@ export default (state = initialState, action) => {
             updated['bio'] = action.user.bio;
             updated['new_commits'] = action.user.new_commits;
             updated['repo_info'] = action.user.repo_info;
+            updated['repo_names'] = action.user.repo_info.repo_names;
             return updated;
 
         case constants.UPDATE_USER:

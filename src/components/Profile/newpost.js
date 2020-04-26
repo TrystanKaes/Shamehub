@@ -79,7 +79,7 @@ class NewPost extends Component {
                                     </button>
 
                             ) :
-                            <h3 style={{flex:1, justifyContent:'center'}}>No new commits to post.<br/>Get to work!</h3>}
+                            <h4 style={{flex:1, justifyContent:'center'}}>No new commits to post.<br/>Get to work!</h4>}
                 </Row>
                             {(this.props.user.new_commits)?
                                 <div style={{display: 'flex', justifyContent: 'center', padding: 10}} componentClass={FormLabel} sm={2}>
