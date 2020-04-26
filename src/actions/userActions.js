@@ -161,6 +161,7 @@ export function submitProfileUpdate(data){
             body: JSON.stringify(data),
             mode: 'cors'})
             .then( (response) => {
+                dispatch(LoadState('Updating your profile'))
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
@@ -185,6 +186,7 @@ export function syncProfile(){
             },
             mode: 'cors'})
             .then( (response) => {
+                dispatch(LoadState('Syncing with GitHub'))
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
@@ -211,6 +213,7 @@ export function fetchNewCommits(){
             },
             mode: 'cors'})
             .then( (response) => {
+                dispatch(LoadState('Fetching your recent commits'))
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
@@ -267,6 +270,7 @@ export function fetchUserFeed(skip){
             },
             mode: 'cors'})
             .then( (response) => {
+                dispatch(LoadState('Fetching userfeed'))
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }

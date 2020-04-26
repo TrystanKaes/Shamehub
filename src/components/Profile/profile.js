@@ -117,7 +117,7 @@ class Profile extends Component {
                                 <h3>{(this.state.makePosts)? "Go back":"Update your friends on your new work!"}</h3>
                             </Button>
                             {(this.state.makePosts) ?
-                                <NewPost/> :
+                                <NewPost goBack={this.showMakePost}/> :
                                 <UserFeed/>
                             }
                             {/*    <RawFeed commits={this.props.details.posts.sort((a,b)=>{*/}

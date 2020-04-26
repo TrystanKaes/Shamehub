@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Row, Container, FormLabel, Button} from 'react-bootstrap'
 import {fetchNewCommits, PostNewCommits} from '../../actions/userActions'
 import Post from '../Utilities/post'
+import {Loading} from '../Utilities/loading'
 import { connect } from 'react-redux';
 
 function DoesPostExist(arraytosearch, post){
@@ -48,6 +49,7 @@ class NewPost extends Component {
     post(){
         const {dispatch} = this.props;
         dispatch(PostNewCommits(this.state.postList));
+        this.props.goBack()
     }
 
     componentDidMount() {
@@ -57,9 +59,11 @@ class NewPost extends Component {
 
     render() {
         return(
-            <Container>
-                <div style={{height:10}}/>
-                <Row>
+            <div>
+                {(this.props.loadingState === "") ?
+                    <Container>
+                        <div style={{height:10}}/>
+                        <Row>
                         {(this.props.user.new_commits) ?
                             this.props.user.new_commits.map((post) =>
                                 (((arraytosearch, post) =>{
@@ -77,21 +81,25 @@ class NewPost extends Component {
                             ) :
                             <h3 style={{flex:1, justifyContent:'center'}}>No new commits to post.<br/>Get to work!</h3>}
                 </Row>
-                {(this.props.user.new_commits)?
-                    <div style={{display: 'flex', justifyContent: 'center', padding: 10}} componentClass={FormLabel} sm={2}>
-                        <Button variant={this.props.theme} onClick={this.post}><h4>Post</h4></Button>
-                    </div>
-                    : ""}
-            </Container>
-        );
+                            {(this.props.user.new_commits)?
+                                <div style={{display: 'flex', justifyContent: 'center', padding: 10}} componentClass={FormLabel} sm={2}>
+                                    <Button variant={this.props.theme} onClick={this.post}><h4>Post</h4></Button>
+                                </div>
+                            : ""}
+                    </Container>
+                    :
+                    <Loading/>
+                }
+            </div>
+            );
     }
-
 }
 
 const mapStateToProps = state => {
     return {
         theme: state.glob.theme,
         user: state.user,
+        loadingState: state.glob.loadingState,
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Post from "../Utilities/post";
+import {Loading} from '../Utilities/loading'
 
 class UserFeed extends Component {
     constructor(props){
@@ -24,14 +25,20 @@ class UserFeed extends Component {
     render() {
 
         return(
-                <div>
-                    {/*<button onClick={this.fetchFeed.bind(this)}>FETCH USER FEED</button>*/}
-                    {this.props.userfeed.sort((a,b)=>{
-                        return new Date(b.commit_date) - new Date(a.commit_date)
-                    }).map((post) =>
-                        <Post commit={post}/>
-                    )}
-                </div>
+            <div>
+                {(this.props.loadingState === "") ?
+                    <div>
+                        {/*<button onClick={this.fetchFeed.bind(this)}>FETCH USER FEED</button>*/}
+                        {this.props.userfeed.sort((a, b) => {
+                            return new Date(b.commit_date) - new Date(a.commit_date)
+                        }).map((post) =>
+                            <Post commit={post}/>
+                        )}
+                    </div>
+                    :
+                    <Loading/>
+                }
+            </div>
         );
     }
 
@@ -40,6 +47,7 @@ class UserFeed extends Component {
 const mapStateToProps = state => {
     return {
         userfeed: state.user.userfeed,
+        loadingState: state.glob.loadingState
     }
 }
 
