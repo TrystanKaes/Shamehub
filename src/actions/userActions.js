@@ -229,9 +229,6 @@ export function fetchNewCommits(){
 
 export function PostNewCommits(data){
     const env = runtimeEnv();
-    alert(JSON.stringify({body: {
-        "commits": data
-    }}))
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/userfeed/` + localStorage.getItem("username"), {
             method: 'POST',
