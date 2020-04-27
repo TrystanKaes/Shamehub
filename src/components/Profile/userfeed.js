@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Post from "../Utilities/post";
 import Loading from '../Utilities/loading'
+import { fetchUserFeed } from "../../actions/userActions";
+import {LoadState} from "../../actions/globalActions";
 
 class UserFeed extends Component {
     constructor(props){
@@ -9,17 +11,25 @@ class UserFeed extends Component {
         this.state = {
             error : null,
             isLoaded : true,
+            lastScroll: Date.now(),
         };
+        this.scrolledtobottom = this.scrolledtobottom.bind(this)
+        window.addEventListener('scroll', this.scrolledtobottom);
     }
 
-    componentDidMount() {
-
-
+    scrolledtobottom(){
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                console.log("you're at the bottom of the page");
+                if (this.props.userfeed.length <= 0 || Date.now() - this.state.lastScroll > 3000) {
+                    const {dispatch} = this.props;
+                    dispatch(fetchUserFeed(parseInt(this.props.userfeed.length))).then(dispatch(LoadState('')));
+                    this.setState({lastScroll:Date.now()})
+                }
+            }
     }
-
 
     componentWillUnmount() {
-
+        window.removeEventListener('scroll', this.scrolledtobottom);
     }
 
     render() {

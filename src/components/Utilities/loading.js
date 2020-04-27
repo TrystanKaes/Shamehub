@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import store from "../../stores/store"
 import loadingIconLight from '../../assets/loading-cylon-light.svg';
 import loadingIconDark from '../../assets/loading-cylon-dark.svg';
 import {connect} from "react-redux";
