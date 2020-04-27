@@ -61,36 +61,30 @@ class NewPost extends Component {
         return(
             <div>
                 {(this.props.loadingState === "") ?
-                    <Container>
-                        <div style={{height:10}}/>
-                        <Row>
+                    <div style={{flex:1}}>
+                        <div style={{height:10,flex:1}}/>
                         {(this.props.user.new_commits) ?
                             this.props.user.new_commits.map((post) =>
                                 (((arraytosearch, post) =>{
                                     for (var i=0; i< arraytosearch.length; i++) {
                                         if(arraytosearch[i].commit_msg === post.commit_msg) {  return i;   }}
                                     return -1;})(this.state.postList,post) === -1)?
-                                    <div>
                                         <button class="Hidden-Post-Button-Unselected" onClick={() => this.selectPost(post)}>
                                             <Post commit={post}/>
                                         </button>
-                                    </div>
                                     :
-                                    <div>
                                         <button class="Hidden-Post-Button-Selected" onClick={() => this.selectPost(post)}>
                                             <Post commit={post}/>
                                         </button>
-                                    </div>
 
                             ) :
                             <h4 style={{flex:1, justifyContent:'center'}}>No new commits to post.<br/>Get to work!</h4>}
-                </Row>
                             {(this.props.user.new_commits)?
                                 <div style={{display: 'flex', justifyContent: 'center', padding: 10}} componentClass={FormLabel} sm={2}>
                                     <Button variant={this.props.theme} onClick={this.post}><h4>Post</h4></Button>
                                 </div>
                             : ""}
-                    </Container>
+                    </div>
                     :
                     <Loading/>
                 }
