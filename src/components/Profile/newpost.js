@@ -70,13 +70,17 @@ class NewPost extends Component {
                                     for (var i=0; i< arraytosearch.length; i++) {
                                         if(arraytosearch[i].commit_msg === post.commit_msg) {  return i;   }}
                                     return -1;})(this.state.postList,post) === -1)?
-                                    <button class="Hidden-Post-Button-Unselected" onClick={() => this.selectPost(post)}>
-                                        <Post commit={post}/>
-                                    </button>
+                                    <div>
+                                        <button class="Hidden-Post-Button-Unselected" onClick={() => this.selectPost(post)}>
+                                            <Post commit={post}/>
+                                        </button>
+                                    </div>
                                     :
-                                    <button class="Hidden-Post-Button-Selected" onClick={() => this.selectPost(post)}>
-                                        <Post commit={post}/>
-                                    </button>
+                                    <div>
+                                        <button class="Hidden-Post-Button-Selected" onClick={() => this.selectPost(post)}>
+                                            <Post commit={post}/>
+                                        </button>
+                                    </div>
 
                             ) :
                             <h4 style={{flex:1, justifyContent:'center'}}>No new commits to post.<br/>Get to work!</h4>}
