@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Container, FormLabel, Button} from 'react-bootstrap'
+import {FormLabel, Button} from 'react-bootstrap'
 import {fetchNewCommits, PostNewCommits} from '../../actions/userActions'
 import Post from '../Utilities/post'
 import Loading from '../Utilities/loading'

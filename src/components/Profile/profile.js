@@ -29,9 +29,7 @@ class Profile extends Component {
     }
 
     componentDidMount() {
-        this.setState({rotate:false})
-        const { dispatch } = this.props;
-        dispatch(fetchUserFeed(0))
+        this.setState({rotate:!this.state.rotate})
     }
 
     render() {

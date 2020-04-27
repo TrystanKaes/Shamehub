@@ -1,37 +1,81 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Col, Container, Row} from "react-bootstrap";
+import Post from "./Utilities/post";
+import Loading from './Utilities/loading'
+import { LoadState, fetchDiscoverFeed } from "../actions/globalActions";
+import { Col, Container, Row } from "react-bootstrap";
 
-class DiscoverFeed extends Component {
+class Discoverfeed extends Component {
     constructor(props){
         super(props);
         this.state = {
             error : null,
             isLoaded : true,
+            lastScroll: Date.now(),
         };
+        this.scrolledtobottom = this.scrolledtobottom.bind(this)
+        window.addEventListener('scroll', this.scrolledtobottom);
     }
 
     componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(fetchDiscoverFeed(0))
+    }
 
+
+    scrolledtobottom(){
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            console.log("you're at the bottom of the page");
+            if (this.props.discoverfeed.length <= 0 || Date.now() - this.state.lastScroll > 3000) {
+                const {dispatch} = this.props;
+                dispatch(fetchDiscoverFeed(parseInt(this.props.discoverfeed.length))).then(dispatch(LoadState('')));
+                this.setState({lastScroll:Date.now()})
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.scrolledtobottom);
     }
 
     render() {
 
         return(
-            <div>
-                <Container>
-                    <Row>
-                        <Col>
-                        </Col>
-                        <Col xs={6}>
-                            This Is A Discovery Feed!
-                            {/* THIS IS THE MAIN POST COLUMN */}
-                        </Col>
-                        <Col>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+            <Container>
+                <Row>
+                    <Col>
+                        {/* THIS IS THE SOMETHING */}
+
+                    </Col>
+                    <Col xs={6}>
+                        {/* THIS IS THE MAIN POST COLUMN */}
+                        <div>
+                            {(this.props.loadingState === "") ?
+                                <div>
+                                    {/*<button onClick={this.fetchFeed.bind(this)}>FETCH USER FEED</button>*/}
+                                    {this.props.discoverfeed.sort((a, b) => {
+                                        return new Date(b.commit_date) - new Date(a.commit_date)
+                                    }).map((post, i) =>
+                                        <Post key={i}  commit={post}/>
+                                    )}
+                                </div>
+                                :
+                                <div>
+                                    {this.props.discoverfeed.sort((a, b) => {
+                                        return new Date(b.commit_date) - new Date(a.commit_date)
+                                    }).map((post, i) =>
+                                        <Post key={i} commit={post}/>
+                                    )}
+                                    <Loading/>
+                                </div>
+                            }
+                        </div>
+                    </Col>
+                    <Col>
+                        {/* I Don't know what this is for anymore. Ads? */}
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 
@@ -39,8 +83,9 @@ class DiscoverFeed extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        discoverfeed: state.glob.discoverfeed,
+        loadingState: state.glob.loadingState
     }
 }
 
-export default connect(mapStateToProps)(DiscoverFeed);
+export default connect(mapStateToProps)(Discoverfeed);

@@ -1,9 +1,11 @@
 import constants from '../constants/actionTypes'
+import uniq from 'lodash/uniq';
 
 var initialState = {
     theme: 'light',
     loadingState: '',
     insult: 'You got this!',
+    discoverfeed: [],
 
 }
 
@@ -21,6 +23,11 @@ export default (state = initialState, action) => {
 
         case constants.INSULT_FETCHED:
             updated['insult'] = action.insult;
+            return updated;
+
+        case constants.DISCOVERFEED_FETCHED:
+            let duplicateArray = (updated['discoverfeed'])? action.feed : [updated['discoverfeed']].concat(action.feed);
+            updated['discoverfeed'] = uniq(duplicateArray, 'commit_date');
             return updated;
 
         default:

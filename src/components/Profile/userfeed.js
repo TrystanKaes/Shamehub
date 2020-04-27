@@ -17,6 +17,11 @@ class UserFeed extends Component {
         window.addEventListener('scroll', this.scrolledtobottom);
     }
 
+    componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(fetchUserFeed(0))
+    }
+
     scrolledtobottom(){
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 console.log("you're at the bottom of the page");

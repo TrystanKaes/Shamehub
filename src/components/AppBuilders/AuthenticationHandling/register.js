@@ -40,7 +40,7 @@ class Register extends Component {
 
     render(){
         return (
-            <Form horizontal>
+            <Form horizontal="true">
                 <FormGroup controlId="username">
                     <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
                         <div className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>

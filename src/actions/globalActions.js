@@ -21,6 +21,13 @@ function fetchInsult(insult){
     }
 }
 
+function appendDiscFeed(nextFeedChunk){
+    return {
+        type: actionTypes.DISCOVERFEED_FETCHED,
+        feed: nextFeedChunk.discovery_field,
+    }
+}
+
 export function changeTheme(){
     return dispatch => {
         dispatch(themeChanged());
@@ -32,6 +39,8 @@ export function LoadState(state){
         dispatch(loadingState(state));
     }
 }
+
+
 
 export function getInsult(){
     const env = runtimeEnv();
@@ -55,6 +64,34 @@ export function getInsult(){
                 dispatch(fetchInsult(res.insults.insult));
             })
             .catch((e) => console.log(e))
+            .then(dispatch(LoadState('')));
+    }
+}
+
+export function fetchDiscoverFeed(skip){
+    const env = runtimeEnv();
+    return dispatch => {
+        return fetch(`${env.REACT_APP_API_URL}/discoveryFeed/${skip}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': localStorage.getItem('token'),
+            },
+            mode: 'cors'})
+            .then( (response) => {
+                dispatch(LoadState('Fetching discovery feed'))
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then( (res) => {
+                if(res){
+                    dispatch(LoadState(''))
+                    dispatch(appendDiscFeed(res));
+                }
+                return res;
+            })
+            .catch( (e) => console.log(e) )
             .then(dispatch(LoadState('')));
     }
 }

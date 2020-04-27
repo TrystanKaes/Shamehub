@@ -1,4 +1,5 @@
 import constants from '../constants/actionTypes'
+import uniq from 'lodash/uniq';
 
 var initialState = {
     name: '',
@@ -50,7 +51,8 @@ export default (state = initialState, action) => {
             return updated;
 
         case constants.USERFEED_FETCHED:
-            (updated['userfeed'])? updated['userfeed'] = action.feed : updated['userfeed'] = [updated['userfeed']].concat(action.feed);
+            let duplicateArray = (updated['userfeed'])? action.feed : [updated['userfeed']].concat(action.feed);
+            updated['userfeed'] = uniq(duplicateArray, 'commit_date');
             return updated;
 
         case constants.USER_LOGOUT:
