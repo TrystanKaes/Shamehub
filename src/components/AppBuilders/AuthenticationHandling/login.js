@@ -41,7 +41,7 @@ class Login extends Component {
             <Form horizontal>
               <FormGroup controlId="username">
                   <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
-                      <div class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
+                      <div className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
                         <h3>Username</h3>
                       </div>
                   </div>

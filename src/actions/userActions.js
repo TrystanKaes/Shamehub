@@ -117,7 +117,8 @@ export function submitLogin(data){
                         })
                 }
             })
-            .catch( (e) => console.log(e) );
+            .catch( (e) => console.log(e) )
+            .then(dispatch(LoadState('')));
     }
 }
 
@@ -143,7 +144,8 @@ export function submitRegister(data){
                 dispatch(submitLogin(data));
                 return res;
             })
-            .catch( (e) => console.log(e) );
+            .catch( (e) => console.log(e) )
+            .then(dispatch(LoadState('')));
     }
 }
 
@@ -172,7 +174,8 @@ export function submitProfileUpdate(data){
                 dispatch(updateProfile(res));
                 return res;
             })
-            .catch( (e) => console.log(e) );
+            .catch( (e) => console.log(e) )
+            .then(dispatch(LoadState('')));
     }
 }
 
@@ -199,7 +202,8 @@ export function syncProfile(){
                 }
                 return res;
             })
-            .catch( (e) => console.log(e) );
+            .catch( (e) => console.log(e) )
+            .then(dispatch(LoadState('')));
     }
 }
 
@@ -226,7 +230,8 @@ export function fetchNewCommits(){
                 }
                 return res;
             })
-            .catch( (e) => console.log(e) );
+            .catch( (e) => console.log(e) )
+            .then(dispatch(LoadState('')));
     }
 }
 
@@ -256,7 +261,8 @@ export function PostNewCommits(data){
                 }
                 return res;
             })
-            .catch( (e) => console.log(e) );
+            .catch( (e) => console.log(e) )
+            .then(dispatch(LoadState('')));
     }
 }
 
@@ -283,7 +289,8 @@ export function fetchUserFeed(skip){
                 }
                 return res;
             })
-            .catch( (e) => console.log(e) );
+            .catch( (e) => console.log(e) )
+            .then(dispatch(LoadState('')));
     }
 }
 

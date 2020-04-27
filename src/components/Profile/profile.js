@@ -38,22 +38,22 @@ class Profile extends Component {
 
         const Repository = ({repositories, link}) => {
             return(
-                <div class="Hidden-Card" style={{padding: 10 }}>
+                <div className="Hidden-Card" style={{padding: 10 }}>
                     <Card bg={this.props.theme} style={{
                         minWidth: '11rem',
                         borderRadius: 30,
                         borderColor: (this.props.theme === 'dark') ? '#c03221' : '#55828b'}}>
                         <Card.Body>
                             <Card.Title class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}><h3>Repositories</h3></Card.Title>
-                            <Card.Text>
+                            <h5 style={{color:(this.props.theme === 'dark') ? '#87bba2' : '#55828b'}}>
                                     { repositories ?
-                                        repositories.map((repo) =>
-                                            <ListGroup.Item as={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
+                                        repositories.map((repo, i) =>
+                                            <ListGroup.Item  key={i} as={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
                                                 <a href={link + "/" + repo}
                                                    target="_blank"
                                                    rel="noopener noreferrer"
                                                    style={{color:'#c03221'}}>
-                                                    <h5 style={{color:(this.props.theme === 'dark') ? '#87bba2' : '#55828b'}}>
+                                                    <h5>
                                                         {repo}
                                                     </h5>
                                                 </a>
@@ -61,7 +61,7 @@ class Profile extends Component {
                                         :
                                         "No Repos found"
                                     }
-                            </Card.Text>
+                            </h5>
                         </Card.Body>
                     </Card>
                 </div>
@@ -69,7 +69,7 @@ class Profile extends Component {
         }
         const Profile = ({Profile, link}) => {
             return(
-                <div class={(this.props.theme === 'dark') ? 'Floating-Card' : 'Floating-Card Drop-Shadow-Dark'}>
+                <div className={(this.props.theme === 'dark') ? 'Floating-Card' : 'Floating-Card Drop-Shadow-Dark'}>
                     <Card  bg={this.props.theme}
                            style={{
                         minWidth: '12rem',

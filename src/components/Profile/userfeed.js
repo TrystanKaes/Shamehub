@@ -31,16 +31,16 @@ class UserFeed extends Component {
                         {/*<button onClick={this.fetchFeed.bind(this)}>FETCH USER FEED</button>*/}
                         {this.props.userfeed.sort((a, b) => {
                             return new Date(b.commit_date) - new Date(a.commit_date)
-                        }).map((post) =>
-                            <Post commit={post}/>
+                        }).map((post, i) =>
+                            <Post key={i}  commit={post}/>
                         )}
                     </div>
                     :
                     <div>
                         {this.props.userfeed.sort((a, b) => {
                             return new Date(b.commit_date) - new Date(a.commit_date)
-                        }).map((post) =>
-                            <Post commit={post}/>
+                        }).map((post, i) =>
+                            <Post key={i} commit={post}/>
                         )}
                         <Loading/>
                     </div>

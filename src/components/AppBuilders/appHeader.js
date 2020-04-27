@@ -41,10 +41,9 @@ class AppHeader extends Component {
                 <Navbar expand="lg"
                         variant={this.props.theme}
                         bg={this.props.theme}
-                        fluid
+                        fluid="true"
                         fixed="top"
-                        style={{borderRadius:0, backgroundOpacity: 1}}
-                        class="Drop-Shadow-Dark">
+                        style={{borderRadius:0, backgroundOpacity: 1}}>
                     <Navbar.Brand href="/welcome">
                         {(this.props.theme === 'dark') ?
                         <img
@@ -81,35 +80,35 @@ class AppHeader extends Component {
                         <Nav className="ml-auto">
                             <Nav.Link>
                                 <LinkContainer to="/home">
-                                    <NavItem eventKey={1} >Home </NavItem>
+                                    <NavItem eventkey={1} >Home </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
                             <Nav.Link disabled={!this.props.loggedIn}>
                                 <LinkContainer to="/profile">
-                                    <NavItem eventKey={2}>Profile </NavItem>
+                                    <NavItem eventkey={2}>Profile </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
                             <NavDropdown title="Feeds" id="basic-nav-dropdown">
                                 <NavDropdown.Item>
                                     <LinkContainer to="/discover">
-                                        <NavItem eventKey={4} disabled={!this.props.loggedIn}>Discover </NavItem>
+                                        <NavItem eventkey={3} disabled={!this.props.loggedIn}>Discover </NavItem>
                                     </LinkContainer>
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item disabled={!this.props.loggedIn}>
                                     <LinkContainer to="/userfeed">
-                                        <NavItem eventKey={3} >Home Feed </NavItem>
+                                        <NavItem eventkey={4} >Home Feed </NavItem>
                                     </LinkContainer>
                                 </NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link >
                                 <LinkContainer to="/ColorWheelGame">
-                                    <NavItem eventKey={2}>C.W.G. </NavItem>
+                                    <NavItem eventkey={5}>C.W.G. </NavItem>
                                 </LinkContainer>
                             </Nav.Link>
                             <Nav.Link>
                                 <LinkContainer to="/signin">
-                                    <NavItem eventKey={3}>
+                                    <NavItem eventkey={6}>
                                         {/*{this.props.loggedIn ? <Button style={{height:20, justifyContent: 'center'}} variant={'outline-' + this.state.invertTheme} onClick={this.logout.bind(this)}>Logout</Button>  : 'Login'}*/}
                                         {this.props.loggedIn ? <div style={{textDecoration:'line-through'}}>Logout</div>  : 'Login'}
                                     </NavItem>
@@ -118,7 +117,7 @@ class AppHeader extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-                <div class="Top-buffer"/>
+                <div className="Top-buffer"/>
             </header>
             </Container>
         );

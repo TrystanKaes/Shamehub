@@ -48,7 +48,7 @@ class FrontPage extends Component {
                         </div>
                 </HashRouter>
             </div>
-            <div class="Toggle-Button">
+            <div className="Toggle-Button">
                 <Button onClick={()=>{this.props.dispatch(changeTheme())}}
                     variant={(this.props.theme === 'dark') ? 'light' : 'dark'}
                     style={{width:30, height:30, borderRadius:50}}

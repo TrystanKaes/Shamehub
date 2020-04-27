@@ -64,7 +64,7 @@ class Login extends Component {
             <div>
                 {(this.state.win) ?
                     <div style={{height:window.innerHeight, backgroundColor:this.state.guessingColor}}
-                         class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
+                         className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
                         <h1>OMG YOU ACTUALLY WON<br/> WHAT THE ACTUAL HOW DID YOU EVEN <br/>DO THAT CONGRATULATIONS!!!!</h1>
                     </div>
                     :

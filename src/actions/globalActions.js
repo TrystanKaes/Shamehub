@@ -54,6 +54,7 @@ export function getInsult(){
             }).then((res) => {
                 dispatch(fetchInsult(res.insults.insult));
             })
-            .catch((e) => console.log(e));
+            .catch((e) => console.log(e))
+            .then(dispatch(LoadState('')));
     }
 }
