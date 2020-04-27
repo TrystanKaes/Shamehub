@@ -60,7 +60,7 @@ class Profile extends Component {
     render() {
         const Profile = ({Profile, link}) => {
             return(
-                <div class={(this.props.theme === 'dark') ? 'Floating-Card' : 'Floating-Card Drop-Shadow-Dark'}>
+                <div className={(this.props.theme === 'dark') ? 'Floating-Card' : 'Floating-Card Drop-Shadow-Dark'}>
                     <Card  bg={this.props.theme}
                            style={{
                                minWidth: '12rem',
@@ -80,7 +80,7 @@ class Profile extends Component {
                             </Card.Title>
                             <Card.Img style={{padding:10, borderRadius: "50%"}} variant="top" src={Profile.profile_img}  />
                             <Card.Subtitle style={{color: "#87bba2"}}><h5>{Profile.name}</h5></Card.Subtitle>
-                            <Card.Text class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
+                            <Card.Text className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
                                 {Profile.bio}
                             </Card.Text>
                         </Card.Body>
@@ -120,7 +120,7 @@ class Profile extends Component {
                             </FormGroup>
                             <FormGroup controlId="bio">
                                 <div style={{display: 'flex', justifyContent: 'center'}} componentClass={FormLabel} sm={2}>
-                                    <div class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
+                                    <div className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
                                         <h3>Bio</h3>
                                     </div>
                                 </div>

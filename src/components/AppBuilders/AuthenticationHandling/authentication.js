@@ -64,7 +64,7 @@ class Authentication extends Component {
 
         );
 
-        const userLoggedIn = (<div class={theme.text}>
+        const userLoggedIn = (<div className={theme.text}>
             <Link to="/ColorWheelGame">
                 <Button style={{backgroundColor: '#55828b',
                     color: '#87bba2',

@@ -17,11 +17,11 @@ class Home extends Component {
 
     render() {
         return(
-            <div class={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
+            <div className={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
                 <Welcomebanner/>
                 <div style={{padding:20}}>
-                    <h1 class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>Welcome to Shamehub</h1>
-                    <h6 class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>the github based social media</h6>
+                    <h1 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>Welcome to Shamehub</h1>
+                    <h6 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>the github based social media</h6>
                 </div>
                 <div style={{height:window.innerHeight}}></div>
             </div>

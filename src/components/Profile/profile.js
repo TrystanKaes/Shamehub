@@ -44,7 +44,7 @@ class Profile extends Component {
                         borderRadius: 30,
                         borderColor: (this.props.theme === 'dark') ? '#c03221' : '#55828b'}}>
                         <Card.Body>
-                            <Card.Title class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}><h3>Repositories</h3></Card.Title>
+                            <Card.Title className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}><h3>Repositories</h3></Card.Title>
                             <h5 style={{color:(this.props.theme === 'dark') ? '#87bba2' : '#55828b'}}>
                                     { repositories ?
                                         repositories.map((repo, i) =>
@@ -89,7 +89,7 @@ class Profile extends Component {
                             </Card.Title>
                             <Card.Img style={{padding:10, borderRadius: "50%"}} variant="top" src={Profile.profile_img}  />
                             <Card.Subtitle style={{color: "#87bba2"}}><h5>{Profile.name}</h5></Card.Subtitle>
-                            <Card.Text class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
+                            <Card.Text className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
                                 {Profile.bio}
                             </Card.Text>
                         </Card.Body>

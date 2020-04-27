@@ -27,11 +27,11 @@ class FrontPage extends Component {
     }
     render() {
         return (
-        <div class={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
+        <div className={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
             <div className="App">
                 <script>{setTimeout(this.handleTimer, 1000)}</script>
                 <HashRouter>
-                        <div class={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
+                        <div className={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
                             {this.state.enter ?
                                 <AppHeader /> :
                                 <WelcomeBanner />}
@@ -52,7 +52,7 @@ class FrontPage extends Component {
                 <Button onClick={()=>{this.props.dispatch(changeTheme())}}
                     variant={(this.props.theme === 'dark') ? 'light' : 'dark'}
                     style={{width:30, height:30, borderRadius:50}}
-                    class={(this.props.theme === 'dark') ? 'Drop-Shadow-Light' : 'Drop-Shadow-Light'}>
+                        className={(this.props.theme === 'dark') ? 'Drop-Shadow-Light' : 'Drop-Shadow-Light'}>
                 </Button>
             </div>
         </div>

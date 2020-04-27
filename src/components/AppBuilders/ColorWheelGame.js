@@ -70,13 +70,13 @@ class Login extends Component {
                     :
                     <div style={{height:window.innerHeight, backgroundColor:this.state.guessingColor}}>
                         <div>
-                            <h1 class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>{this.state.DisplayText}</h1>
+                            <h1 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>{this.state.DisplayText}</h1>
                             <div style={{display: 'flex', justifyContent: 'center', padding: 4, color:this.state.background}}>
                                     <ChromePicker color={this.state.background}
                                                   disableAlpha={true}
                                                   onChangeComplete={this.handleChangeComplete}/>
                             </div>
-                                <h3 class={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
+                                <h3 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Text'}>
                                     {this.props.insult}
                                     <br/>You're getting {(this.state.lastGuess > this.state.thisGuess) ? " warmer. . ." : " colder. . ."}
                                 </h3>
