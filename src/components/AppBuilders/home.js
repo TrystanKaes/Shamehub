@@ -23,7 +23,6 @@ class Home extends Component {
                     <h1 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>Welcome to Shamehub</h1>
                     <h6 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>the github based social media</h6>
                 </div>
-                <div style={{height:window.innerHeight}}></div>
             </div>
         );
     }

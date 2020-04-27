@@ -6,7 +6,7 @@ import Login from './login';
 import Register from './register';
 import { logoutUser } from '../../../actions/userActions';
 import { LoadState } from '../../../actions/globalActions';
-import { Loading } from '../../Utilities/loading'
+import Loading from '../../Utilities/loading'
 import Welcomebanner from "../welcomebanner";
 
 
@@ -91,7 +91,6 @@ class Authentication extends Component {
                     :
                     <Loading/>
                 }
-                <div style={{height:window.innerHeight}}></div>
             </div>
 
         )

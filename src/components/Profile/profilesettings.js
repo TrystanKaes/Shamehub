@@ -145,7 +145,6 @@ class Profile extends Component {
                             </FormGroup>
                         </Form>
                 </Row>
-                <div style={{height:window.innerHeight}}></div>
             </Container>
         );
     }

@@ -135,7 +135,6 @@ class Profile extends Component {
                             {/*<Repository repositories={profileState.repos} link={this.state.githubLink}/>*/}
                         </Col>
                     </Row>
-                    <div style={{height:window.innerHeight}}></div>
                 </Container>
         );
     }

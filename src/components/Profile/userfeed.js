@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Post from "../Utilities/post";
-import {Loading} from '../Utilities/loading'
+import Loading from '../Utilities/loading'
 
 class UserFeed extends Component {
     constructor(props){

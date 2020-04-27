@@ -26,6 +26,7 @@ class FrontPage extends Component {
         this.setState({enter:true});
     }
     render() {
+        document.body.style.backgroundColor = (this.props.theme === 'dark') ? '#0f110c' : '#fff'
         return (
         <div className={(this.props.theme === 'dark') ? 'Dark-Background' : 'Light-Background'}>
             <div className="App">
@@ -51,8 +52,7 @@ class FrontPage extends Component {
             <div className="Toggle-Button">
                 <Button onClick={()=>{this.props.dispatch(changeTheme())}}
                     variant={(this.props.theme === 'dark') ? 'light' : 'dark'}
-                    style={{width:30, height:30, borderRadius:50}}
-                        className={(this.props.theme === 'dark') ? 'Drop-Shadow-Light' : 'Drop-Shadow-Light'}>
+                    style={{width:30, height:30, borderRadius:50}}>
                 </Button>
             </div>
         </div>

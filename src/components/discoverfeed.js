@@ -31,7 +31,6 @@ class DiscoverFeed extends Component {
                         </Col>
                     </Row>
                 </Container>
-                <div style={{height:window.innerHeight}}></div>
             </div>
         );
     }
