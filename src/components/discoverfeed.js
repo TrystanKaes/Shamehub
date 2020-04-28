@@ -58,6 +58,7 @@ class Discoverfeed extends Component {
                                     }).map((post, i) =>
                                         <Post key={i}  commit={post}/>
                                     )}
+                                    <h6>End of Feed</h6>
                                 </div>
                                 :
                                 <div>

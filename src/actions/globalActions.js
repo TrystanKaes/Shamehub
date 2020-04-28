@@ -80,6 +80,7 @@ export function fetchDiscoverFeed(skip){
             .then( (response) => {
                 dispatch(LoadState('Fetching discovery feed'))
                 if (!response.ok) {
+                    dispatch(LoadState(''))
                     throw Error(response.statusText);
                 }
                 return response.json();
