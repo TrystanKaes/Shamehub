@@ -278,6 +278,7 @@ export function fetchUserFeed(skip){
             .then( (response) => {
                 dispatch(LoadState('Fetching userfeed'))
                 if (!response.ok) {
+                    dispatch(LoadState(''))
                     throw Error(response.statusText);
                 }
                 return response.json();
