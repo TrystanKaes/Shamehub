@@ -101,8 +101,8 @@ export function fetchDiscoverFeed(skip){
             .then( (res) => {
                 if(res){
                     // alert(res.discovery_field.length)
-                    localStorage.setItem('DiscoverFetch', Date.now())
                     dispatch(LoadState(''))
+                    localStorage.setItem('DiscoverFetch', Date.now())
                     dispatch(appendDiscFeed(res.discovery_field));
                 }
                 return res;

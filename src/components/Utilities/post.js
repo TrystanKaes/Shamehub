@@ -170,38 +170,35 @@ class Post extends Component {
                                                 onClick={this.handleClick}>comment({Math.floor(Math.random()*3)})</Button>
                                     </Link>
                                 </div>
+                            </Row>
                             <div className="h-divider"/>
-                            </Row>{(this.props.newPost) ? "" :
-                            <div>
                             {(theseAreComments.length > 2) ?
                                 <Link to="/post">
                                     <div className={theme.RepositoryText}
-                                         style={{flex: 1, justifyContent: 'center', fontSize: 10}}
+                                         style={{flex:1,justifyContent:'center', fontSize:10}}
                                          onClick={this.handleClick}>
                                         View all comments<br/>. . .
                                     </div>
-                                </Link> : ""}
+                                </Link>     :   ""}
                             <div className={theme.CommentSection}>
-                            {theseAreComments.sort((a, b) => {
-                                return new Date(b.date) - new Date(a.date)
-                            }).slice(0, 2).map((comment, i) =>
-                                <Container>
-                                    <Row>
-                                        <h5 className={theme.UsernameText}
-                                            style={{fontSize: 10}}>
-                                            @{comment.username}</h5>
-                                        <Col sm={12}
-                                             style={{flex: 1, justifyContent: 'center', fontSize: 9}}
-                                             className={theme.PostText}>
-                                            {comment.comment}
-                                        </Col>
-                                        <div className={theme.DateText}>{timeAgo.format(new Date(comment.date))}</div>
-                                    </Row>{(i === 0) ? <div className="h-divider" style={{height: 2}}/> : ""}
-                                </Container>
-                            )}
+                                {theseAreComments.sort((a, b) => {
+                                    return new Date(b.date) - new Date(a.date)
+                                }).slice(0,2).map((comment,i)=>
+                                    <Container>
+                                        <Row>
+                                                <h5 className={theme.UsernameText}
+                                                    style={{fontSize:10}}>
+                                                    @{comment.username}</h5>
+                                            <Col sm={12}
+                                                 style={{flex:1,justifyContent:'center',fontSize:9}}
+                                                 className={theme.PostText}>
+                                                {comment.comment}
+                                            </Col>
+                                            <div className={theme.DateText}>{timeAgo.format(new Date(comment.date))}</div>
+                                        </Row>{(i === 0)?<div className="h-divider" style={{height:2}}/>:""}
+                                    </Container>
+                                )}
                             </div>
-                            </div>
-                        }
                         </Container>
                     </div>
                 </div>
