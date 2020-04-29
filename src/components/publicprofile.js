@@ -81,12 +81,6 @@ class PublicProfile extends Component {
                                 {Profile.bio}
                             </Card.Text>
                         </Card.Body>
-                        <Link to="profilesettings">
-                            <img className={(this.state.rotate) ? 'Settings Rotate' : 'Settings'}
-                                 src={(this.props.theme === 'dark') ? darkSettings : lightSettings}
-                                 alt="Loading icon"
-                                 onClick={this.handleClick} />
-                        </Link>
                     </Card>
                 </div>
             )
