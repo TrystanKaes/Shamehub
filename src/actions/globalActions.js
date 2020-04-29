@@ -24,7 +24,20 @@ function fetchInsult(insult){
 function appendDiscFeed(nextFeedChunk){
     return {
         type: actionTypes.DISCOVERFEED_FETCHED,
-        feed: nextFeedChunk.discovery_field,
+        feed: nextFeedChunk,
+    }
+}
+
+function postSelected(post){
+    return {
+        type: actionTypes.POST_SELECTED,
+        post: post
+    }
+}
+
+export function selectPost(post){
+    return dispatch => {
+        dispatch(postSelected(post));
     }
 }
 
@@ -87,8 +100,10 @@ export function fetchDiscoverFeed(skip){
             })
             .then( (res) => {
                 if(res){
+                    // alert(res.discovery_field.length)
+                    localStorage.setItem('DiscoverFetch', Date.now())
                     dispatch(LoadState(''))
-                    dispatch(appendDiscFeed(res));
+                    dispatch(appendDiscFeed(res.discovery_field));
                 }
                 return res;
             })

@@ -10,6 +10,7 @@ import UserFeed from './components/Profile/userfeed'
 import DiscoverFeed from './components/discoverfeed'
 import ColorWheelGame from './components/AppBuilders/ColorWheelGame'
 import ProfileSettings from './components/Profile/profilesettings'
+import ExpandPost from "./components/Utilities/expandpost";
 import Home from './components/AppBuilders/home'
 import {Button} from "react-bootstrap";
 import {changeTheme} from "./actions/globalActions";
@@ -46,6 +47,7 @@ class FrontPage extends Component {
                             <Route path="/discover" render={() => <div className="Fade-In"><DiscoverFeed/></div>}/>
                             <Route path="/signin" render={() => <div className="Fade-In"><Authentication/></div>}/>
                             <Route path="/ColorWheelGame" render={() => <div className="Fade-In"><ColorWheelGame/></div>}/>
+                            <Route path="/post" render={() => <div className="Fade-In"><ExpandPost/></div>}/>
                         </div>
                 </HashRouter>
             </div>

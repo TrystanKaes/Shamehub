@@ -285,6 +285,7 @@ export function fetchUserFeed(skip){
             })
             .then( (res) => {
                 if(res){
+                    localStorage.setItem('UserfeedFetch', Date.now())
                     dispatch(LoadState(''))
                     dispatch(appendFeed(res));
                 }

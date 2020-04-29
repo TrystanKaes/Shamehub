@@ -8,7 +8,7 @@ import darkSettings from "../../assets/dark-settings.svg";
 import lightSettings from "../../assets/light-settings.svg";
 import {fetchNewCommits, fetchUserFeed} from "../../actions/userActions";
 
-class Profile extends Component {
+class PublicProfile extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -28,13 +28,8 @@ class Profile extends Component {
         dispatch(fetchUserFeed(0))
     }
 
-    componentWillUnmount() {
-
-    }
-
     componentDidMount() {
         this.setState({rotate:!this.state.rotate})
-        localStorage.setItem('return', '/profile');
     }
 
     render() {
@@ -147,10 +142,9 @@ class Profile extends Component {
 const mapStateToProps = state => {
     return {
         theme: state.glob.theme,
-        user: state.user,
-        repo_names: state.user.repo_names,
+        selectedUser: state.glob.selectedUser,
     }
 }
 
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(PublicProfile);

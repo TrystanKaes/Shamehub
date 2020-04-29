@@ -18,15 +18,16 @@ class Discoverfeed extends Component {
     }
 
     componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch(fetchDiscoverFeed(0))
+        // const { dispatch } = this.props;
+        // dispatch(fetchDiscoverFeed(0))
+        localStorage.setItem('return', '/discover');
     }
 
 
     scrolledtobottom(){
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             console.log("you're at the bottom of the page");
-            if (this.props.discoverfeed.length <= 0 || Date.now() - this.state.lastScroll > 3000) {
+            if (this.props.discoverfeed.length <= 0 ||  localStorage.getItem('DiscoverFetch') - Date.now() > 5000) {
                 const {dispatch} = this.props;
                 dispatch(fetchDiscoverFeed(parseInt(this.props.discoverfeed.length))).then(dispatch(LoadState('')));
                 this.setState({lastScroll:Date.now()})

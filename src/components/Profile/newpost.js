@@ -70,11 +70,11 @@ class NewPost extends Component {
                                         if(arraytosearch[i].commit_msg === post.commit_msg) {  return i;   }}
                                     return -1;})(this.state.postList,post) === -1)?
                                         <button class="Hidden-Post-Button-Unselected" onClick={() => this.selectPost(post)}>
-                                            <Post commit={post}/>
+                                            <Post commit={post} newPost={true}/>
                                         </button>
                                     :
                                         <button class="Hidden-Post-Button-Selected" onClick={() => this.selectPost(post)}>
-                                            <Post commit={post}/>
+                                            <Post commit={post} newPost={true}/>
                                         </button>
 
                             ) :

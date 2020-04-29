@@ -25,7 +25,7 @@ class UserFeed extends Component {
     scrolledtobottom(){
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 console.log("you're at the bottom of the page");
-                if (this.props.userfeed.length <= 0 || Date.now() - this.state.lastScroll > 3000) {
+                if (this.props.userfeed.length <= 0 || localStorage.getItem('UserfeedFetch') - Date.now() > 5000) {
                     const {dispatch} = this.props;
                     dispatch(fetchUserFeed(parseInt(this.props.userfeed.length))).then(dispatch(LoadState('')));
                     this.setState({lastScroll:Date.now()})

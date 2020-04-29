@@ -3,6 +3,22 @@
   padding-top: 65px;
 }
 
+.Comment-Section-Light{
+  overflow-y: scroll;
+  box-shadow: inset 0px 8px 10px white;
+  overflow-x: hidden;
+  width:auto;
+  height: 200px;
+}
+
+.Comment-Section-Dark{
+  overflow-y: scroll;
+  box-shadow: inset 0px 8px 10px #0f110c;
+  overflow-x: hidden;
+  width:auto;
+  height: 200px;
+}
+
 .Hidden-Card{
   position: -webkit-sticky;
   position: sticky;
@@ -83,11 +99,11 @@
 
 
 .Repository-Text-Light{
-   /*font-family: "Lucida Console", Courier, monospace;*/
-   color: #0f110c;
-   font-size: 8px;
-   padding: 10px;
- }
+  /*font-family: "Lucida Console", Courier, monospace;*/
+  color: #0f110c;
+  font-size: 8px;
+  padding: 10px;
+}
 
 .Repository-Text-Dark{
   /*font-family: "Lucida Console", Courier, monospace;*/
@@ -124,6 +140,14 @@
   color: ghostwhite;
   font-size: 13px;
   padding: 10px;
+}
+
+.h-divider{
+  margin-top:5px;
+  margin-bottom:5px;
+  height:1px;
+  width:95%;
+  border-top:1px solid gray;
 }
 
 /* THESE ARE THE TRAITS */
@@ -168,6 +192,16 @@
   margin:-60px 0 0 -60px;
 }
 
+.NoSelect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
 .Hidden-Post-Button-Selected{
   background-color: Transparent;
   background-repeat:no-repeat;
@@ -206,8 +240,8 @@
     animation: App-logo-float infinite 3s ease-in-out;
   }
   .Fade-In {
-     animation: fadein 0.3s;
-   }
+    animation: fadein 0.3s;
+  }
   .App {
     animation: fadein 0.3s;
   }
