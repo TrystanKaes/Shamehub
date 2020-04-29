@@ -7,6 +7,7 @@ var initialState = {
     insult: 'You got this!',
     discoverfeed: [],
     selectedPost: null,
+    selectedUser: null,
 
 }
 
@@ -28,6 +29,10 @@ export default (state = initialState, action) => {
 
         case constants.POST_SELECTED:
             updated['selectedPost'] = action.post;
+            return updated;
+
+        case constants.USER_SELECTED:
+            updated['selectedUser'] = action.user;
             return updated;
 
         case constants.DISCOVERFEED_FETCHED:

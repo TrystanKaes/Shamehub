@@ -35,6 +35,13 @@ function postSelected(post){
     }
 }
 
+function setUser(user){
+    return {
+        type: actionTypes.USER_SELECTED,
+        user: user,
+    }
+}
+
 export function selectPost(post){
     return dispatch => {
         dispatch(postSelected(post));
@@ -53,7 +60,33 @@ export function LoadState(state){
     }
 }
 
+export function getPublicUser(username){
+    const env = runtimeEnv();
+    return dispatch =>{
+        return fetch(`${env.REACT_APP_API_URL}/users/` + username, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
+            },
+            //body: JSON.stringify(data),   //This was causing issues, apparently you cannot send a body for a GET request
+            mode: 'cors'})
+            .then( (response) => {
+                if (!response.ok) {
+                    // we failed to retrieve an insult
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then((res)=>{
+                    dispatch(setUser(res))
+                }
+            )
+            .catch( (e) => console.log(e) );
+    }
 
+}
 
 export function getInsult(){
     const env = runtimeEnv();

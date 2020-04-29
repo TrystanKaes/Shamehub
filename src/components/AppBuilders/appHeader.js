@@ -10,8 +10,9 @@ import {Navbar,
         } from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import {connect} from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import {logoutUser} from "../../actions/userActions";
+import { getPublicUser } from "../../actions/globalActions"
 import lightLogo from "../../assets/light-logo.svg";
 import darkLogo from "../../assets/dark-logo.svg";
 
@@ -28,6 +29,11 @@ class AppHeader extends Component {
 
     logout(){
         this.props.dispatch(logoutUser());
+    }
+
+    searchForUser(){
+        const { dispatch } = this.props;
+        dispatch(getPublicUser(this.state.search));
     }
 
     updateDetails(event){
@@ -70,9 +76,11 @@ class AppHeader extends Component {
                                      placeholder="Search"
                                      style={{flex:1}}
                                      className="mr-sm-2" />
-                        <Button onClick={()=>{alert(this.state.search)}}
-                                variant="outline-success"
-                                style={{borderColor:"#55828b"}}>Search</Button>
+                        <Link to="/publicUser">
+                            <Button onClick={this.searchForUser.bind(this)}
+                                    variant="outline-success"
+                                    style={{borderColor:"#55828b"}}>Search</Button>
+                        </Link>
                     </Form>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

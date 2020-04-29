@@ -69,7 +69,7 @@ class UserFeed extends Component {
 
 const mapStateToProps = state => {
     return {
-        userfeed: state.user.userfeed,
+        // userfeed: state.user.userfeed,
         loadingState: state.glob.loadingState
     }
 }

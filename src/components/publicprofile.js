@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Card , Row, Col, Container, ListGroup, Button } from 'react-bootstrap'
+import { Card , Row, Col, Container, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import UserFeed from './userfeed';
-import NewPost from './newpost';
-import darkSettings from "../../assets/dark-settings.svg";
-import lightSettings from "../../assets/light-settings.svg";
-import {fetchNewCommits, fetchUserFeed} from "../../actions/userActions";
+import UserFeed from './../components/Profile/userfeed';
+import darkSettings from "../assets/dark-settings.svg";
+import lightSettings from "../assets/light-settings.svg";
 
 class PublicProfile extends Component {
     constructor(props){
@@ -14,22 +12,14 @@ class PublicProfile extends Component {
         this.state = {
             error : null,
             isLoaded : true,
-            githubLink : "https://github.com/" + this.props.user.username,
+            githubLink : "https://github.com/" + this.props.selectedUser.username,
             rotate: true,
-            makePosts: false,
         };
-        this.showMakePost = this.showMakePost.bind(this);
-    }
-
-    showMakePost(){
-        this.setState({makePosts:!this.state.makePosts})
-        const { dispatch } = this.props;
-        dispatch(fetchNewCommits());
-        dispatch(fetchUserFeed(0))
     }
 
     componentDidMount() {
         this.setState({rotate:!this.state.rotate})
+        localStorage.setItem('return', '/publicUser');
     }
 
     render() {
@@ -103,36 +93,28 @@ class PublicProfile extends Component {
         }
         return(
             <Container>
+                {(this.props.selectedUser)?
                 <Row>
                     <Col>
                         {/* THIS IS THE LEFT PROFILE AND REPOSITORY COLUMN */}
-                        <Profile Profile={this.props.user} link={this.state.githubLink}/>
-                        {(this.props.repo_names)?
-                            < Repository repositories={this.props.user.repo_names} link={this.props.user.githubLink}/>
+                        <Profile Profile={this.props.selectedUser} link={this.state.githubLink}/>
+                        {(this.props.selectedUser.repo_info.repo_names)?
+                            < Repository repositories={this.props.selectedUser.repo_info.repo_names} link={this.props.selectedUser.githubLink}/>
                             :
                             ""
                         }
                     </Col>
                     <Col xs={6}>
                         {/* THIS IS THE MAIN POST COLUMN */}
-                        <Button variant={this.props.theme}
-                                style={{flex:1, border:2}}
-                                onClick={this.showMakePost}>
-                            <h3>{(this.state.makePosts)? "Go back":"Update your friends on your new work!"}</h3>
-                        </Button>
-                        {(this.state.makePosts) ?
-                            <NewPost goBack={this.showMakePost}/> :
-                            <UserFeed/>
-                        }
-                        {/*    <RawFeed commits={this.props.details.posts.sort((a,b)=>{*/}
-                        {/*        return new Date(b.commit_date) - new Date(a.commit_date)*/}
-                        {/*    })}/>*/}
+                        {/*<h1>[This is broken.]</h1>*/}
+                        <UserFeed userfeed={this.props.selectedUser.repo_info.posts}/>
                     </Col>
                     <Col>
                         {/* I Don't know what this is for anymore. Ads? */}
                         {/*<Repository repositories={profileState.repos} link={this.state.githubLink}/>*/}
                     </Col>
                 </Row>
+                :"User Not Found"}
             </Container>
         );
     }

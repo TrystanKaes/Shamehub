@@ -127,7 +127,7 @@ class Profile extends Component {
                         </Button>
                         {(this.state.makePosts) ?
                             <NewPost goBack={this.showMakePost}/> :
-                            <UserFeed/>
+                            <UserFeed userfeed={this.props.user.userfeed}/>
                         }
                         {/*    <RawFeed commits={this.props.details.posts.sort((a,b)=>{*/}
                         {/*        return new Date(b.commit_date) - new Date(a.commit_date)*/}

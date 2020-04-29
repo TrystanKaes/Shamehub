@@ -14,6 +14,7 @@ import ExpandPost from "./components/Utilities/expandpost";
 import Home from './components/AppBuilders/home'
 import {Button} from "react-bootstrap";
 import {changeTheme} from "./actions/globalActions";
+import PublicProfile from "./components/publicprofile";
 
 class FrontPage extends Component {
     constructor(props) {
@@ -39,9 +40,9 @@ class FrontPage extends Component {
                                 <WelcomeBanner />}
                             <Route path="/home" render={() => <Home/>}/>
                             <Route exact path="/" render={() => <Home/>}/>
-                            <Route path="user/:username" Component={<Profile/>}/>
                             <Route path="/welcome" render={() => <WelcomeBanner/>}/>
                             <Route path="/profile" render={() => <div className="Fade-In"><Profile/></div>}/>
+                            <Route path="/publicUser" render={() => <div className="Fade-In"><PublicProfile/></div>}/>
                             <Route path="/profilesettings" render={() => <div className="Fade-In"><ProfileSettings/></div>}/>
                             <Route path="/userfeed" render={() => <div className="Fade-In"><UserFeed/></div>}/>
                             <Route path="/discover" render={() => <div className="Fade-In"><DiscoverFeed/></div>}/>
