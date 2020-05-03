@@ -1,8 +1,10 @@
 # Shamehub
 
 ### Synopsis
-Shamehub is a social media platform centered around github commit history and activity. 
+Buried within codebase repositories are underutilized storylines with potential to be entertaining and vibrant sources for discussion and social connection. 
 
-## THIS NEEDS REVISIONS THE PLAN HAS CHANGED.
+What if we could leverage these storylines to draw eyes and connect active developers over their common interest?
+
+Shamehub is our answer.
 
 This project works in conjunction with the [ShamehubAPI](https://github.com/TrystanKaes/ShamehubAPI)
