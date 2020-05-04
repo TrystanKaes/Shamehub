@@ -1,6 +1,3 @@
-import {Button} from "react-bootstrap";
-import React from "react";
-
 const theseAreComments = [
     {
         username: "Timothy",
@@ -104,13 +101,11 @@ export function SynthesizeSocial(post){
         post['likes'] = Math.floor(Math.random()*20);
         post['dislikes'] = Math.floor(Math.random()*5);
         return post;
-        return
     }else{
         post['comments'] = commentOn(theseAreComments);
         post['likes'] = Math.floor(Math.random()*20);
         post['dislikes'] = Math.floor(Math.random()*5);
         return post;
-        return
     }
 
 }

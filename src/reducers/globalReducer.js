@@ -53,7 +53,7 @@ export default (state = initialState, action) => {
         case constants.ADD_COMMENT:
             let newFeed = updated['discoverfeed'];
             for(let i = 0; i < newFeed.length; i+=1){
-                if(JSON.stringify(action.post) == JSON.stringify(newFeed[i])){
+                if(JSON.stringify(action.post) === JSON.stringify(newFeed[i])){
                     newFeed[i].comments.push(action.comment)
                     break;
                 }

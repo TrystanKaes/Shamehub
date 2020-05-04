@@ -22,6 +22,9 @@ class Discoverfeed extends Component {
             dispatch(fetchDiscoverFeed(0))
         }
         localStorage.setItem('return', '/discover');
+        if(localStorage.getItem('scrollAmnt')){
+            window.scroll(0, localStorage.getItem('scrollAmnt'));
+        }
         // window.addEventListener('scroll', this.scrolledtobottom);
     }
 
@@ -38,6 +41,7 @@ class Discoverfeed extends Component {
     }
 
     componentWillUnmount() {
+        localStorage.setItem('scrollAmnt', window.scrollY);
         // window.removeEventListener('scroll', this.scrolledtobottom);
     }
 

@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { Card , Row, Col, Container, ListGroup } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import NewPostCard from '../components/Profile/newpostcard'
 import { connect } from 'react-redux';
 import UserFeed from './../components/Profile/userfeed';
-import darkSettings from "../assets/dark-settings.svg";
-import lightSettings from "../assets/light-settings.svg";
-import Post from "./Utilities/post";
 
 class PublicProfile extends Component {
     constructor(props){

@@ -1,6 +1,5 @@
 import constants from '../constants/actionTypes'
 import { SynthesizeSocialContact } from '../helpers/SyntheticSocial'
-import uniq from 'lodash/uniq';
 
 var initialState = {
     name: '',
@@ -48,10 +47,6 @@ export default (state = initialState, action) => {
             updated['new_commits'] = action.commits ? action.commits : updated['new_commits'];
             return updated;
 
-        case constants.POSTED_TO_USERFEED:
-            updated['userfeed'] = action.feed ? action.feed : updated['userfeed'];
-            return updated;
-
         case constants.USERFEED_FETCHED:
             let duplicateArray = updated['userfeed'].concat(action.feed)
             let uniqArray = duplicateArray.filter((thing, index) => {
@@ -77,7 +72,7 @@ export default (state = initialState, action) => {
         case constants.ADD_COMMENT:
             let newFeed = updated['userfeed'];
             for(let i = 0; i < newFeed.length; i+=1){
-                if(JSON.stringify(action.post) == JSON.stringify(newFeed[i])){
+                if(JSON.stringify(action.post) === JSON.stringify(newFeed[i])){
                     newFeed[i].comments.push(action.comment)
                     break;
                 }

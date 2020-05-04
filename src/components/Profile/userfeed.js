@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Post from "../Utilities/post";
 import Loading from '../Utilities/loading'
 import { fetchUserFeed } from "../../actions/userActions";
-import {fetchDiscoverFeed, LoadState} from "../../actions/globalActions";
+import { LoadState } from "../../actions/globalActions";
 
 class UserFeed extends Component {
     constructor(props){

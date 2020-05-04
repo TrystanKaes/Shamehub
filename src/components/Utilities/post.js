@@ -118,9 +118,9 @@ class Post extends Component {
                                     </Link>
                                 </div>
                             </Row>
+                            <div className="h-divider"/>
                             {(this.props.commit.comments.length > 2) ?
                                 <Link to="/post">
-                                    <div className="h-divider"/>
                                     <div className={theme.RepositoryText}
                                          style={{flex:1,justifyContent:'center', fontSize:10}}
                                          onClick={this.handleClick}>
@@ -131,7 +131,7 @@ class Post extends Component {
                                 {this.props.commit.comments.sort((a, b) => {
                                     return new Date(b.date) - new Date(a.date)
                                 }).slice(0,2).map((comment,i)=>
-                                    <Container>
+                                    <Container key={i}>
                                         <Row>
                                                 <h5 className={theme.UsernameText}
                                                     style={{fontSize:10}}>

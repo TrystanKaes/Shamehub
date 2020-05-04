@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import {Container, Row, Col, Button } from 'react-bootstrap';
+import {Container, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
 import TimeAgo from 'javascript-time-ago'
 import { selectPost } from '../../actions/globalActions'
 import en from 'javascript-time-ago/locale/en'
