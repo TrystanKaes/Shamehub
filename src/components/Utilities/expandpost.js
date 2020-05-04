@@ -37,7 +37,7 @@ class ExpandPost extends Component {
         if(this.state.like === 1){
             this.setState({like:0})
         }else{
-            if(this.state.dislike == 1){
+            if(this.state.dislike === 1){
                 this.setState({dislike:0})
             }
             this.setState({like:1})
@@ -48,7 +48,7 @@ class ExpandPost extends Component {
         if(this.state.dislike === 1){
             this.setState({dislike:0})
         }else{
-            if(this.state.like == 1){
+            if(this.state.like === 1){
                 this.setState({like:0})
             }
             this.setState({dislike:1})

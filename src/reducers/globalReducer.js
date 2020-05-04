@@ -34,6 +34,9 @@ export default (state = initialState, action) => {
 
         case constants.USER_SELECTED:
             updated['selectedUser'] = action.user;
+            let feed = updated['selectedUser'].repo_info.posts;
+            // console.log(feed)
+            updated['selectedUser'].repo_info.posts = SynthesizeSocialContact(feed);
             return updated;
 
         case constants.DISCOVERFEED_FETCHED:
