@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {array} from "prop-types";
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
@@ -21,4 +22,12 @@ export default function useWindowDimensions() {
     }, []);
 
     return windowDimensions;
+}
+
+
+export function mergeFeed(feed1,feed2){
+    let newFeed = feed1.slice();
+    newFeed.prototype.concat(feed2);
+
+    return newFeed;
 }

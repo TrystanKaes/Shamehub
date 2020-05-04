@@ -36,9 +36,14 @@ export default (state = initialState, action) => {
             return updated;
 
         case constants.DISCOVERFEED_FETCHED:
-            let duplicateArray = (updated['discoverfeed'])? action.feed : [].concat(updated['discoverfeed'],action.feed);
-            // updated['discoverfeed'] = uniq(duplicateArray, 'commit_date');
-            updated['discoverfeed'] = duplicateArray;
+            // let duplicateArray = updated['discoverfeed'].concat(action.feed);
+            // let uniqArray = duplicateArray.filter((thing, index) => {
+            // const _thing = JSON.stringify(thing);
+            //     return index === duplicateArray.findIndex(obj => {
+            //         return JSON.stringify(obj) === _thing;
+            //     });
+            // });
+            updated['discoverfeed'] = action.feed;
             return updated;
 
         default:

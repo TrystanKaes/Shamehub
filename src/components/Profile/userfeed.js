@@ -19,7 +19,7 @@ class UserFeed extends Component {
 
     componentDidMount() {
         const { dispatch } = this.props;
-        dispatch(fetchUserFeed(0))
+        dispatch(fetchUserFeed(this.props.userfeed.length))
     }
 
     scrolledtobottom(){

@@ -14,13 +14,13 @@ class Discoverfeed extends Component {
             lastScroll: Date.now(),
         };
         this.scrolledtobottom = this.scrolledtobottom.bind(this)
-        window.addEventListener('scroll', this.scrolledtobottom);
     }
 
     componentDidMount() {
-        // const { dispatch } = this.props;
-        // dispatch(fetchDiscoverFeed(0))
+        const { dispatch } = this.props;
+        dispatch(fetchDiscoverFeed(0))
         localStorage.setItem('return', '/discover');
+        // window.addEventListener('scroll', this.scrolledtobottom);
     }
 
 
@@ -36,7 +36,7 @@ class Discoverfeed extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.scrolledtobottom);
+        // window.removeEventListener('scroll', this.scrolledtobottom);
     }
 
     render() {

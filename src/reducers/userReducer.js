@@ -38,7 +38,8 @@ export default (state = initialState, action) => {
 
         case constants.UPDATE_USER:
             updated['name'] = action.name ? action.name : updated['name'];
-            updated['bio'] = action.bio ? action.bio : updated['bio'];
+            // updated['bio'] = action.bio ? action.bio : updated['bio'];
+            updated['bio'] = action.bio;
             updated['profile_img'] = action.img ? action.img : updated['profile_img'];
             return updated;
 
@@ -51,8 +52,18 @@ export default (state = initialState, action) => {
             return updated;
 
         case constants.USERFEED_FETCHED:
-            let duplicateArray = (updated['userfeed'])? action.feed : [updated['userfeed']].concat(action.feed);
-            updated['userfeed'] = uniq(duplicateArray, 'commit_date');
+            let duplicateArray = updated['userfeed'].concat(action.feed)
+            let uniqArray = duplicateArray.filter((thing, index) => {
+                const _thing = JSON.stringify(thing);
+                return index === duplicateArray.findIndex(obj => {
+                    return JSON.stringify(obj) === _thing;
+                    });
+                });
+            updated['userfeed'] = uniqArray;
+            return updated;
+
+        case constants.POSTED_TO_USERFEED:
+            updated['userfeed'] = updated['userfeed'].push(action.post);
             return updated;
 
         case constants.USER_LOGOUT:

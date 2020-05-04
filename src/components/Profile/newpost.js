@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {FormLabel, Button} from 'react-bootstrap'
 import {fetchNewCommits, PostNewCommits} from '../../actions/userActions'
-import Post from '../Utilities/post'
+import NewPostCard from './newpostcard'
 import Loading from '../Utilities/loading'
 import { connect } from 'react-redux';
 
@@ -52,7 +52,12 @@ class NewPost extends Component {
         this.props.goBack()
     }
 
+    // componentWillUnmount() {
+    //     window.addEventListener('scroll', this.scrolledtobottom);
+    // }
+
     componentDidMount() {
+        window.removeEventListener('scroll', this.scrolledtobottom);
         const { dispatch } = this.props;
         dispatch(fetchNewCommits());
     }
@@ -70,11 +75,11 @@ class NewPost extends Component {
                                         if(arraytosearch[i].commit_msg === post.commit_msg) {  return i;   }}
                                     return -1;})(this.state.postList,post) === -1)?
                                         <button class="Hidden-Post-Button-Unselected" onClick={() => this.selectPost(post)}>
-                                            <Post commit={post} newPost={true}/>
+                                            <NewPostCard commit={post} newPost={true}/>
                                         </button>
                                     :
                                         <button class="Hidden-Post-Button-Selected" onClick={() => this.selectPost(post)}>
-                                            <Post commit={post} newPost={true}/>
+                                            <NewPostCard commit={post} newPost={true}/>
                                         </button>
 
                             ) :

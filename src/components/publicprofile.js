@@ -12,7 +12,7 @@ class PublicProfile extends Component {
         this.state = {
             error : null,
             isLoaded : true,
-            githubLink : "https://github.com/" + this.props.selectedUser.username,
+            githubLink : "https://github.com/",
             rotate: true,
         };
     }
@@ -91,9 +91,9 @@ class PublicProfile extends Component {
                 <Row>
                     <Col>
                         {/* THIS IS THE LEFT PROFILE AND REPOSITORY COLUMN */}
-                        <Profile Profile={this.props.selectedUser} link={this.state.githubLink}/>
+                        <Profile Profile={this.props.selectedUser} link={this.props.selectedUser.github_link}/>
                         {(this.props.selectedUser.repo_info.repo_names)?
-                            < Repository repositories={this.props.selectedUser.repo_info.repo_names} link={this.props.selectedUser.githubLink}/>
+                            < Repository repositories={this.props.selectedUser.repo_info.repo_names} link={this.props.selectedUser.github_link}/>
                             :
                             ""
                         }

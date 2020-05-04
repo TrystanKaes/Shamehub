@@ -45,10 +45,10 @@ function updateNewCommits(newCommits){
     }
 }
 
-function madeNewPost(userfeed){
+function madeNewPost(newPost){
     return {
         type: actionTypes.POSTED_TO_USERFEED,
-        feed: userfeed,
+        post: newPost,
     }
 }
 
@@ -288,6 +288,7 @@ export function fetchUserFeed(skip){
                     localStorage.setItem('UserfeedFetch', Date.now())
                     dispatch(LoadState(''))
                     dispatch(appendFeed(res));
+                    // alert(JSON.stringify(res))
                 }
                 return res;
             })

@@ -14,7 +14,7 @@ class Profile extends Component {
         this.state = {
             error : null,
             isLoaded : true,
-            githubLink : "https://github.com/" + this.props.user.username,
+            githubLink : "https://github.com/",
             rotate: true,
             makePosts: false,
         };
@@ -23,9 +23,6 @@ class Profile extends Component {
 
     showMakePost(){
         this.setState({makePosts:!this.state.makePosts})
-        const { dispatch } = this.props;
-        dispatch(fetchNewCommits());
-        dispatch(fetchUserFeed(0))
     }
 
     componentWillUnmount() {
@@ -111,9 +108,9 @@ class Profile extends Component {
                 <Row>
                     <Col>
                         {/* THIS IS THE LEFT PROFILE AND REPOSITORY COLUMN */}
-                        <Profile Profile={this.props.user} link={this.state.githubLink}/>
+                        <Profile Profile={this.props.user} link={this.props.user.github_link}/>
                         {(this.props.repo_names)?
-                            < Repository repositories={this.props.user.repo_names} link={this.props.user.githubLink}/>
+                            < Repository repositories={this.props.user.repo_names} link={this.props.user.github_link}/>
                             :
                             ""
                         }
