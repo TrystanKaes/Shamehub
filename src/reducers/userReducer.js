@@ -1,4 +1,5 @@
 import constants from '../constants/actionTypes'
+import { SynthesizeSocialContact } from '../helpers/SyntheticSocial'
 import uniq from 'lodash/uniq';
 
 var initialState = {
@@ -59,7 +60,8 @@ export default (state = initialState, action) => {
                     return JSON.stringify(obj) === _thing;
                     });
                 });
-            updated['userfeed'] = uniqArray;
+            let Social = SynthesizeSocialContact(uniqArray)
+            updated['userfeed'] = Social;
             return updated;
 
         case constants.POSTED_TO_USERFEED:
@@ -70,6 +72,17 @@ export default (state = initialState, action) => {
             updated = initialState;
             updated['loggedIn'] = false;
             updated['username'] = '';
+            return updated;
+
+        case constants.ADD_COMMENT:
+            let newFeed = updated['userfeed'];
+            for(let i = 0; i < newFeed.length; i+=1){
+                if(JSON.stringify(action.post) == JSON.stringify(newFeed[i])){
+                    newFeed[i].comments.push(action.comment)
+                    break;
+                }
+            }
+            updated['userfeed'] = newFeed;
             return updated;
 
         default:

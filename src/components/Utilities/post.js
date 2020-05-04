@@ -9,83 +9,6 @@ TimeAgo.addLocale(en)
 const timeAgo = new TimeAgo('en-US')
 
 /* display username, commit message, repo, and timestamp. */
-const theseAreComments = [
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 2000),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 30000),
-        comment: "Great Job Friend!",
-    },
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 99000),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 123000),
-        comment: "Great Job Friend!",
-    },
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 2012300),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 200300),
-        comment: "Great Job Friend!",
-    },
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 2000),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 90000),
-        comment: "Great Job Friend!",
-    },
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 2000),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 781234),
-        comment: "Great Job Friend!",
-    },
-]
 
 class Post extends Component {
     constructor(props){
@@ -94,8 +17,12 @@ class Post extends Component {
             error : null,
             isLoaded : true,
             commits: props.commits,
+            like: 0,
+            dislike: 0,
         };
         this.handleClick = this.handleClick.bind(this);
+        this.handleLike = this.handleLike.bind(this);
+        this.handleDislike = this.handleDislike.bind(this);
     }
 
     componentDidMount() {
@@ -105,6 +32,28 @@ class Post extends Component {
     handleClick(){
         const { dispatch } = this.props;
         dispatch(selectPost(this.props.commit))
+    }
+
+    handleLike(){
+        if(this.state.like === 1){
+            this.setState({like:0})
+        }else{
+            if(this.state.dislike == 1){
+                this.setState({dislike:0})
+            }
+            this.setState({like:1})
+        }
+    }
+
+    handleDislike(){
+        if(this.state.dislike === 1){
+            this.setState({dislike:0})
+        }else{
+            if(this.state.like == 1){
+                this.setState({like:0})
+            }
+            this.setState({dislike:1})
+        }
     }
 
     render() {
@@ -155,25 +104,23 @@ class Post extends Component {
                                 <div className="Post-Buttons flex-wrap">
                                     <Link to={localStorage.getItem("return")}>
                                         <Button style={{backgroundColor: "#87bba2", borderColor: "#0f110c"}}
-                                                onClick={() => {
-                                                    alert("Like!")
-                                                }}>like({Math.floor(Math.random()*20)})</Button>
+                                                onClick={this.handleLike}>
+                                                like({this.props.commit.likes + this.state.like})</Button>
                                     </Link>
                                     <Link to={localStorage.getItem("return")}>
                                         <Button style={{backgroundColor: "#c03221", borderColor: "#0f110c"}}
-                                                onClick={() => {
-                                                    alert("Dislike!")
-                                                }}>dislike({Math.floor(Math.random()*5)})</Button>
+                                                onClick={this.handleDislike}>
+                                                dislike({this.props.commit.dislikes + this.state.dislike})</Button>
                                     </Link>
                                     <Link to="/post" className="NoSelect">
                                         <Button style={{backgroundColor: "#55828b", borderColor: "#0f110c"}}
-                                                onClick={this.handleClick}>comment({Math.floor(Math.random()*3)})</Button>
+                                                onClick={this.handleClick}>comment({this.props.commit.comments.length})</Button>
                                     </Link>
                                 </div>
                             </Row>
-                            <div className="h-divider"/>
-                            {(theseAreComments.length > 2) ?
+                            {(this.props.commit.comments.length > 2) ?
                                 <Link to="/post">
+                                    <div className="h-divider"/>
                                     <div className={theme.RepositoryText}
                                          style={{flex:1,justifyContent:'center', fontSize:10}}
                                          onClick={this.handleClick}>
@@ -181,7 +128,7 @@ class Post extends Component {
                                     </div>
                                 </Link>     :   ""}
                             <div className={theme.CommentSection}>
-                                {theseAreComments.sort((a, b) => {
+                                {this.props.commit.comments.sort((a, b) => {
                                     return new Date(b.date) - new Date(a.date)
                                 }).slice(0,2).map((comment,i)=>
                                     <Container>

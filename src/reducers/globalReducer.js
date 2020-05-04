@@ -1,4 +1,5 @@
 import constants from '../constants/actionTypes'
+import {SynthesizeSocialContact} from "../helpers/SyntheticSocial";
 // import uniq from 'lodash/uniq';
 
 var initialState = {
@@ -43,7 +44,18 @@ export default (state = initialState, action) => {
             //         return JSON.stringify(obj) === _thing;
             //     });
             // });
-            updated['discoverfeed'] = action.feed;
+            updated['discoverfeed'] = SynthesizeSocialContact(action.feed);
+            return updated;
+
+        case constants.ADD_COMMENT:
+            let newFeed = updated['discoverfeed'];
+            for(let i = 0; i < newFeed.length; i+=1){
+                if(JSON.stringify(action.post) == JSON.stringify(newFeed[i])){
+                    newFeed[i].comments.push(action.comment)
+                    break;
+                }
+            }
+            updated['discoverfeed'] = newFeed;
             return updated;
 
         default:

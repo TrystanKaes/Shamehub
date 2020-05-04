@@ -52,6 +52,20 @@ function madeNewPost(newPost){
     }
 }
 
+function commentAdded(post, comment){
+    return {
+        type: actionTypes.ADD_COMMENT,
+        post: post,
+        comment: comment,
+    }
+}
+
+export function addCommentUser(post, comment){
+    return dispatch => {
+        dispatch(commentAdded(post, comment));
+    }
+}
+
 export function getUser(username){
     const env = runtimeEnv();
     return fetch(`${env.REACT_APP_API_URL}/users/` + username, {

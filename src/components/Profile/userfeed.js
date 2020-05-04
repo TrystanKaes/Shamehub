@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Post from "../Utilities/post";
 import Loading from '../Utilities/loading'
 import { fetchUserFeed } from "../../actions/userActions";
-import {LoadState} from "../../actions/globalActions";
+import {fetchDiscoverFeed, LoadState} from "../../actions/globalActions";
 
 class UserFeed extends Component {
     constructor(props){
@@ -14,12 +14,17 @@ class UserFeed extends Component {
             lastScroll: Date.now(),
         };
         this.scrolledtobottom = this.scrolledtobottom.bind(this)
-        window.addEventListener('scroll', this.scrolledtobottom);
+        // window.addEventListener('scroll', this.scrolledtobottom);
     }
 
     componentDidMount() {
+        // const { dispatch } = this.props;
+        // dispatch(fetchUserFeed(this.props.userfeed.length))
+
         const { dispatch } = this.props;
-        dispatch(fetchUserFeed(this.props.userfeed.length))
+        if(this.props.userfeed.length === 0){
+            dispatch(fetchUserFeed(0))
+        }
     }
 
     scrolledtobottom(){
@@ -34,7 +39,7 @@ class UserFeed extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.scrolledtobottom);
+        // window.removeEventListener('scroll', this.scrolledtobottom);
     }
 
     render() {

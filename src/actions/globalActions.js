@@ -42,6 +42,14 @@ function setUser(user){
     }
 }
 
+function commentAdded(post, comment){
+    return {
+        type: actionTypes.ADD_COMMENT,
+        post: post,
+        comment: comment,
+    }
+}
+
 export function selectPost(post){
     return dispatch => {
         dispatch(postSelected(post));
@@ -57,6 +65,12 @@ export function changeTheme(){
 export function LoadState(state){
     return dispatch => {
         dispatch(loadingState(state));
+    }
+}
+
+export function addCommentDiscover(post, comment){
+    return dispatch => {
+        dispatch(commentAdded(post, comment));
     }
 }
 

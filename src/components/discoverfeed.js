@@ -18,7 +18,9 @@ class Discoverfeed extends Component {
 
     componentDidMount() {
         const { dispatch } = this.props;
-        dispatch(fetchDiscoverFeed(0))
+        if(this.props.discoverfeed.length === 0){
+            dispatch(fetchDiscoverFeed(0))
+        }
         localStorage.setItem('return', '/discover');
         // window.addEventListener('scroll', this.scrolledtobottom);
     }

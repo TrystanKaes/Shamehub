@@ -6,88 +6,13 @@ import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import darkLogo from '../../assets/back-arrow-dark.svg';
 import lightLogo from '../../assets/back-arrow-light.svg';
+import { addCommentDiscover } from '../../actions/globalActions'
+import { addCommentUser } from '../../actions/userActions'
 TimeAgo.addLocale(en)
 const timeAgo = new TimeAgo('en-US')
 
 /* display username, commit message, repo, and timestamp. */
 
-const theseAreComments = [
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 2000),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 30000),
-        comment: "Great Job Friend!",
-    },
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 99000),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 123000),
-        comment: "Great Job Friend!",
-    },
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 2012300),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 200300),
-        comment: "Great Job Friend!",
-    },
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 2000),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 90000),
-        comment: "Great Job Friend!",
-    },
-    {
-        username: "Timothy",
-        date: Date.now(),
-        comment: "I always knew you could do it.",
-    },
-    {
-        username: "Tomothy",
-        date: new Date(Date.now() - 2000),
-        comment: "Took long enough",
-    },
-    {
-        username: "Samantha",
-        date: new Date(Date.now() - 781234),
-        comment: "Great Job Friend!",
-    },
-]
 
 class ExpandPost extends Component {
     constructor(props){
@@ -96,12 +21,40 @@ class ExpandPost extends Component {
             error : null,
             isLoaded : true,
             comment: '',
+            like: 0,
+            dislike: 0,
+            postedComment: []
 
         };
         this.postComment = this.postComment.bind(this);
         this.updateDetails = this.updateDetails.bind(this);
+        this.handleLike = this.handleLike.bind(this);
+        this.handleDislike = this.handleDislike.bind(this);
 
     }
+
+    handleLike(){
+        if(this.state.like === 1){
+            this.setState({like:0})
+        }else{
+            if(this.state.dislike == 1){
+                this.setState({dislike:0})
+            }
+            this.setState({like:1})
+        }
+    }
+
+    handleDislike(){
+        if(this.state.dislike === 1){
+            this.setState({dislike:0})
+        }else{
+            if(this.state.like == 1){
+                this.setState({like:0})
+            }
+            this.setState({dislike:1})
+        }
+    }
+
 
     componentDidMount() {
         window.scrollTo(0,0)
@@ -120,7 +73,34 @@ class ExpandPost extends Component {
     postComment() {
         // const {dispatch} = this.props;
         // dispatch(postComment(this.state.comment));
-        alert(`You should go tell ${this.props.selectPost.author_name},"${this.state.comment}" yourself because... I actually can't.`)
+        // alert(`You should go tell ${this.props.selectPost.author_name},"${this.state.comment}" yourself because... I actually can't.`)
+
+        let comment = {
+            username: localStorage.getItem("username"),
+            date: Date.now(),
+            comment: this.state.comment,
+        }
+
+        // this.setState({
+        //     postedComment: [{
+        //         username: localStorage.getItem("username"),
+        //         date: Date.now(),
+        //         comment: this.state.comment,
+        //     }]
+        // })
+        this.setState({
+            isLoaded: true
+        })
+
+        const {dispatch} = this.props;
+
+        if(localStorage.getItem('return') === '/profile'){
+            dispatch(addCommentUser(this.props.selectPost,comment))
+        }else{
+            dispatch(addCommentDiscover(this.props.selectPost,comment))
+        }
+
+
     }
 
     handleClick(){
@@ -177,23 +157,19 @@ class ExpandPost extends Component {
                                         <Col></Col>
                                         <Col></Col>
                                         <div className="Post-Buttons flex-wrap">
-                                            <Button style={{backgroundColor: "#87bba2", borderColor: "#0f110c"}}
-                                                    onClick={() => {
-                                                        alert("Like!")
-                                                    }}>like({Math.floor(Math.random()*20)})</Button>
-                                            <Button style={{backgroundColor: "#c03221", borderColor: "#0f110c"}}
-                                                    onClick={() => {
-                                                        alert("Dislike!")
-                                                    }}>dislike({Math.floor(Math.random()*5)})</Button>
-                                            <Button style={{backgroundColor: "#55828b", borderColor: "#0f110c"}}
-                                                    onClick={() => {
-                                                        alert("Comment!")
-                                                    }}>comment({Math.floor(Math.random()*3)})</Button>
+                                                <Button style={{backgroundColor: "#87bba2", borderColor: "#0f110c"}}
+                                                        onClick={this.handleLike}>
+                                                    like({this.props.selectPost.likes + this.state.like})</Button>
+                                                <Button style={{backgroundColor: "#c03221", borderColor: "#0f110c"}}
+                                                        onClick={this.handleDislike}>
+                                                    dislike({this.props.selectPost.dislikes + this.state.dislike})</Button>
+                                                <Button style={{backgroundColor: "#55828b", borderColor: "#0f110c"}}
+                                                        onClick={this.handleClick}>comment({this.props.selectPost.comments.length})</Button>
                                         </div>
                                         <div className="h-divider"/>
                                     </Row>
                                     <div className={theme.CommentSection}>
-                                        {theseAreComments.sort((a, b) => {
+                                        {this.state.postedComment.concat(this.props.selectPost.comments).sort((a, b) => {
                                             return new Date(b.date) - new Date(a.date)
                                         }).map((comment)=>
                                             <Container>
