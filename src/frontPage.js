@@ -40,15 +40,15 @@ class FrontPage extends Component {
                                 <WelcomeBanner />}
                             <Route path="/home" render={() => <Home/>}/>
                             <Route exact path="/" render={() => <Home/>}/>
-                            <Route path="/welcome" render={() => <WelcomeBanner/>}/>
-                            <Route path="/profile" render={() => <div className="Fade-In"><Profile/></div>}/>
-                            <Route path="/publicUser" render={() => <div className="Fade-In"><PublicProfile/></div>}/>
-                            <Route path="/profilesettings" render={() => <div className="Fade-In"><ProfileSettings/></div>}/>
-                            <Route path="/userfeed" render={() => <div className="Fade-In"><UserFeed/></div>}/>
-                            <Route path="/discover" render={() => <div className="Fade-In"><DiscoverFeed/></div>}/>
-                            <Route path="/signin" render={() => <div className="Fade-In"><Authentication/></div>}/>
+                            <Route path="/welcome" render={() => <Home/>}/>
+                            <Route path="/profile" render={() => <div className="Fade-In"><Home/></div>}/>
+                            <Route path="/publicUser" render={() => <div className="Fade-In"><Home/></div>}/>
+                            <Route path="/profilesettings" render={() => <div className="Fade-In"><Home/></div>}/>
+                            <Route path="/userfeed" render={() => <div className="Fade-In"><Home/></div>}/>
+                            <Route path="/discover" render={() => <div className="Fade-In"><Home/></div>}/>
+                            <Route path="/signin" render={() => <div className="Fade-In"><Home/></div>}/>
                             <Route path="/ColorWheelGame" render={() => <div className="Fade-In"><ColorWheelGame/></div>}/>
-                            <Route path="/post" render={() => <div className="Fade-In"><ExpandPost/></div>}/>
+                            <Route path="/post" render={() => <div className="Fade-In"><Home/></div>}/>
                         </div>
                 </HashRouter>
             </div>

@@ -22,6 +22,8 @@ class Home extends Component {
                 <div style={{padding:20}}>
                     <h1 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>Welcome to Shamehub</h1>
                     <h6 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}>[ social connection through codebase opacity ]</h6>
+                    <h6 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}> Shamehub is currently under construction. </h6>
+                    <h6 className={(this.props.theme === 'dark') ? 'Dark-Text' : 'Light-Dext'}> Please come back soon! </h6>
                 </div>
             </div>
         );
